@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Instagram, Youtube, Music, ArrowUp, Send, Check } from "lucide-react";
+import { Mail, Instagram, Youtube, ArrowUp, Send, Check } from "lucide-react";
 import { artistData } from "../data";
 
 interface FooterProps {
@@ -58,15 +58,6 @@ export default function Footer({ onNavigate }: FooterProps) {
                 aria-label="YouTube"
               >
                 <Youtube size={15} />
-              </a>
-              <a
-                href={artistData.socials.spotify}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-rose-700 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
-                aria-label="Spotify"
-              >
-                <Music size={15} />
               </a>
               <button
                 onClick={() => onNavigate("contact")}

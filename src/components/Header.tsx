@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X, Instagram, Youtube, Music, Mail, Image as ImageIcon, ChevronDown, Calendar, Heart, Feather, Building2 } from "lucide-react";
+import { Menu, X, Instagram, Youtube, Mail, Image as ImageIcon, ChevronDown, Calendar, Heart, Feather, Building2 } from "lucide-react";
 import { artistData } from "../data";
 import { EventTabType } from "./EventsView";
 
@@ -249,16 +249,6 @@ export default function Header({
             >
               <Youtube size={16} />
             </a>
-            <a
-              id="social-spotify"
-              href={artistData.socials.spotify}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-600 hover:text-rose-700 transition-colors p-1"
-              aria-label="Spotify"
-            >
-              <Music size={16} />
-            </a>
             <button
               id="social-email-nav"
               onClick={() => handleNavClick("contact")}
@@ -427,9 +417,6 @@ export default function Header({
               </a>
               <a href={artistData.socials.youtube} className="text-stone-600 hover:text-rose-700">
                 <Youtube size={18} />
-              </a>
-              <a href={artistData.socials.spotify} className="text-stone-600 hover:text-rose-700">
-                <Music size={18} />
               </a>
             </div>
             <button

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, Globe, Building } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Globe, Building, AlertCircle, Loader2 } from "lucide-react";
 import { artistData } from "../data";
 
 interface ContactViewProps {
@@ -14,7 +14,9 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
     inquiryType: initialInquiryType || "Wedding Ceremony & Reception",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   React.useEffect(() => {
     if (initialInquiryType) {
@@ -22,13 +24,44 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
     }
   }, [initialInquiryType]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    setIsSubmitted(true);
-    setTimeout(() => {
-      // Keep feedback visible
-    }, 4000);
+
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const formElement = e.currentTarget;
+      const formPayload = new FormData(formElement);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formPayload,
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          organization: "",
+          inquiryType: initialInquiryType || "Wedding Ceremony & Reception",
+          message: ""
+        });
+      } else {
+        setErrorMessage(result.message || "Failed to send your inquiry. Please try again or email directly.");
+      }
+    } catch {
+      setErrorMessage("A network error occurred. Please check your connection or contact directly via email.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -46,81 +79,97 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Management & Direct Information */}
-          <div className="lg:col-span-5 space-y-8">
-            {/* Worldwide Representation Box */}
+          {/* Left Column: Direct Contact & Booking Information */}
+          <div className="lg:col-span-5 space-y-6">
+            {/* Direct Inquiries Primary Box */}
             <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg shadow-sm space-y-6">
               <div>
                 <span className="text-[10px] font-sans tracking-widest uppercase text-rose-700 font-bold block mb-1">
-                  Worldwide Representation
+                  Direct Inquiries & Bookings
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-stone-900">
-                  {artistData.management.agency}
+                  Sarah Lavery
                 </h3>
+                <p className="text-xs font-sans text-stone-500 font-medium mt-1">
+                  Irish Lyric Soprano
+                </p>
               </div>
 
               <div className="space-y-4 text-xs font-sans text-stone-700">
-                <div className="flex items-start gap-3">
-                  <Building size={16} className="text-rose-700 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-3.5 bg-white border border-stone-200 rounded-md">
+                  <Mail size={18} className="text-rose-700 shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-stone-500 font-medium">Artist Manager:</p>
-                    <p className="font-bold text-stone-900">{artistData.management.agentName}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Mail size={16} className="text-rose-700 shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-stone-500 font-medium">Management Email:</p>
+                    <p className="text-[10px] uppercase font-sans tracking-wider text-stone-500 font-bold mb-0.5">
+                      Direct Email Contact
+                    </p>
                     <a
-                      href={`mailto:${artistData.management.email}`}
-                      className="text-stone-900 hover:text-rose-700 font-bold underline transition-colors"
+                      href={`mailto:${artistData.email}`}
+                      className="text-stone-900 hover:text-rose-700 font-bold text-sm underline transition-colors break-all"
                     >
-                      {artistData.management.email}
+                      {artistData.email}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Phone size={16} className="text-rose-700 shrink-0 mt-0.5" />
+                  <MapPin size={16} className="text-rose-700 shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-stone-500 font-medium">Telephone:</p>
-                    <p className="font-bold text-stone-900">{artistData.management.phone}</p>
+                    <p className="text-stone-500 font-medium">Base Locations:</p>
+                    <p className="font-bold text-stone-900">{artistData.location}</p>
+                    <p className="text-[11px] text-stone-500">Available for worldwide engagements & travel</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <Globe size={16} className="text-rose-700 shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-stone-500 font-medium">Territory:</p>
-                    <p className="font-bold text-stone-900">{artistData.management.territory}</p>
+                    <p className="text-stone-500 font-medium">Response Time:</p>
+                    <p className="font-bold text-stone-900">Within 24–48 hours</p>
                   </div>
                 </div>
               </div>
+
+              <div className="pt-2 border-t border-stone-200">
+                <p className="text-[11px] font-sans uppercase tracking-wider text-stone-500 font-bold mb-2">
+                  Engagement Categories
+                </p>
+                <ul className="grid grid-cols-1 gap-1.5 text-xs text-stone-600 font-sans">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    <span>Wedding Ceremonies & Private Receptions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    <span>Operatic Engagements & Guest Roles</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    <span>Orchestral Galas & Oratorio Solos</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    <span>Private Vocal Coaching & Masterclasses</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            {/* Direct Artist Contact */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg shadow-sm space-y-4">
-              <span className="text-[10px] font-sans tracking-widest uppercase text-amber-800 font-bold block">
-                Direct Inquiries & Masterclasses
-              </span>
-              <p className="text-xs text-stone-600 font-sans leading-relaxed">
-                For private coaching, wedding consultations, and direct artistic collaborations:
-              </p>
-              <div className="flex items-center gap-3 text-xs text-stone-700">
-                <Mail size={15} className="text-rose-700" />
-                <a
-                  href={`mailto:${artistData.email}`}
-                  className="text-stone-900 hover:text-rose-700 font-bold underline transition-colors"
-                >
-                  {artistData.email}
-                </a>
+            {/* Management Box (if configured) */}
+            {artistData.management.agency && (
+              <div className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-lg shadow-sm space-y-4">
+                <span className="text-[10px] font-sans tracking-widest uppercase text-stone-500 font-bold block">
+                  Representation
+                </span>
+                <h4 className="font-serif text-lg font-bold text-stone-900">
+                  {artistData.management.agency}
+                </h4>
+                {artistData.management.email && (
+                  <p className="text-xs text-stone-600">
+                    Email: <a href={`mailto:${artistData.management.email}`} className="font-bold text-stone-900 underline">{artistData.management.email}</a>
+                  </p>
+                )}
               </div>
-              <div className="flex items-center gap-3 text-xs text-stone-500 font-medium">
-                <MapPin size={15} className="text-rose-700" />
-                <span>{artistData.location}</span>
-              </div>
-            </div>
+            )}
           </div>
 
           {/* Right Column: Direct Message Form */}
@@ -149,7 +198,29 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form
+                action="https://api.web3forms.com/submit"
+                method="POST"
+                onSubmit={handleSubmit}
+                className="space-y-5"
+              >
+                {/* Web3Forms Access Key & Config */}
+                <input
+                  type="hidden"
+                  name="access_key"
+                  value="808b07b3-9b0f-4015-b577-3581231fd89a"
+                />
+                <input
+                  type="hidden"
+                  name="subject"
+                  value={`Website Inquiry: ${formData.inquiryType} - ${formData.name || "Visitor"}`}
+                />
+                <input
+                  type="hidden"
+                  name="from_name"
+                  value={formData.name || "Sarah Lavery Website Inquiry"}
+                />
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[11px] font-sans tracking-wider uppercase text-stone-700 font-bold mb-2">
@@ -157,6 +228,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                     </label>
                     <input
                       type="text"
+                      name="name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -171,6 +243,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -187,6 +260,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                     </label>
                     <input
                       type="text"
+                      name="organization"
                       value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                       placeholder="e.g. Festival Opera / Symphony"
@@ -199,6 +273,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                       Inquiry Nature
                     </label>
                     <select
+                      name="inquiry_type"
                       value={formData.inquiryType}
                       onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
                       className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 font-medium focus:outline-none focus:border-rose-600 focus:ring-1 focus:ring-rose-500 transition-colors shadow-2xs"
@@ -221,6 +296,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                     Message / Engagement Details *
                   </label>
                   <textarea
+                    name="message"
                     required
                     rows={5}
                     value={formData.message}
@@ -230,12 +306,32 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                   />
                 </div>
 
+                {errorMessage && (
+                  <div className="p-3.5 bg-rose-50 border border-rose-200 rounded text-rose-800 text-xs font-sans flex items-start gap-2.5">
+                    <AlertCircle size={16} className="shrink-0 mt-0.5 text-rose-600" />
+                    <div>
+                      <p className="font-semibold mb-0.5">Submission issue</p>
+                      <p>{errorMessage}</p>
+                    </div>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-rose-700 hover:bg-rose-800 text-white text-xs font-sans tracking-[0.25em] font-bold uppercase transition-all duration-300 rounded shadow-md flex items-center justify-center gap-2 group cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 bg-rose-700 hover:bg-rose-800 disabled:bg-stone-400 text-white text-xs font-sans tracking-[0.25em] font-bold uppercase transition-all duration-300 rounded shadow-md flex items-center justify-center gap-2 group cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <Send size={14} className="group-hover:translate-x-1 transition-transform" />
-                  <span>Submit Inquiry</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={14} className="animate-spin" />
+                      <span>Sending Inquiry...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={14} className="group-hover:translate-x-1 transition-transform" />
+                      <span>Submit Inquiry</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}

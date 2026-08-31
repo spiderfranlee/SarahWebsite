@@ -8,7 +8,7 @@ export const artistData = {
   tagline: "Irish Lyric Soprano",
   headlineQuote: "A voice of luminous warmth, dramatic veracity, and effortless lyrical beauty.",
   location: "Dublin, Ireland & London, UK",
-  email: "contact@sarahguilmartinlavery.ie",
+  email: "sarahlavery16@gmail.com",
   management: {
     agency: "",
     agentName: "",
@@ -19,7 +19,6 @@ export const artistData = {
   socials: {
     instagram: "https://instagram.com",
     youtube: "https://www.youtube.com/@SarahGuilmartinLavery-soprano",
-    spotify: "https://spotify.com",
     linkedin: "https://linkedin.com",
   },
   shortBio: "Irish lyric soprano Sarah Lavery is celebrated for her radiant vocal warmth, compelling musicality, and magnetic stage presence. A graduate of prestigious conservatoires and recipient of prominent vocal bursaries, she has performed with leading companies including Irish National Opera, Wexford Festival Opera, and the National Symphony Orchestra.",
