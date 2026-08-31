@@ -18,7 +18,7 @@ export const artistData = {
   },
   socials: {
     instagram: "https://instagram.com",
-    youtube: "https://youtube.com",
+    youtube: "https://www.youtube.com/@SarahGuilmartinLavery-soprano",
     spotify: "https://spotify.com",
     linkedin: "https://linkedin.com",
     appleMusic: "https://music.apple.com"
@@ -67,7 +67,9 @@ export const operaticRepertoire: RepertoireRole[] = [
   { id: "op-14", composer: "Giuseppe Verdi", work: "La Traviata", role: "Violetta Valéry", language: "Italian", status: "In Repertoire" },
   { id: "op-15", composer: "Johann Strauss II", work: "Die Fledermaus", role: "Rosalinde", language: "German / English", status: "Covered" },
   { id: "op-16", composer: "Tarik O'Regan", work: "Testament (World Premiere)", role: "Martha", language: "English", status: "Performed" },
-  { id: "op-17", composer: "Alberto Caruso", work: "Lady Gregory in America", role: "Eileen O'Doherty", language: "English", status: "Performed" }
+  { id: "op-17", composer: "Alberto Caruso", work: "Lady Gregory in America", role: "Eileen O'Doherty", language: "English", status: "Performed" },
+  { id: "op-18", composer: "Erich Wolfgang Korngold", work: "Die tote Stadt", role: "Marietta / Marie", language: "German", status: "In Repertoire" },
+  { id: "op-19", composer: "André Previn", work: "A Streetcar Named Desire", role: "Blanche DuBois", language: "English", status: "In Repertoire" }
 ];
 
 // Concert & Oratorio Works
@@ -114,87 +116,80 @@ export const songCyclesRepertoire: SongCycle[] = [
 // Performance Schedule (Upcoming & Recent)
 export const scheduleData: EventItem[] = [
   {
-    id: "sch-1",
-    date: "OCT 24, 2026",
+    id: "sch-carmen",
+    date: "NOV 02-07, 2026",
+    datesDetail: "2, 4, 6, 7 November 2026",
     time: "19:30",
-    title: "Puccini: La Bohème",
-    role: "Mimì",
+    title: "Carmen",
+    role: "Soprano Chorus",
     company: "Irish National Opera",
     venue: "Bord Gáis Energy Theatre",
     city: "Dublin, Ireland",
-    conductor: "Fergus Sheil",
-    director: "Orpha Phelan",
+    conductor: "Paul Curran (Dir.) / INO Orchestra",
+    director: "Paul Curran",
     status: "Get Tickets",
-    ticketUrl: "https://www.irishnationalopera.ie",
-    category: "Opera"
+    ticketUrl: "https://www.bordgaisenergytheatre.ie",
+    category: "Opera",
+    notes: "Sarah will perform as soprano chorus in these productions.",
+    imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80",
+    domain: "bordgaisenergytheatre.ie",
+    originalFilename: "Carmen-2026_HERO_2880px-w-x-1800px-h.jpg"
   },
   {
-    id: "sch-2",
-    date: "NOV 12, 2026",
+    id: "sch-magic-musicals",
+    date: "NOV 20-21, 2026",
+    datesDetail: "20 & 21 November 2026",
     time: "20:00",
-    title: "Wexford Festival Opera Gala",
-    role: "Featured Soloist",
-    company: "Wexford Festival Opera",
-    venue: "National Opera House",
-    city: "Wexford, Ireland",
-    conductor: "Michele Spotti",
-    status: "Get Tickets",
-    ticketUrl: "https://www.wexfordopera.com",
-    category: "Concert"
-  },
-  {
-    id: "sch-3",
-    date: "DEC 05, 2026",
-    time: "19:30",
-    title: "Handel: Messiah",
+    title: "Magic of the Musicals",
     role: "Soprano Soloist",
-    company: "National Symphony Orchestra & Chorus",
-    venue: "National Concert Hall",
-    city: "Dublin, Ireland",
-    conductor: "Peter Whelan",
-    status: "Get Tickets",
-    ticketUrl: "https://www.nch.ie",
-    category: "Concert"
-  },
-  {
-    id: "sch-4",
-    date: "JAN 18, 2027",
-    time: "13:05",
-    title: "National Concert Hall Summer Lunchtime Series",
-    role: "Solo Recital with Piano",
-    company: "NCH Recital Series",
-    venue: "John Field Room, National Concert Hall",
+    company: "R&R Musical Society (Rathmines & Rathgar)",
+    venue: "National Concert Hall (NCH)",
     city: "Dublin, Ireland",
     status: "Get Tickets",
     ticketUrl: "https://www.nch.ie",
-    category: "Recital"
+    category: "Concert",
+    notes: "Sarah will perform as soprano soloist for these concerts.",
+    imageUrl: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80",
+    domain: "nch.ie",
+    originalFilename: "26_11_20-Magic-of-the-Musicals.jpg"
   },
   {
-    id: "sch-5",
-    date: "FEB 14, 2027",
-    time: "20:00",
-    title: "Valentine's Opera Gala",
-    role: "Soloist (Solos & Duets)",
-    company: "RTÉ Concert Orchestra",
-    venue: "National Concert Hall",
-    city: "Dublin, Ireland",
-    status: "Get Tickets",
-    ticketUrl: "https://www.nch.ie",
-    category: "Concert"
-  },
-  {
-    id: "sch-6",
-    date: "MAR 26, 2027",
+    id: "sch-turandot",
+    date: "APR 04-10, 2027",
+    datesDetail: "4, 7, 10 April 2027",
     time: "19:30",
-    title: "Mozart: Le Nozze di Figaro",
-    role: "Contessa Almaviva",
+    title: "Turandot",
+    role: "Soprano Chorus",
     company: "Irish National Opera",
-    venue: "Cork Opera House",
-    city: "Cork, Ireland",
-    conductor: "Peter Whelan",
+    venue: "Bord Gáis Energy Theatre",
+    city: "Dublin, Ireland",
+    conductor: "Valerio Galli",
+    director: "David McVicar",
     status: "Get Tickets",
-    ticketUrl: "https://www.irishnationalopera.ie",
-    category: "Opera"
+    ticketUrl: "https://www.bordgaisenergytheatre.ie",
+    category: "Opera",
+    notes: "Sarah will perform as soprano chorus in these productions.",
+    imageUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+    domain: "bordgaisenergytheatre.ie",
+    originalFilename: "INO-Turnadot_Hero_2880px-w-x-1800px-h.jpg"
+  },
+  {
+    id: "sch-eugene-onegin",
+    date: "MAY 23-29, 2027",
+    datesDetail: "23, 25, 27, 29 May 2027",
+    time: "19:30",
+    title: "Eugene Onegin",
+    role: "Soprano Chorus",
+    company: "Irish National Opera",
+    venue: "Gaiety Theatre",
+    city: "Dublin, Ireland",
+    status: "Get Tickets",
+    ticketUrl: "https://www.gaietytheatre.ie",
+    category: "Opera",
+    notes: "Sarah will perform as soprano chorus in these productions.",
+    imageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+    domain: "gaietytheatre.ie",
+    originalFilename: "cropped-Favicon-Gaiety-180x180.png"
   },
   {
     id: "sch-7",
@@ -224,8 +219,52 @@ export const scheduleData: EventItem[] = [
   }
 ];
 
-// Interactive Audio Tracks for Jukebox
+// Interactive Audio Tracks for Jukebox & Media
 export const audioRecordings: AudioTrack[] = [
+  {
+    id: "aud-korngold",
+    title: "Glück, das mir verblieb (Marietta's Lied)",
+    work: "Die tote Stadt, Op. 12",
+    composer: "Erich Wolfgang Korngold",
+    accompaniment: "Piano & Vocal Recording",
+    duration: "5:12",
+    category: "Opera Aria",
+    youtubeId: "UBx3agwNmB0",
+    videoUrl: "https://www.youtube.com/watch?v=UBx3agwNmB0"
+  },
+  {
+    id: "aud-ave-maria",
+    title: "Ave Maria",
+    work: "Sacred Classical Repertoire",
+    composer: "Franz Schubert / Sacred",
+    accompaniment: "Organ & Piano",
+    duration: "4:45",
+    category: "Sacred / Wedding",
+    youtubeId: "ZbaF-iFgMzw",
+    videoUrl: "https://www.youtube.com/watch?v=ZbaF-iFgMzw"
+  },
+  {
+    id: "aud-previn",
+    title: "I can smell the sea air",
+    work: "A Streetcar Named Desire",
+    composer: "André Previn",
+    accompaniment: "Soprano & Piano",
+    duration: "3:58",
+    category: "Opera Aria",
+    youtubeId: "xa0fVPR613I",
+    videoUrl: "https://www.youtube.com/watch?v=xa0fVPR613I"
+  },
+  {
+    id: "aud-my-fair-lady",
+    title: "I Could Have Danced All Night",
+    work: "My Fair Lady",
+    composer: "Frederick Loewe & Alan Jay Lerner",
+    accompaniment: "Orchestral Ensemble & Piano",
+    duration: "3:30",
+    category: "Musical Theatre",
+    youtubeId: "zQ1eus1CR-Q",
+    videoUrl: "https://www.youtube.com/watch?v=zQ1eus1CR-Q"
+  },
   {
     id: "aud-1",
     title: "Porgi, amor, qualche ristoro",
@@ -261,84 +300,79 @@ export const audioRecordings: AudioTrack[] = [
     accompaniment: "Cello & Piano",
     duration: "4:05",
     category: "Art Song"
-  },
-  {
-    id: "aud-5",
-    title: "Lascia ch'io pianga",
-    work: "Rinaldo, HWV 7",
-    composer: "George Frideric Handel",
-    accompaniment: "Irish Baroque Orchestra",
-    duration: "4:20",
-    category: "Opera Aria"
-  },
-  {
-    id: "aud-6",
-    title: "Pie Jesu",
-    work: "Requiem in D minor, Op. 48",
-    composer: "Gabriel Fauré",
-    accompaniment: "Organ & Orchestra",
-    duration: "3:30",
-    category: "Concert"
   }
 ];
 
 // Media Archive (Videos & High-Res Production Images)
 export const mediaShowcase: MediaItem[] = [
   {
-    id: "med-1",
-    title: "Mozart's 'Porgi, amor' - Live Concert Performance",
+    id: "med-yt-1",
+    title: "Glück, das mir verblieb | Korngold | Soprano Sarah Lavery",
     category: "Opera",
     type: "video",
-    thumbnailUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    description: "Sarah Lavery performs Contessa Almaviva's heart-rending aria 'Porgi, amor' with the National Symphony Orchestra.",
+    thumbnailUrl: "https://i.ytimg.com/vi/UBx3agwNmB0/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=UBx3agwNmB0",
+    youtubeId: "UBx3agwNmB0",
+    composer: "Erich Wolfgang Korngold",
+    work: "Die tote Stadt (Marietta's Lied)",
+    description: "Soprano Sarah Lavery performs the luminous Marietta's Lied 'Glück, das mir verblieb' from Korngold's Die tote Stadt, showcasing shimmering high notes and velvety lyrical phrasing.",
     year: "2026"
   },
   {
-    id: "med-2",
-    title: "Puccini's 'Si, mi chiamano Mimì' - Rehearsal Stills",
-    category: "Opera",
-    type: "image",
-    thumbnailUrl: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80",
-    description: "On stage production photography during Irish National Opera's staging of Puccini's La bohème.",
+    id: "med-yt-2",
+    title: "Ave Maria | Soprano Sarah Lavery",
+    category: "Sacred",
+    type: "video",
+    thumbnailUrl: "https://i.ytimg.com/vi/ZbaF-iFgMzw/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=ZbaF-iFgMzw",
+    youtubeId: "ZbaF-iFgMzw",
+    composer: "Franz Schubert / Sacred",
+    work: "Sacred Vocal Repertoire",
+    description: "A devotional performance of 'Ave Maria', beloved for church wedding ceremonies, sacred memorial masses, and gala recitals.",
     year: "2026"
   },
   {
-    id: "med-3",
-    title: "Wexford Festival Opera - Artist Spotlight & Interview",
-    category: "Interview",
+    id: "med-yt-3",
+    title: "I could have danced all night (My Fair Lady) | Soprano Sarah Lavery",
+    category: "Recital",
     type: "video",
-    thumbnailUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    description: "Sarah discusses stepping into 19th-century Irish heroines and exploring forgotten vocal cantatas.",
-    year: "2025"
+    thumbnailUrl: "https://i.ytimg.com/vi/zQ1eus1CR-Q/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=zQ1eus1CR-Q",
+    youtubeId: "zQ1eus1CR-Q",
+    composer: "Frederick Loewe & Alan Jay Lerner",
+    work: "My Fair Lady (Eliza Doolittle)",
+    description: "A sparkling, exuberant rendition of Eliza Doolittle's signature showpiece 'I Could Have Danced All Night' from Lerner & Loewe's My Fair Lady.",
+    year: "2026"
   },
   {
-    id: "med-4",
-    title: "Editorial Window Portrait in Lace Evening Gown",
-    category: "Portrait",
-    type: "image",
-    thumbnailUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=80",
-    description: "Official studio portrait session overlooking the skyline. Refined navy lace gown and classical drop earrings.",
+    id: "med-yt-4",
+    title: "I can smell the sea air | Andre Previn | Soprano Sarah Lavery",
+    category: "Opera",
+    type: "video",
+    thumbnailUrl: "https://i.ytimg.com/vi/xa0fVPR613I/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=xa0fVPR613I",
+    youtubeId: "xa0fVPR613I",
+    composer: "André Previn",
+    work: "A Streetcar Named Desire (Blanche DuBois)",
+    description: "Sarah Lavery delivers a poignant, emotionally resonant interpretation of Blanche DuBois's aria 'I can smell the sea air' from André Previn's modern operatic triumph.",
     year: "2026"
   },
   {
     id: "med-5",
-    title: "Handel's Messiah - 'I Know that My Redeemer Liveth'",
-    category: "Concert",
-    type: "video",
-    thumbnailUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    description: "Live oratorio performance at the National Concert Hall, Dublin.",
-    year: "2025"
+    title: "Editorial Window Portrait in Lace Evening Gown",
+    category: "Portrait",
+    type: "image",
+    thumbnailUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=80",
+    description: "Official studio portrait session overlooking the skyline in a navy lace gown and classical drop earrings.",
+    year: "2026"
   },
   {
     id: "med-6",
-    title: "Backstage at the National Opera House",
-    category: "Behind the Scenes",
+    title: "On-Stage Opera Production Performance",
+    category: "Opera",
     type: "image",
-    thumbnailUrl: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1200&q=80",
-    description: "Final vocal warmups and dressing room preparation before the evening curtain call.",
+    thumbnailUrl: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80",
+    description: "Stage performance capturing dramatic storytelling and luminous vocal projection in lyric opera repertoire.",
     year: "2026"
   }
 ];
@@ -406,3 +440,127 @@ export const newsReleasesData: NewsArticle[] = [
     imageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80"
   }
 ];
+
+// Specialised Event Offerings: Weddings, Funeral & Memorials, Corporate & Galas
+export const weddingEventData = {
+  title: "Wedding Music & Ceremony Solos",
+  subtitle: "Exquisite sacred and classical music creating unforgettable, emotional moments for your special day.",
+  description: "Sarah brings world-class vocal artistry, radiant warmth, and seamless professionalism to your wedding ceremony. Whether you are planning a traditional church celebration, a civil ceremony, or an intimate humanist gathering, Sarah collaborates closely with couples to curate a bespoke musical programme that reflects their unique love story.",
+  ceremonyTypes: [
+    {
+      type: "Church & Religious Ceremonies",
+      details: "Comprehensive musical curation spanning the Processional entrance, Responsorial Psalm, Gospel Acclamation, Offertory, Sign of Peace, Communion, Signing of the Register, and the celebratory Recessional."
+    },
+    {
+      type: "Civil & Humanist Ceremonies",
+      details: "Romantic classical arias, modern love ballads, acoustic crossovers, and timeless Irish melodies tailored to non-religious or spiritualist wedding settings."
+    },
+    {
+      type: "Drinks Reception & Canapés",
+      details: "Elegant background vocal serenades, jazz standards, bel canto favourites, and light classical pieces as your guests arrive and celebrate."
+    }
+  ],
+  repertoireCategories: [
+    {
+      category: "Entrance & Processional",
+      pieces: ["Pachelbel's Canon in D (Vocal)", "Nella Fantasia (Ennio Morricone)", "How Long Will I Love You", "A Thousand Years", "Laudate Dominum (Mozart)"]
+    },
+    {
+      category: "Sacred & Classical Solos",
+      pieces: ["Ave Maria (Schubert / Bach-Gounod / Caccini)", "Panis Angelicus (César Franck)", "Pie Jesu (Fauré / Lloyd Webber)", "The Prayer (Bocelli / Dion)", "Laudate Dominum (Mozart)"]
+    },
+    {
+      category: "Communion & Reflection",
+      pieces: ["O Mio Babbino Caro (Puccini)", "Songbird (Eva Cassidy)", "The First Time Ever I Saw Your Face", "Ag Críost an Síol (Seán Ó Riada)", "Be Thou My Vision"]
+    },
+    {
+      category: "Signing of the Register",
+      pieces: ["She Moved Through the Fair", "Mo Ghille Mear", "Fields of Gold", "Make You Feel My Love", "Can't Help Falling in Love"]
+    },
+    {
+      category: "Recessional & Exit",
+      pieces: ["Ode to Joy (Beethoven)", "Hallelujah (Handel / Cohen)", "Signed, Sealed, Delivered (Acoustic Classical)", "All You Need Is Love", "Rejoice Greatly (Handel)"]
+    }
+  ],
+  accompaniment: ["Church Organ / Classical Keyboard", "Concert Celtic Harp", "Classical String Duo / Quartet", "Classical Guitar & Cello", "Acoustic Grand Piano"]
+};
+
+export const funeralEventData = {
+  title: "Funeral & Memorial Service Music",
+  subtitle: "Compassionate, comforting sacred hymns and classical arias celebrating a cherished life.",
+  description: "During times of grief, music provides solace, dignity, and a profound emotional tribute. Sarah offers a compassionate, supportive service, helping families choose meaningful hymns, classical reflections, and traditional Irish farewells to honour their loved one with deep sensitivity and grace.",
+  serviceTypes: [
+    {
+      type: "Requiem Mass & Church Funerals",
+      details: "Dignified sacred vocal music fulfilling all liturgical moments: Entrance hymn, Responsorial Psalm, Offertory procession, Communion, Final Commendation, and Recessional blessing."
+    },
+    {
+      type: "Crematorium & Non-Religious Memorials",
+      details: "Comforting acoustic ballads, classical melodies, and gentle poetic songs tailored for memorial services, crematorium chapels, and celebrations of life."
+    },
+    {
+      type: "Month's Mind & Anniversary Masses",
+      details: "Intimate vocal performances dedicated to remembrance and family gatherings."
+    }
+  ],
+  repertoireCategories: [
+    {
+      category: "Sacred Liturgy & Hymns",
+      pieces: ["Pie Jesu (Fauré / Lloyd Webber)", "Ave Maria (Schubert / Bach-Gounod)", "Panis Angelicus (Franck)", "Amazing Grace", "I Heard the Voice of Jesus Say", "Abide With Me", "Here I Am, Lord"]
+    },
+    {
+      category: "Comforting Classical Reflections",
+      pieces: ["Bist du bei mir (J. S. Bach)", "Lascia ch'io pianga (Handel)", "May the Road Rise to Meet You", "In Paradisum (Fauré)", "Caelum (Deep Peace)"]
+    },
+    {
+      category: "Traditional Irish Farewells",
+      pieces: ["Ag Críost an Síol (Seán Ó Riada)", "The Parting Glass", "Mo Ghille Mear", "Oft in the Stilly Night", "The Isle of Hope, Isle of Tears", "The Salley Gardens"]
+    }
+  ],
+  accompaniment: ["Church Organist / Cathedral Organ", "Acoustic Piano", "Celtic Harp", "Solo Cello"]
+};
+
+export const corporateEventData = {
+  title: "Corporate Events, Galas & Private Recitals",
+  subtitle: "World-class operatic entertainment, VIP recitals, and unforgettable classical showcase performances.",
+  description: "Elevate your corporate banquet, international conference, charity gala, or private soirée with the electrifying presence of a premier Irish lyric soprano. Sarah delivers show-stopping operatic highlights, sophisticated crossover melodies, and customized performances that captivate high-profile audiences and leave a lasting impression.",
+  eventTypes: [
+    {
+      type: "Gala Dinners & Award Ceremonies",
+      details: "Thrilling opening or mid-dinner musical interludes featuring iconic Puccini, Verdi, and Bizet arias that create an atmosphere of opulence and celebration."
+    },
+    {
+      type: "Private Soirées & Ambassadorial Receptions",
+      details: "Intimate salon recitals pairing French chanson, bel canto masterpieces, and evocative Irish art songs for distinguished international guests and private patrons."
+    },
+    {
+      type: "Brand Launches & Cultural Showcases",
+      details: "Customized artistic collaborations, themed musical suites, and dramatic vocal performances tailored to client branding and venue acoustics."
+    },
+    {
+      type: "Festival & Open-Air Symphony Galas",
+      details: "Guest soloist appearances with full orchestras, chamber ensembles, and prestigious choral societies."
+    }
+  ],
+  repertoireCategories: [
+    {
+      category: "Show-Stopping Opera Arias",
+      pieces: ["O mio babbino caro (Gianni Schicchi)", "Quando m'en vo (La Bohème)", "Sempre Libera (La Traviata)", "Habanera (Carmen)", "Chi il bel sogno di Doretta (La Rondine)"]
+    },
+    {
+      category: "Classical Crossover & Musical Theatre",
+      pieces: ["Time to Say Goodbye (Con te partirò)", "Nella Fantasia (Gabriel's Oboe)", "Music of the Night / Think of Me", "Somewhere (West Side Story)", "Summertime (Porgy & Bess)"]
+    },
+    {
+      category: "Irish & Celtic Masterpieces",
+      pieces: ["She Moved Through the Fair", "The Last Rose of Summer", "Danny Boy / Londonderry Air", "Mo Ghille Mear (Gaelic Choral Solo)", "Down by the Salley Gardens"]
+    }
+  ],
+  features: [
+    "Flexible ensemble setups from solo with grand piano to full orchestra accompaniment",
+    "Bespoke setlist curation tailored to the event schedule, theme, and audience profile",
+    "Flawless sound check coordination with venue AV and lighting teams",
+    "Worldwide travel availability with representation management support"
+  ]
+};
+

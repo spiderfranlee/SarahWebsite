@@ -24,20 +24,20 @@ export default function Footer({ onNavigate }: FooterProps) {
   };
 
   return (
-    <footer id="main-footer" className="bg-stone-950 border-t border-stone-800 text-stone-300 pt-16 pb-12">
+    <footer id="main-footer" className="bg-[#FAF8F5] border-t border-stone-200 text-stone-700 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Newsletter & Brand Strip */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-stone-800/80">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-stone-200">
           {/* Brand Info */}
           <div className="lg:col-span-6 space-y-4">
-            <span className="font-serif text-2xl sm:text-3xl font-bold text-stone-100 tracking-widest block">
+            <span className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight block">
               {artistData.name}
             </span>
-            <p className="text-xs font-sans tracking-[0.3em] text-gold-accent uppercase font-semibold">
+            <p className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold">
               {artistData.tagline} · {artistData.location}
             </p>
-            <p className="text-xs font-sans text-stone-400 max-w-md leading-relaxed pt-2">
-              For worldwide operatic engagements, orchestral gala concerts, solo recitals, and masterclasses.
+            <p className="text-xs font-sans text-stone-600 max-w-md leading-relaxed pt-2">
+              For worldwide operatic engagements, orchestral gala concerts, bespoke weddings, sacred services, and masterclasses.
             </p>
 
             <div className="flex items-center space-x-3 pt-3">
@@ -45,53 +45,53 @@ export default function Footer({ onNavigate }: FooterProps) {
                 href={artistData.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-stone-900 border border-stone-800 hover:border-gold-accent hover:text-gold-accent flex items-center justify-center text-stone-400 transition-colors"
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-rose-700 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
                 aria-label="Instagram"
               >
-                <Instagram size={14} />
+                <Instagram size={15} />
               </a>
               <a
                 href={artistData.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-stone-900 border border-stone-800 hover:border-gold-accent hover:text-gold-accent flex items-center justify-center text-stone-400 transition-colors"
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-rose-700 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
                 aria-label="YouTube"
               >
-                <Youtube size={14} />
+                <Youtube size={15} />
               </a>
               <a
                 href={artistData.socials.spotify}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-stone-900 border border-stone-800 hover:border-gold-accent hover:text-gold-accent flex items-center justify-center text-stone-400 transition-colors"
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-rose-700 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
                 aria-label="Spotify"
               >
-                <Music size={14} />
+                <Music size={15} />
               </a>
               <button
                 onClick={() => onNavigate("contact")}
-                className="w-8 h-8 rounded-full bg-stone-900 border border-stone-800 hover:border-gold-accent hover:text-gold-accent flex items-center justify-center text-stone-400 transition-colors"
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-rose-700 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
                 aria-label="Email Contact"
               >
-                <Mail size={14} />
+                <Mail size={15} />
               </button>
             </div>
           </div>
 
           {/* Newsletter Box */}
-          <div className="lg:col-span-6 bg-stone-900/50 border border-stone-800 p-6 sm:p-8 rounded-sm space-y-4">
-            <span className="text-xs font-sans tracking-widest uppercase text-gold-accent font-semibold block">
+          <div className="lg:col-span-6 bg-white border border-stone-200 p-6 sm:p-8 rounded-lg space-y-4 shadow-sm">
+            <span className="text-xs font-sans tracking-widest uppercase text-rose-700 font-bold block">
               Concert & Ticket Updates
             </span>
-            <h4 className="font-serif text-xl font-bold text-stone-100">
+            <h4 className="font-serif text-xl font-bold text-stone-900">
               Subscribe to Season Diary
             </h4>
-            <p className="text-xs font-sans text-stone-400 leading-relaxed">
+            <p className="text-xs font-sans text-stone-600 leading-relaxed">
               Receive advance notifications for upcoming opera productions, recital dates, and recording releases.
             </p>
 
             {subscribed ? (
-              <div className="p-3 bg-stone-950 border border-gold-accent/40 rounded-sm text-xs font-sans text-gold-accent flex items-center gap-2">
+              <div className="p-3 bg-rose-50 border border-rose-200 rounded text-xs font-sans text-rose-800 font-bold flex items-center gap-2">
                 <Check size={16} />
                 <span>Thank you for subscribing to Sarah Lavery's diary!</span>
               </div>
@@ -103,11 +103,11 @@ export default function Footer({ onNavigate }: FooterProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address..."
-                  className="flex-1 px-4 py-2.5 bg-stone-950 border border-stone-800 rounded-sm text-xs font-sans text-stone-200 placeholder-stone-600 focus:outline-none focus:border-gold-accent"
+                  className="flex-1 px-4 py-2.5 bg-[#FAF8F5] border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-rose-600 focus:ring-1 focus:ring-rose-500 shadow-2xs"
                 />
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-gold-accent hover:bg-[#d8b56f] text-stone-950 text-xs font-sans tracking-wider font-bold uppercase rounded-sm transition-colors flex items-center gap-1.5"
+                  className="px-5 py-2.5 bg-rose-700 hover:bg-rose-800 text-white text-xs font-sans tracking-wider font-bold uppercase rounded transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
                 >
                   <span>Join</span>
                   <Send size={12} />
@@ -120,24 +120,30 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Footer Nav Links & Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-stone-500 font-sans">
           <nav className="flex flex-wrap items-center gap-6">
-            {["home", "biography", "schedule", "repertoire", "media", "reviews", "contact"].map((sec) => (
+            {[
+              { id: "home", label: "Home" },
+              { id: "about", label: "About" },
+              { id: "media", label: "Media" },
+              { id: "events", label: "Events" },
+              { id: "contact", label: "Contact" }
+            ].map((item) => (
               <button
-                key={sec}
-                onClick={() => onNavigate(sec)}
-                className="hover:text-stone-300 uppercase tracking-widest text-[11px] transition-colors"
+                key={item.id}
+                onClick={() => onNavigate(item.id)}
+                className="hover:text-rose-700 uppercase tracking-widest text-[11px] font-bold transition-colors cursor-pointer"
               >
-                {sec}
+                {item.label}
               </button>
             ))}
           </nav>
 
           <div className="flex items-center gap-4">
-            <p className="text-stone-500 text-[11px]">
+            <p className="text-stone-500 text-[11px] font-medium">
               © {new Date().getFullYear()} {artistData.fullName}. All rights reserved.
             </p>
             <button
               onClick={scrollToTop}
-              className="p-2 bg-stone-900 hover:bg-stone-800 text-stone-400 hover:text-gold-accent rounded-sm border border-stone-800 transition-colors"
+              className="p-2 bg-white hover:bg-rose-50 text-stone-600 hover:text-rose-700 rounded border border-stone-200 transition-colors shadow-2xs cursor-pointer"
               aria-label="Back to top"
             >
               <ArrowUp size={14} />

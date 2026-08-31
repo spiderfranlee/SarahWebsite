@@ -12,7 +12,7 @@ export function playAriaAudio(trackName: string) {
 
     audioCtx = new AudioContextClass();
     if (audioCtx.state === "suspended") {
-      audioCtx.resume();
+      audioCtx.resume().catch(() => {});
     }
 
     // Melodic frequencies for classical arias (Mozart/Puccini inspired chords)
@@ -26,32 +26,41 @@ export function playAriaAudio(trackName: string) {
     let chordIndex = 0;
 
     const playChord = () => {
-      if (!audioCtx) return;
-      const now = audioCtx.currentTime;
-      const notes = chords[chordIndex % chords.length];
-      chordIndex++;
+      try {
+        if (!audioCtx || audioCtx.state === "closed") return;
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume().catch(() => {});
+          return;
+        }
 
-      notes.forEach((freq, i) => {
-        if (!audioCtx) return;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
+        const now = audioCtx.currentTime;
+        const notes = chords[chordIndex % chords.length];
+        chordIndex++;
 
-        // Warm sine / triangle wave blending classical strings & harp tone
-        osc.type = i === 3 ? "sine" : "triangle";
-        osc.frequency.setValueAtTime(freq, now + i * 0.15);
+        notes.forEach((freq, i) => {
+          try {
+            if (!audioCtx || audioCtx.state === "closed") return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
 
-        // Soft attack and gentle long decay
-        gain.gain.setValueAtTime(0.001, now + i * 0.15);
-        gain.gain.exponentialRampToValueAtTime(0.04, now + i * 0.15 + 0.3);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.15 + 2.5);
+            // Warm sine / triangle wave blending classical strings & harp tone
+            osc.type = i === 3 ? "sine" : "triangle";
+            osc.frequency.setValueAtTime(freq, now + i * 0.15);
 
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
+            // Soft attack and gentle long decay
+            gain.gain.setValueAtTime(0.001, now + i * 0.15);
+            gain.gain.exponentialRampToValueAtTime(0.04, now + i * 0.15 + 0.3);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.15 + 2.5);
 
-        osc.start(now + i * 0.15);
-        osc.stop(now + i * 0.15 + 2.6);
-        currentOscillators.push(osc);
-      });
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now + i * 0.15);
+            osc.stop(now + i * 0.15 + 2.6);
+            currentOscillators.push(osc);
+          } catch {}
+        });
+      } catch {}
     };
 
     playChord();
@@ -62,21 +71,23 @@ export function playAriaAudio(trackName: string) {
 }
 
 export function stopAriaAudio() {
-  if (intervalId) {
-    clearInterval(intervalId);
-    intervalId = null;
-  }
-  currentOscillators.forEach((osc) => {
-    try {
-      osc.stop();
-      osc.disconnect();
-    } catch {}
-  });
-  currentOscillators = [];
-  if (audioCtx) {
-    try {
-      audioCtx.close();
-    } catch {}
-    audioCtx = null;
-  }
+  try {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+    currentOscillators.forEach((osc) => {
+      try {
+        osc.stop();
+        osc.disconnect();
+      } catch {}
+    });
+    currentOscillators = [];
+    if (audioCtx) {
+      try {
+        audioCtx.close().catch(() => {});
+      } catch {}
+      audioCtx = null;
+    }
+  } catch {}
 }

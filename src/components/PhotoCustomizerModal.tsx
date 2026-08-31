@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X, Upload, Image as ImageIcon, Check, RefreshCw, Sparkles, Link } from "lucide-react";
+import { X, Upload, Image as ImageIcon, Check, RefreshCw, Link } from "lucide-react";
 
 interface PhotoCustomizerModalProps {
   isOpen: boolean;
@@ -16,6 +16,8 @@ export default function PhotoCustomizerModal({
 }: PhotoCustomizerModalProps) {
   const [urlInput, setUrlInput] = useState("");
   const [previewUrl, setPreviewUrl] = useState(currentImage);
+  const [urlError, setUrlError] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   if (!isOpen) return null;
 
@@ -42,23 +44,48 @@ export default function PhotoCustomizerModal({
     }
   ];
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
+  const processFile = (file: File) => {
+    if (file && file.type.startsWith("image/")) {
       const reader = new FileReader();
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
           setPreviewUrl(reader.result);
+          setUrlError(null);
         }
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const handleApplyUrl = () => {
-    if (urlInput.trim()) {
-      setPreviewUrl(urlInput.trim());
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      processFile(file);
     }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      processFile(file);
+    }
+  };
+
+  const handleApplyUrl = () => {
+    const cleanUrl = urlInput.trim();
+    if (!cleanUrl) return;
+
+    if (cleanUrl.startsWith("blob:")) {
+      setUrlError(
+        "Blob URLs (e.g. blob:https://dash.cloudflare.com/...) only exist temporarily inside that specific browser tab and cannot be loaded externally. Please upload the photo file directly using the 'Upload Photo from Device' button or drag & drop it here."
+      );
+      return;
+    }
+
+    setUrlError(null);
+    setPreviewUrl(cleanUrl);
   };
 
   const handleSave = () => {
@@ -71,17 +98,17 @@ export default function PhotoCustomizerModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md animate-fadeIn">
-      <div className="bg-stone-900 border border-stone-800 w-full max-w-2xl rounded-sm shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm animate-fadeIn">
+      <div className="bg-white border border-stone-200 w-full max-w-2xl rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-stone-800 bg-stone-950">
+        <div className="flex items-center justify-between p-5 border-b border-stone-200 bg-[#FAF8F5]">
           <div className="flex items-center gap-2.5">
-            <ImageIcon size={18} className="text-gold-accent" />
+            <ImageIcon size={18} className="text-rose-700" />
             <div>
-              <h3 className="font-serif text-lg font-bold text-stone-100">
-                Main Hero Image Customizer
+              <h3 className="font-serif text-lg font-bold text-stone-900">
+                Hero Image Customizer
               </h3>
-              <p className="text-[11px] font-sans text-stone-400">
+              <p className="text-[11px] font-sans text-stone-500">
                 Set the primary portrait for Sarah Lavery's website
               </p>
             </div>
@@ -89,7 +116,7 @@ export default function PhotoCustomizerModal({
 
           <button
             onClick={onClose}
-            className="p-1.5 text-stone-400 hover:text-stone-100 rounded-sm"
+            className="p-1.5 text-stone-400 hover:text-stone-700 rounded cursor-pointer"
           >
             <X size={18} />
           </button>
@@ -99,98 +126,116 @@ export default function PhotoCustomizerModal({
         <div className="p-6 overflow-y-auto space-y-6">
           {/* Active Preview */}
           <div>
-            <span className="text-[11px] font-sans uppercase tracking-widest text-gold-accent font-semibold block mb-2">
-              Active Preview
-            </span>
-            <div className="relative aspect-[16/9] w-full rounded-sm overflow-hidden border border-stone-800 bg-stone-950">
+            <label className="block text-xs font-sans uppercase tracking-wider text-stone-700 font-bold mb-2">
+              Current Preview:
+            </label>
+            <div className="relative aspect-[16/9] w-full rounded-md overflow-hidden bg-stone-100 border border-stone-200 shadow-inner">
               <img
                 src={previewUrl}
-                alt="Selected Main Hero Preview"
+                alt="Selected Preview"
                 className="w-full h-full object-cover object-center"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-4">
-                <p className="text-xs font-serif font-bold text-stone-200">
-                  Sarah Lavery — Official Main Image
+            </div>
+          </div>
+
+          {/* Upload Custom File */}
+          <div className="space-y-2">
+            <label className="block text-xs font-sans uppercase tracking-wider text-stone-700 font-bold">
+              1. Upload Photo from Device / Drag & Drop
+            </label>
+            <div
+              onDragOver={(e) => {
+                e.preventDefault();
+                setIsDragging(true);
+              }}
+              onDragLeave={() => setIsDragging(false)}
+              onDrop={handleDrop}
+              className={`flex flex-col items-center justify-center gap-2 p-5 border-2 border-dashed rounded-lg transition-colors text-center ${
+                isDragging
+                  ? "bg-rose-50 border-rose-500 text-rose-800"
+                  : "bg-[#FAF8F5] border-stone-300 hover:border-rose-400 text-stone-700"
+              }`}
+            >
+              <Upload size={20} className={isDragging ? "text-rose-600 animate-bounce" : "text-rose-700"} />
+              <div className="space-y-1">
+                <p className="text-xs font-sans font-semibold text-stone-800">
+                  Drag and drop your portrait here, or{" "}
+                  <label className="text-rose-700 hover:text-rose-900 underline font-bold cursor-pointer">
+                    browse files
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileUpload}
+                      className="hidden"
+                    />
+                  </label>
+                </p>
+                <p className="text-[11px] font-sans text-stone-500">
+                  Supports JPG, PNG, WEBP, and high-res camera portraits
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Option A: Upload Local Image File */}
-          <div className="p-4 bg-stone-950 border border-stone-800 rounded-sm">
-            <span className="text-xs font-sans font-bold text-stone-200 block mb-1 flex items-center gap-2">
-              <Upload size={14} className="text-gold-accent" />
-              <span>Option 1: Upload Your Image File</span>
-            </span>
-            <p className="text-[11px] font-sans text-stone-400 mb-3">
-              Upload the portrait image (e.g. the window portrait or high-res photo from your computer).
-            </p>
-            <label className="inline-flex items-center gap-2 px-4 py-2 bg-stone-900 hover:bg-stone-800 border border-stone-700 text-stone-200 text-xs font-sans tracking-wider uppercase rounded-sm cursor-pointer transition-colors">
-              <Upload size={13} />
-              <span>Choose Image File...</span>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleFileUpload}
-                className="hidden"
-              />
+          {/* Paste Image URL */}
+          <div className="space-y-2">
+            <label className="block text-xs font-sans uppercase tracking-wider text-stone-700 font-bold">
+              2. Or Enter Direct Image Web URL (Public HTTPS)
             </label>
-          </div>
-
-          {/* Option B: Enter Custom Image URL */}
-          <div className="p-4 bg-stone-950 border border-stone-800 rounded-sm">
-            <span className="text-xs font-sans font-bold text-stone-200 block mb-1 flex items-center gap-2">
-              <Link size={14} className="text-gold-accent" />
-              <span>Option 2: Paste Image URL</span>
-            </span>
-            <div className="flex gap-2 mt-2">
+            <div className="flex gap-2">
               <input
-                type="text"
+                type="url"
                 value={urlInput}
-                onChange={(e) => setUrlInput(e.target.value)}
-                placeholder="https://..."
-                className="flex-1 px-3 py-2 bg-stone-900 border border-stone-800 rounded-sm text-xs font-sans text-stone-200 placeholder-stone-600 focus:outline-none focus:border-gold-accent"
+                onChange={(e) => {
+                  setUrlInput(e.target.value);
+                  if (urlError) setUrlError(null);
+                }}
+                placeholder="https://imagedelivery.net/... or https://example.com/portrait.jpg"
+                className="flex-1 px-3.5 py-2 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 focus:outline-none focus:border-rose-600 shadow-2xs"
               />
               <button
+                type="button"
                 onClick={handleApplyUrl}
-                className="px-4 py-2 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-sans font-semibold rounded-sm"
+                className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-sans font-bold uppercase rounded border border-stone-300 transition cursor-pointer shrink-0"
               >
                 Apply URL
               </button>
             </div>
+            {urlError && (
+              <p className="text-[11px] font-sans text-amber-800 bg-amber-50 border border-amber-200 p-2.5 rounded leading-relaxed">
+                {urlError}
+              </p>
+            )}
           </div>
 
-          {/* Option C: Presets */}
-          <div>
-            <span className="text-xs font-sans font-bold text-stone-300 block mb-2">
-              Option 3: Select from Curated Soprano Presets
-            </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          {/* Presets Grid */}
+          <div className="space-y-2 pt-2 border-t border-stone-200">
+            <label className="block text-xs font-sans uppercase tracking-wider text-stone-700 font-bold mb-2">
+              3. Or Pick from Curated Classical Portraits
+            </label>
+            <div className="grid grid-cols-2 gap-3">
               {defaultPresets.map((preset, idx) => (
                 <button
                   key={idx}
                   onClick={() => setPreviewUrl(preset.url)}
-                  className={`p-3 text-left rounded-sm border transition-all flex items-center gap-3 ${
+                  className={`p-2.5 text-left border rounded-md transition-all flex flex-col gap-2 cursor-pointer ${
                     previewUrl === preset.url
-                      ? "bg-stone-950 border-gold-accent shadow-md text-white"
-                      : "bg-stone-950/60 hover:bg-stone-950 border-stone-800 text-stone-300"
+                      ? "bg-rose-50 border-rose-400 ring-1 ring-rose-300"
+                      : "bg-[#FAF8F5] border-stone-200 hover:border-stone-300"
                   }`}
                 >
-                  <img
-                    src={preset.url}
-                    alt={preset.name}
-                    className="w-12 h-12 rounded-sm object-cover shrink-0"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="overflow-hidden">
-                    <p className="font-serif text-xs font-bold truncate text-stone-100">
-                      {preset.name}
-                    </p>
-                    <p className="text-[10px] font-sans text-stone-400 line-clamp-1 mt-0.5">
-                      {preset.desc}
-                    </p>
+                  <div className="aspect-[16/9] w-full rounded overflow-hidden bg-stone-200">
+                    <img
+                      src={preset.url}
+                      alt={preset.name}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
+                  <p className="text-[11px] font-sans font-bold text-stone-800 line-clamp-1">
+                    {preset.name}
+                  </p>
                 </button>
               ))}
             </div>
@@ -198,28 +243,28 @@ export default function PhotoCustomizerModal({
         </div>
 
         {/* Footer Actions */}
-        <div className="p-5 border-t border-stone-800 bg-stone-950 flex items-center justify-between">
+        <div className="flex items-center justify-between p-4 border-t border-stone-200 bg-[#FAF8F5]">
           <button
             onClick={handleResetDefault}
-            className="flex items-center gap-1.5 text-xs text-stone-400 hover:text-stone-200 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 text-stone-600 hover:text-stone-900 text-xs font-sans font-semibold cursor-pointer"
           >
             <RefreshCw size={13} />
-            <span>Reset to Default</span>
+            <span>Reset Default</span>
           </button>
 
-          <div className="flex items-center gap-3">
+          <div className="flex gap-2">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-xs font-sans uppercase tracking-wider text-stone-400 hover:text-stone-200"
+              className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-sans font-semibold rounded transition cursor-pointer"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
-              className="px-6 py-2.5 bg-gold-accent hover:bg-[#d8b56f] text-stone-950 text-xs font-sans tracking-widest uppercase font-bold rounded-sm shadow-md flex items-center gap-1.5"
+              className="flex items-center gap-1.5 px-5 py-2 bg-rose-700 hover:bg-rose-800 text-white text-xs font-sans font-bold uppercase rounded shadow-sm transition cursor-pointer"
             >
               <Check size={14} />
-              <span>Save as Main Image</span>
+              <span>Apply to Site</span>
             </button>
           </div>
         </div>
