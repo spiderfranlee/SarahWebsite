@@ -1,6 +1,6 @@
 import { EventItem, MediaItem, NewsArticle, RepertoireRole, ConcertWork, SongCycle, AudioTrack, ReviewQuote } from "./types";
 
-// Artist configuration & biographies matching https://www.deirdrehiggins.com/ format
+// Artist configuration & biographies
 export const artistData = {
   name: "SARAH LAVERY",
   fullName: "Sarah Guilmartin Lavery",
@@ -10,10 +10,10 @@ export const artistData = {
   location: "Dublin, Ireland & London, UK",
   email: "contact@sarahguilmartinlavery.ie",
   management: {
-    agency: "Highland Vocal Artists Management",
-    agentName: "Eleanor Vance",
-    email: "e.vance@highlandartists.com",
-    phone: "+353 (0)1 498 7200",
+    agency: "",
+    agentName: "",
+    email: "",
+    phone: "",
     territory: "Worldwide Representation"
   },
   socials: {
@@ -21,7 +21,6 @@ export const artistData = {
     youtube: "https://www.youtube.com/@SarahGuilmartinLavery-soprano",
     spotify: "https://spotify.com",
     linkedin: "https://linkedin.com",
-    appleMusic: "https://music.apple.com"
   },
   shortBio: "Irish lyric soprano Sarah Lavery is celebrated for her radiant vocal warmth, compelling musicality, and magnetic stage presence. A graduate of prestigious conservatoires and recipient of prominent vocal bursaries, she has performed with leading companies including Irish National Opera, Wexford Festival Opera, and the National Symphony Orchestra.",
   bioSections: [

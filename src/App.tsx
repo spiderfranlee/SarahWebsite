@@ -14,24 +14,16 @@ import { audioRecordings, mediaShowcase } from "./data";
 import { AudioTrack, MediaItem } from "./types";
 import { playAriaAudio, stopAriaAudio } from "./utils/audioSynth";
 
+// Main Sarah Lavery Hero Image
+const HERO_IMAGE = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85";
+
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>("home");
   const [activeEventTab, setActiveEventTab] = useState<EventTabType>("upcoming");
   const [contactInquiryType, setContactInquiryType] = useState<string>("Wedding Ceremony & Reception");
 
-  const [heroImage, setHeroImage] = useState<string>(() => {
-    try {
-      const stored = localStorage.getItem("sarah_lavery_main_image");
-      if (stored && !stored.startsWith("blob:http")) {
-        return stored;
-      }
-    } catch {}
-    return DEFAULT_MAIN_IMAGE;
-  });
-
   const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
   const [isMediaModalOpen, setIsMediaModalOpen] = useState(false);
-  const [isPhotoCustomizerOpen, setIsPhotoCustomizerOpen] = useState(false);
 
   // Audio Player State
   const [currentTrack, setCurrentTrack] = useState<AudioTrack>(audioRecordings[0]);
@@ -106,12 +98,6 @@ export default function App() {
     }
   };
 
-  // Save new main image
-  const handleSaveMainImage = (newUrl: string) => {
-    setHeroImage(newUrl);
-    localStorage.setItem("sarah_lavery_main_image", newUrl);
-  };
-
   // Open Media Modal
   const handleSelectMedia = (item: MediaItem) => {
     setSelectedMedia(item);
@@ -125,21 +111,19 @@ export default function App() {
         activeSection={activeSection}
         activeEventTab={activeEventTab}
         onNavigate={handleNavigate}
-        onOpenPhotoCustomizer={() => setIsPhotoCustomizerOpen(true)}
       />
 
       {/* Main Content Flow */}
       <main>
         {/* 1. Home - Hero Presentation */}
         <Hero
-          heroImage={heroImage}
+          heroImage={HERO_IMAGE}
           onNavigate={handleNavigate}
           onPlayAria={() => handleTogglePlayTrack(audioRecordings[0])}
-          onOpenPhotoCustomizer={() => setIsPhotoCustomizerOpen(true)}
         />
 
         {/* 2. About - Artistic Profile, Education & Press Kit */}
-        <BiographyView portraitImage={heroImage} />
+        <BiographyView portraitImage={HERO_IMAGE} />
 
         {/* 3. Media - Audio Jukebox Player, Videos & Gallery */}
         <MediaView
@@ -177,14 +161,6 @@ export default function App() {
           setIsMediaModalOpen(false);
           setSelectedMedia(null);
         }}
-      />
-
-      {/* Main Image Customizer Modal */}
-      <PhotoCustomizerModal
-        isOpen={isPhotoCustomizerOpen}
-        currentImage={heroImage}
-        onClose={() => setIsPhotoCustomizerOpen(false)}
-        onSaveImage={handleSaveMainImage}
       />
 
       {/* Floating Audio Player when listening to an aria */}

@@ -7,14 +7,12 @@ interface HeaderProps {
   activeSection: string;
   activeEventTab?: EventTabType;
   onNavigate: (section: string, eventTab?: EventTabType) => void;
-  onOpenPhotoCustomizer: () => void;
 }
 
 export default function Header({
   activeSection,
   activeEventTab = "upcoming",
-  onNavigate,
-  onOpenPhotoCustomizer
+  onNavigate
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -228,19 +226,9 @@ export default function Header({
           </button>
         </nav>
 
-        {/* Right Action Tools: Social Icons & Photo Customizer */}
-        <div className="hidden md:flex items-center space-x-4">
-          <button
-            id="header-photo-customizer-btn"
-            onClick={onOpenPhotoCustomizer}
-            title="Customize Photo / Replace Main Image"
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 hover:bg-rose-700 hover:text-white text-stone-700 text-[10px] tracking-widest font-sans font-bold uppercase border border-stone-300 hover:border-rose-700 transition-all rounded shadow-sm"
-          >
-            <ImageIcon size={13} />
-            <span>Main Image</span>
-          </button>
-
-          <div className="flex items-center space-x-2 border-l border-stone-300 pl-4">
+        {/* Right Action Tools: Social Icons */}
+        <div className="hidden md:flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             <a
               id="social-instagram"
               href={artistData.socials.instagram}
@@ -284,14 +272,6 @@ export default function Header({
 
         {/* Mobile Menu Toggle Button */}
         <div className="flex items-center space-x-2 lg:hidden">
-          <button
-            id="mobile-photo-tool-btn"
-            onClick={onOpenPhotoCustomizer}
-            className="p-2 text-stone-700 hover:text-rose-700 border border-stone-300 bg-white rounded"
-            title="Main Photo"
-          >
-            <ImageIcon size={16} />
-          </button>
           <button
             id="mobile-menu-toggle-btn"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -455,11 +435,11 @@ export default function Header({
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                onOpenPhotoCustomizer();
+                handleNavClick("contact");
               }}
               className="text-xs font-sans tracking-widest text-rose-700 uppercase font-bold"
             >
-              Change Photo
+              Contact
             </button>
           </div>
         </div>

@@ -1,15 +1,14 @@
 import React from "react";
-import { Calendar, Play, ArrowRight, Sparkles, ChevronDown } from "lucide-react";
+import { Calendar, Play, ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import { artistData } from "../data";
 
 interface HeroProps {
   heroImage: string;
   onNavigate: (section: string) => void;
   onPlayAria: () => void;
-  onOpenPhotoCustomizer: () => void;
 }
 
-export default function Hero({ heroImage, onNavigate, onPlayAria, onOpenPhotoCustomizer }: HeroProps) {
+export default function Hero({ heroImage, onNavigate, onPlayAria }: HeroProps) {
   return (
     <section
       id="hero-section"
@@ -39,17 +38,6 @@ export default function Hero({ heroImage, onNavigate, onPlayAria, onOpenPhotoCus
 
       {/* Hero Content Overlay */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
-        {/* Floating Customizer Button */}
-        <div className="absolute top-0 right-6 md:right-12 hidden sm:block">
-          <button
-            onClick={onOpenPhotoCustomizer}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 hover:bg-white text-stone-700 hover:text-stone-900 border border-stone-200/90 rounded-full text-[11px] font-sans font-bold tracking-wider uppercase backdrop-blur-md shadow-xs transition-all hover:shadow-sm cursor-pointer"
-            title="Upload custom portrait photo"
-          >
-            <Sparkles size={12} className="text-rose-600" />
-            <span>Customize Hero Portrait</span>
-          </button>
-        </div>
         <div className="max-w-3xl">
           {/* Vocal Fach / Artist Designation matching deirdrehiggins.com */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 border border-amber-300/80 rounded-full mb-6 backdrop-blur-md shadow-sm">
