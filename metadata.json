@@ -1,0 +1,6 @@
+{
+  "name": "Sarah Lavery Portfolio",
+  "description": "An elegant, high-end, editorial portfolio website for Sarah Lavery, Irish operatic soprano and classical vocalist, inspired by modern artistic brands.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
