@@ -9,14 +9,10 @@ import ReviewsView from "./components/ReviewsView";
 import ContactView from "./components/ContactView";
 import Footer from "./components/Footer";
 import MediaModal from "./components/MediaModal";
-import PhotoCustomizerModal from "./components/PhotoCustomizerModal";
 import FloatingAudioPlayer from "./components/FloatingAudioPlayer";
 import { audioRecordings, mediaShowcase } from "./data";
 import { AudioTrack, MediaItem } from "./types";
 import { playAriaAudio, stopAriaAudio } from "./utils/audioSynth";
-
-// Default main image: Portrait of Soprano sitting by window in lace gown
-const DEFAULT_MAIN_IMAGE = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>("home");
