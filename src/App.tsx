@@ -15,7 +15,7 @@ import { AudioTrack, MediaItem } from "./types";
 import { playAriaAudio, stopAriaAudio } from "./utils/audioSynth";
 
 // Main Sarah Lavery Hero Image
-const HERO_IMAGE = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85";
+const HERO_IMAGE = "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/G.jpg";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>("home");
