@@ -4,7 +4,7 @@ import Hero from "./components/Hero";
 import BiographyView from "./components/BiographyView";
 import EventsView, { EventTabType } from "./components/EventsView";
 import RepertoireView from "./components/RepertoireView";
-import MediaView from "./components/MediaView";
+import MediaView, { MediaTabType } from "./components/MediaView";
 import ReviewsView from "./components/ReviewsView";
 import ContactView from "./components/ContactView";
 import Footer from "./components/Footer";
@@ -31,13 +31,18 @@ export default function App() {
   const [showFloatingPlayer, setShowFloatingPlayer] = useState<boolean>(false);
 
   // Handle section navigation with smooth scrolling and tab switching
-  const handleNavigate = (sectionId: string, eventTab?: EventTabType) => {
+  const [activeMediaTab, setActiveMediaTab] = useState<MediaTabType>("all");
+
+  const handleNavigate = (sectionId: string, eventTab?: EventTabType, mediaTab?: MediaTabType) => {
     // Normalize aliases
-    const targetId = sectionId === "biography" ? "about" : sectionId === "schedule" ? "events" : sectionId;
+    const targetId = sectionId === "biography" ? "about" : (sectionId === "events" || sectionId === "schedule") ? "engagements" : sectionId;
     setActiveSection(targetId);
 
     if (eventTab) {
       setActiveEventTab(eventTab);
+    }
+    if (mediaTab) {
+      setActiveMediaTab(mediaTab);
     }
 
     if (targetId === "home") {
@@ -63,7 +68,7 @@ export default function App() {
   // Track active section during scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "media", "events", "repertoire", "reviews", "contact"];
+      const sections = ["home", "about", "media", "engagements", "repertoire", "reviews", "contact"];
       const scrollPosition = window.scrollY + 140;
 
       for (const sectionId of sections) {
@@ -110,6 +115,7 @@ export default function App() {
       <Header
         activeSection={activeSection}
         activeEventTab={activeEventTab}
+        activeMediaTab={activeMediaTab}
         onNavigate={handleNavigate}
       />
 
@@ -129,6 +135,8 @@ export default function App() {
         <MediaView
           currentTrack={currentTrack}
           isPlaying={isPlaying}
+          activeMediaTab={activeMediaTab}
+          onTabChange={(tab) => setActiveMediaTab(tab)}
           onTogglePlay={handleTogglePlayTrack}
           onSelectMedia={handleSelectMedia}
         />
@@ -141,7 +149,7 @@ export default function App() {
         />
 
         {/* Complete Operatic & Concert Repertoire Index */}
-        <RepertoireView />
+        <RepertoireView onNavigateToContact={handleNavigateToContactWithInquiry} />
 
         {/* Critical Reviews & Press Acclaim */}
         <ReviewsView />

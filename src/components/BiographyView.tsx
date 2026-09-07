@@ -8,10 +8,10 @@ interface BiographyViewProps {
 
 export default function BiographyView({ portraitImage }: BiographyViewProps) {
   const awardsList = [
-    { name: "Bernadette Greevy Vocal Bursary", org: "National Concert Hall Dublin", year: "2024" },
-    { name: "Gervase Elwes Memorial Cup", org: "Feis Ceoil Dublin", year: "2023" },
-    { name: "Irish National Opera Young Artist Associate", org: "Irish National Opera", year: "2023-2025" },
-    { name: "First Prize in Bel Canto & German Lieder", org: "Veronica Dunne Singing Bursary", year: "2023" }
+    { name: "Joan Sutherland Award", org: "Two-Time Recipient · Australia", year: "Distinction" },
+    { name: "Young Artist Programme", org: "West Australian Opera", year: "2012–2014" },
+    { name: "Mannes School of Music Scholarship", org: "Mannes School of Music, New York", year: "Scholarship" },
+    { name: "Irish National Opera Engagement", org: "Irish National Opera Company", year: "2026/27 Season" }
   ];
 
   return (
@@ -170,14 +170,17 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
               <div className="flex flex-wrap gap-2">
                 {[
                   "Irish National Opera",
-                  "Wexford Festival Opera",
-                  "National Symphony Orchestra",
+                  "West Australian Opera",
+                  "Opera Ireland",
+                  "Lyric Opera Ireland",
+                  "Chicago Summer Opera",
+                  "R&R Musical Society",
                   "National Concert Hall Dublin",
-                  "RTÉ Concert Orchestra",
-                  "Bord Gáis Energy Theatre",
-                  "Cork Opera House",
-                  "Royal Opera House ROH Guild",
-                  "Irish Baroque Orchestra"
+                  "Gaiety Theatre Dublin",
+                  "Croke Park (All-Ireland Final)",
+                  "Royal Irish Academy of Music",
+                  "WAAPA (Australia)",
+                  "Mannes School of Music (NY)"
                 ].map((venue, i) => (
                   <span
                     key={i}

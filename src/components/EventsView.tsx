@@ -15,7 +15,7 @@ import {
   Disc,
   Feather
 } from "lucide-react";
-import { scheduleData, weddingEventData, funeralEventData, corporateEventData } from "../data";
+import { scheduleData, weddingEventData, funeralEventData, corporateEventData, funeralRepertoireSelection } from "../data";
 
 export type EventTabType = "upcoming" | "weddings" | "funeral" | "corporate";
 
@@ -57,16 +57,18 @@ export default function EventsView({
   });
 
   return (
-    <section id="events" className="py-24 bg-white border-t border-stone-200 relative">
+    <section id="engagements" className="py-24 bg-white border-t border-stone-200 relative">
+      {/* Anchor for backward compatibility with #events */}
+      <div id="events" className="absolute -top-20" />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
             <span className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold block mb-2">
-              ENGAGEMENTS & SERVICES
+              PERFORMANCES & SPECIAL OCCASIONS
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight">
-              Events & Performances
+              Engagements
             </h2>
             <div className="w-16 h-[2px] bg-rose-600 mt-4" />
           </div>
@@ -88,7 +90,7 @@ export default function EventsView({
             }`}
           >
             <CalendarIcon size={14} />
-            <span>Upcoming Performances</span>
+            <span>Upcoming performances</span>
           </button>
 
           <button
@@ -114,7 +116,7 @@ export default function EventsView({
             }`}
           >
             <Feather size={14} />
-            <span>Funeral & Memorials</span>
+            <span>Funerals</span>
           </button>
 
           <button
@@ -386,9 +388,15 @@ export default function EventsView({
                     Couples are welcome to request special songs or personal arrangements.
                   </p>
                 </div>
-                <span className="text-xs font-sans text-rose-700 uppercase tracking-widest font-bold">
-                  Classical • Sacred • Irish • Acoustic
-                </span>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="#repertoire"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-sans font-bold uppercase tracking-wider rounded border border-rose-200 transition-colors cursor-pointer"
+                  >
+                    <span>Full Ceremony Music Guide</span>
+                    <ChevronRight size={13} />
+                  </a>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -495,33 +503,60 @@ export default function EventsView({
               ))}
             </div>
 
-            {/* Repertoire for Funerals */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg space-y-6 shadow-sm">
-              <div className="border-b border-stone-200 pb-4">
-                <h4 className="font-serif text-2xl font-bold text-stone-900">
-                  Comforting Sacred Hymns & Traditional Farewells
+            {/* Funeral Music - Repertoire Selection */}
+            <div id="funeral-music-repertoire" className="bg-[#FAF8F5] border border-stone-200 p-8 sm:p-10 rounded-lg space-y-8 shadow-sm">
+              <div className="border-b border-stone-200 pb-6 text-center max-w-3xl mx-auto space-y-2">
+                <span className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold block">
+                  {funeralRepertoireSelection.subHeader}
+                </span>
+                <h4 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
+                  {funeralRepertoireSelection.header}
                 </h4>
-                <p className="text-stone-600 text-xs font-sans mt-1">
-                  Gentle, dignified selections chosen in consultation with the family and parish celebrant.
+                <p className="text-stone-700 text-sm font-sans leading-relaxed pt-2">
+                  {funeralRepertoireSelection.intro}
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {funeralEventData.repertoireCategories.map((cat, idx) => (
-                  <div key={idx} className="space-y-3 bg-white p-5 border border-stone-200 rounded-md shadow-2xs">
-                    <h5 className="text-xs font-sans uppercase tracking-widest text-amber-800 font-bold pb-2 border-b border-stone-200">
-                      {cat.category}
-                    </h5>
-                    <ul className="space-y-2 text-xs font-sans text-stone-700">
-                      {cat.pieces.map((piece, pIdx) => (
-                        <li key={pIdx} className="flex items-start gap-2">
-                          <span className="text-rose-600 text-sm leading-none">•</span>
-                          <span>{piece}</span>
-                        </li>
-                      ))}
-                    </ul>
+              {/* Liturgical Stages Grid (6 distinct sections) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {funeralRepertoireSelection.sections.map((sec, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white p-6 border border-stone-200 rounded-md shadow-2xs flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center gap-2 pb-3 border-b border-stone-200 mb-3">
+                        <Music2 size={14} className="text-amber-700 shrink-0" />
+                        <h5 className="text-xs font-sans uppercase tracking-wider text-stone-900 font-bold">
+                          {sec.title}
+                        </h5>
+                      </div>
+                      <ul className="space-y-2 text-xs font-sans text-stone-700">
+                        {sec.pieces.map((piece, pIdx) => (
+                          <li key={pIdx} className="flex items-start gap-2">
+                            <span className="text-rose-600 text-sm leading-none">•</span>
+                            <span className="leading-snug">{piece}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              {/* S G L Brand Monogram & Warm Welcome Note */}
+              <div className="pt-6 border-t border-stone-200 text-center space-y-3">
+                <div className="inline-block py-1">
+                  <span className="font-serif text-2xl font-bold tracking-[0.4em] text-stone-900 block pl-[0.4em]">
+                    {funeralRepertoireSelection.monogram}
+                  </span>
+                  <span className="text-[11px] font-sans tracking-[0.25em] text-rose-700 font-bold uppercase mt-1 block">
+                    {funeralRepertoireSelection.tagline}
+                  </span>
+                </div>
+                <p className="text-stone-700 text-xs sm:text-sm font-sans italic pt-1">
+                  "{funeralRepertoireSelection.footerNote}"
+                </p>
               </div>
             </div>
 

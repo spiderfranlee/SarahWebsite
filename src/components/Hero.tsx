@@ -39,14 +39,6 @@ export default function Hero({ heroImage, onNavigate, onPlayAria }: HeroProps) {
       {/* Hero Content Overlay */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
         <div className="max-w-3xl">
-          {/* Vocal Fach / Artist Designation matching deirdrehiggins.com */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 border border-amber-300/80 rounded-full mb-6 backdrop-blur-md shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-rose-600 animate-ping" />
-            <span className="text-[11px] tracking-[0.3em] font-sans font-bold text-amber-800 uppercase">
-              {artistData.tagline}
-            </span>
-          </div>
-
           {/* Artist Large Display Name */}
           <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-stone-950 leading-[0.98] mb-5">
             Sarah <br />

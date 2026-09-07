@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Play, Pause, Film, Image as ImageIcon, Maximize2, Youtube, ExternalLink, Video } from "lucide-react";
 import { audioRecordings, mediaShowcase, artistData } from "../data";
 import { AudioTrack, MediaItem } from "../types";
 
+export type MediaTabType = "all" | "recordings" | "gallery";
+
 interface MediaViewProps {
   currentTrack: AudioTrack;
   isPlaying: boolean;
+  activeMediaTab?: MediaTabType;
+  onTabChange?: (tab: MediaTabType) => void;
   onTogglePlay: (track: AudioTrack) => void;
   onSelectMedia: (item: MediaItem) => void;
 }
@@ -13,16 +17,29 @@ interface MediaViewProps {
 export default function MediaView({
   currentTrack,
   isPlaying,
+  activeMediaTab = "all",
+  onTabChange,
   onTogglePlay,
   onSelectMedia
 }: MediaViewProps) {
-  const [activeMediaTab, setActiveMediaTab] = useState<"all" | "audio" | "video" | "photos">("all");
+  const [currentTab, setCurrentTab] = useState<MediaTabType>(activeMediaTab);
+
+  useEffect(() => {
+    if (activeMediaTab) {
+      setCurrentTab(activeMediaTab);
+    }
+  }, [activeMediaTab]);
+
+  const handleTabChange = (tab: MediaTabType) => {
+    setCurrentTab(tab);
+    if (onTabChange) {
+      onTabChange(tab);
+    }
+  };
 
   const filteredMedia = mediaShowcase.filter((item) => {
-    if (activeMediaTab === "all") return true;
-    if (activeMediaTab === "video") return item.type === "video";
-    if (activeMediaTab === "photos") return item.type === "image";
-    return true;
+    if (currentTab === "all" || currentTab === "gallery") return true;
+    return false;
   });
 
   const handleOpenVideoForTrack = (track: AudioTrack, e: React.MouseEvent) => {
@@ -50,6 +67,8 @@ export default function MediaView({
 
   return (
     <section id="media" className="py-24 bg-[#FAF8F5] border-t border-stone-200 relative">
+      <div id="recordings" className="absolute -top-20" />
+      <div id="gallery" className="absolute top-[40%]" />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -70,7 +89,7 @@ export default function MediaView({
               </a>
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight">
-              Media & Audio
+              Media
             </h2>
             <div className="w-16 h-[2px] bg-rose-600 mt-4" />
           </div>
@@ -79,15 +98,14 @@ export default function MediaView({
           <div className="flex items-center gap-1 bg-white p-1 border border-stone-200 rounded-md shadow-2xs">
             {[
               { id: "all", label: "All Media" },
-              { id: "audio", label: "Audio Player" },
-              { id: "video", label: "Live Videos" },
-              { id: "photos", label: "Photo Gallery" }
+              { id: "recordings", label: "Recordings" },
+              { id: "gallery", label: "Gallery" }
             ].map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveMediaTab(tab.id as any)}
+                onClick={() => handleTabChange(tab.id as MediaTabType)}
                 className={`px-3.5 py-1.5 text-xs font-sans tracking-wider uppercase font-bold rounded transition-all cursor-pointer ${
-                  activeMediaTab === tab.id
+                  currentTab === tab.id
                     ? "bg-rose-700 text-white shadow-sm"
                     : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
                 }`}
@@ -98,8 +116,8 @@ export default function MediaView({
           </div>
         </div>
 
-        {/* Section 1: Featured Interactive Audio Jukebox Player */}
-        {(activeMediaTab === "all" || activeMediaTab === "audio") && (
+        {/* Section 1: Featured Interactive Audio Jukebox Player (Recordings) */}
+        {(currentTab === "all" || currentTab === "recordings") && (
           <div className="mb-16 bg-white border border-stone-200 p-6 md:p-10 rounded-lg shadow-sm">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-8 border-b border-stone-200">
               {/* Active Playing Track Info */}
@@ -234,15 +252,15 @@ export default function MediaView({
           </div>
         )}
 
-        {/* Section 2: Video Performances and Photo Gallery */}
-        {(activeMediaTab === "all" || activeMediaTab === "video" || activeMediaTab === "photos") && (
+        {/* Section 2: Performance Gallery */}
+        {(currentTab === "all" || currentTab === "gallery") && (
           <div>
             <div className="flex items-center justify-between mb-6">
               <h3 className="font-serif text-2xl font-bold text-stone-900">
-                Visual Showcase & Performances
+                Gallery & Video Performances
               </h3>
               <span className="text-xs font-sans text-stone-500 tracking-wider font-semibold">
-                {filteredMedia.length} Items
+                {filteredMedia.length} Videos
               </span>
             </div>
 

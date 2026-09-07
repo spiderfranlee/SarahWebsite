@@ -42,6 +42,21 @@ export interface SongCycle {
   highlights: string[];
 }
 
+export interface CeremonyMusicSection {
+  id: string;
+  stage: string;
+  performanceType?: string;
+  pieces: string[];
+  note?: string;
+}
+
+export interface CeremonyMusicGuideData {
+  title: string;
+  description?: string;
+  sections: CeremonyMusicSection[];
+  notesForCouples: string[];
+}
+
 export interface AudioTrack {
   id: string;
   title: string;
@@ -72,10 +87,10 @@ export interface MediaItem {
 export interface ReviewQuote {
   id: string;
   quote: string;
-  critic: string;
   publication: string;
-  production: string;
-  year: string;
+  critic?: string;
+  production?: string;
+  year?: string;
 }
 
 export interface NewsArticle {

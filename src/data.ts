@@ -1,4 +1,4 @@
-import { EventItem, MediaItem, NewsArticle, RepertoireRole, ConcertWork, SongCycle, AudioTrack, ReviewQuote } from "./types";
+import { EventItem, MediaItem, NewsArticle, RepertoireRole, ConcertWork, SongCycle, AudioTrack, ReviewQuote, CeremonyMusicGuideData } from "./types";
 
 // Artist configuration & biographies
 export const artistData = {
@@ -7,8 +7,9 @@ export const artistData = {
   voiceType: "Lyric Soprano",
   tagline: "Irish Lyric Soprano",
   headlineQuote: "A voice of luminous warmth, dramatic veracity, and effortless lyrical beauty.",
-  location: "Dublin, Ireland & London, UK",
+  location: "Dublin, Ireland",
   email: "sarahlavery16@gmail.com",
+  logo: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/Sarah%20logo%20jpg.jpg",
   management: {
     agency: "",
     agentName: "",
@@ -17,31 +18,51 @@ export const artistData = {
     territory: "Worldwide Representation"
   },
   socials: {
+    facebook: "https://www.facebook.com/share/1CCHTwkVZ8/?mibextid=wwXIfr",
     instagram: "https://instagram.com",
     youtube: "https://www.youtube.com/@SarahGuilmartinLavery-soprano",
     linkedin: "https://linkedin.com",
   },
-  shortBio: "Irish lyric soprano Sarah Lavery is celebrated for her radiant vocal warmth, compelling musicality, and magnetic stage presence. A graduate of prestigious conservatoires and recipient of prominent vocal bursaries, she has performed with leading companies including Irish National Opera, Wexford Festival Opera, and the National Symphony Orchestra.",
+  shortBio: "Sarah Guilmartin Lavery is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.",
+  fullBio: `Sarah Guilmartin Lavery is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.
+
+A graduate of the Royal Irish Academy of Music, Sarah continued her postgraduate training at the Western Australian Academy of Performing Arts before undertaking further professional studies at the Mannes School of Music in New York, where she was awarded a scholarship.
+
+Sarah was a Young Artist with West Australian Opera from 2012–2014, performing in both principal and ensemble roles with the company. Her operatic repertoire includes Die Zauberflöte, Gianni Schicchi, La Bohème, Madama Butterfly, La Traviata, Otello and Les Contes d’Hoffmann. She also performed the title role in Puccini’s Suor Angelica with Chicago Summer Opera.
+
+A two-time recipient of the Joan Sutherland Award, Sarah has performed extensively as a concert and operatic soloist in Ireland, Australia and the United States.
+
+In Ireland, her performance credits include appearances with Opera Ireland, Lyric Opera Ireland and R&R Musical Society, with performances at venues including Dublin’s National Concert Hall and Gaiety Theatre. Her roles with R&R Musical Society have included Phyllis in Iolanthe, Casilda in The Gondoliers and Valencienne in The Merry Widow. Sarah is also engaged with Irish National Opera for its 2026/27 season.
+
+Alongside her operatic career, Sarah has extensive experience as a concert and event soloist. One particularly memorable performance saw her sing the Irish National Anthem at Croke Park during a GAA All-Ireland Championship final. She has performed national anthems at sporting occasions in both Ireland and Australia and continues to perform regularly for concerts, ceremonies and special events.
+
+Now based in Dublin, Sarah combines her professional operatic and concert work with performances for weddings, funerals, corporate events and private occasions. Whether performing on the operatic stage, in a concert hall or as part of a deeply personal ceremony, she brings the same warmth, musical sensitivity and commitment to every performance.`,
   bioSections: [
     {
-      title: "Artistic Profile",
+      title: "International Conservatoire Training",
       paragraphs: [
-        "Irish lyric soprano Sarah Lavery is known for her warm, velvety timbre, expressive depth, and engaging stage presence. Her interpretations span the core bel canto and lyric opera repertoire to sublime sacred oratorio, French mélodie, and contemporary Irish vocal compositions.",
-        "A former member of the prestigious young artist programs, Sarah has worked closely with renowned conductors, directors, and vocal coaches across Ireland, the UK, and mainland Europe, cultivating an artistic voice praised by critics for its 'crystalline clarity, dramatic conviction, and seamless legato'."
+        "Sarah Guilmartin Lavery is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.",
+        "A graduate of the Royal Irish Academy of Music, Sarah continued her postgraduate training at the Western Australian Academy of Performing Arts before undertaking further professional studies at the Mannes School of Music in New York, where she was awarded a scholarship."
       ]
     },
     {
-      title: "Operatic & Concert Highlights",
+      title: "Operatic Stages & Young Artist Career",
       paragraphs: [
-        "On the operatic stage, Sarah's roles include Mimì in Puccini's La bohème, Marguerite in Gounod's Faust, Contessa Almaviva and Susanna in Mozart's Le nozze di Figaro, Giannetta in Donizetti's L'elisir d'amore, and Rosalinde in Johann Strauss II's Die Fledermaus.",
-        "Her concert career includes memorable debuts with the National Symphony Orchestra at the National Concert Hall Dublin, performances at the Wexford Festival Opera, and high-profile gala concerts alongside internationally acclaimed soloists. She is also a passionate interpreter of oratorio, regularly performing as soprano soloist in Handel's Messiah, Mozart's Requiem, and Fauré's Requiem."
+        "Sarah was a Young Artist with West Australian Opera from 2012–2014, performing in both principal and ensemble roles with the company. Her operatic repertoire includes Die Zauberflöte, Gianni Schicchi, La Bohème, Madama Butterfly, La Traviata, Otello and Les Contes d’Hoffmann. She also performed the title role in Puccini’s Suor Angelica with Chicago Summer Opera.",
+        "A two-time recipient of the Joan Sutherland Award, Sarah has performed extensively as a concert and operatic soloist in Ireland, Australia and the United States."
       ]
     },
     {
-      title: "Awards, Education & Training",
+      title: "Irish Company Credits & Engagements",
       paragraphs: [
-        "Sarah is the recipient of prestigious artistic awards including the Bernadette Greevy Vocal Bursary, the Gervase Elwes Memorial Cup, and top prizes at the Feis Ceoil and international singing competitions.",
-        "She holds Master of Music and Bachelor degrees with First Class Honours in Vocal Performance, studying with distinguished teachers and participating in masterclasses with internationally renowned artists."
+        "In Ireland, her performance credits include appearances with Opera Ireland, Lyric Opera Ireland and R&R Musical Society, with performances at venues including Dublin’s National Concert Hall and Gaiety Theatre. Her roles with R&R Musical Society have included Phyllis in Iolanthe, Casilda in The Gondoliers and Valencienne in The Merry Widow. Sarah is also engaged with Irish National Opera for its 2026/27 season."
+      ]
+    },
+    {
+      title: "Concerts, National Anthems & Bespoke Events",
+      paragraphs: [
+        "Alongside her operatic career, Sarah has extensive experience as a concert and event soloist. One particularly memorable performance saw her sing the Irish National Anthem at Croke Park during a GAA All-Ireland Championship final. She has performed national anthems at sporting occasions in both Ireland and Australia and continues to perform regularly for concerts, ceremonies and special events.",
+        "Now based in Dublin, Sarah combines her professional operatic and concert work with performances for weddings, funerals, corporate events and private occasions. Whether performing on the operatic stage, in a concert hall or as part of a deeply personal ceremony, she brings the same warmth, musical sensitivity and commitment to every performance."
       ]
     }
   ]
@@ -52,22 +73,22 @@ export const operaticRepertoire: RepertoireRole[] = [
   { id: "op-1", composer: "Giacomo Puccini", work: "La Bohème", role: "Mimì", language: "Italian", status: "Performed" },
   { id: "op-2", composer: "Giacomo Puccini", work: "Madama Butterfly", role: "Cio-Cio-San", language: "Italian", status: "In Preparation" },
   { id: "op-3", composer: "Giacomo Puccini", work: "Gianni Schicchi", role: "Lauretta", language: "Italian", status: "Performed" },
+  { id: "op-20", composer: "Giacomo Puccini", work: "Suor Angelica", role: "Suor Angelica", language: "Italian", status: "Performed" },
   { id: "op-4", composer: "Giacomo Puccini", work: "La Rondine", role: "Magda de Civry", language: "Italian", status: "In Repertoire" },
+  { id: "op-8", composer: "W. A. Mozart", work: "Die Zauberflöte", role: "Pamina", language: "German", status: "Performed" },
+  { id: "op-14", composer: "Giuseppe Verdi", work: "La Traviata", role: "Violetta Valéry", language: "Italian", status: "In Repertoire" },
+  { id: "op-21", composer: "Giuseppe Verdi", work: "Otello", role: "Desdemona", language: "Italian", status: "In Repertoire" },
+  { id: "op-22", composer: "Jacques Offenbach", work: "Les Contes d’Hoffmann", role: "Antonia / Giulietta", language: "French", status: "In Repertoire" },
+  { id: "op-23", composer: "Gilbert & Sullivan", work: "Iolanthe", role: "Phyllis", language: "English", status: "Performed" },
+  { id: "op-24", composer: "Gilbert & Sullivan", work: "The Gondoliers", role: "Casilda", language: "English", status: "Performed" },
+  { id: "op-25", composer: "Franz Lehár", work: "The Merry Widow", role: "Valencienne", language: "English", status: "Performed" },
   { id: "op-5", composer: "W. A. Mozart", work: "Le Nozze di Figaro", role: "Contessa Almaviva", language: "Italian", status: "Performed" },
   { id: "op-6", composer: "W. A. Mozart", work: "Le Nozze di Figaro", role: "Susanna", language: "Italian", status: "Performed" },
   { id: "op-7", composer: "W. A. Mozart", work: "Don Giovanni", role: "Donna Elvira", language: "Italian", status: "In Repertoire" },
-  { id: "op-8", composer: "W. A. Mozart", work: "Die Zauberflöte", role: "Pamina", language: "German", status: "Performed" },
-  { id: "op-9", composer: "W. A. Mozart", work: "Così Fan Tutte", role: "Fiordiligi", language: "Italian", status: "In Repertoire" },
   { id: "op-10", composer: "Gaetano Donizetti", work: "L'elisir d'amore", role: "Giannetta", language: "Italian", status: "Performed" },
   { id: "op-11", composer: "Gaetano Donizetti", work: "L'elisir d'amore", role: "Adina", language: "Italian", status: "In Repertoire" },
   { id: "op-12", composer: "Charles Gounod", work: "Faust", role: "Marguerite", language: "French", status: "Covered" },
-  { id: "op-13", composer: "Charles Gounod", work: "Roméo et Juliette", role: "Juliette", language: "French", status: "In Preparation" },
-  { id: "op-14", composer: "Giuseppe Verdi", work: "La Traviata", role: "Violetta Valéry", language: "Italian", status: "In Repertoire" },
-  { id: "op-15", composer: "Johann Strauss II", work: "Die Fledermaus", role: "Rosalinde", language: "German / English", status: "Covered" },
-  { id: "op-16", composer: "Tarik O'Regan", work: "Testament (World Premiere)", role: "Martha", language: "English", status: "Performed" },
-  { id: "op-17", composer: "Alberto Caruso", work: "Lady Gregory in America", role: "Eileen O'Doherty", language: "English", status: "Performed" },
-  { id: "op-18", composer: "Erich Wolfgang Korngold", work: "Die tote Stadt", role: "Marietta / Marie", language: "German", status: "In Repertoire" },
-  { id: "op-19", composer: "André Previn", work: "A Streetcar Named Desire", role: "Blanche DuBois", language: "English", status: "In Repertoire" }
+  { id: "op-15", composer: "Johann Strauss II", work: "Die Fledermaus", role: "Rosalinde", language: "German / English", status: "Covered" }
 ];
 
 // Concert & Oratorio Works
@@ -110,6 +131,106 @@ export const songCyclesRepertoire: SongCycle[] = [
     highlights: ["She Moved Through the Fair", "The Salley Gardens", "I Have a Bonnet Trimmed with Blue", "Oft in the Stilly Night"]
   }
 ];
+
+// Ceremony Music Guide for Weddings & Sacred Services
+export const ceremonyMusicGuide: CeremonyMusicGuideData = {
+  title: "Ceremony Music Guide",
+  description: "A curated guide of suggested sacred, classical, and contemporary vocal and instrumental selections across each stage of your wedding ceremony or sacred service.",
+  sections: [
+    {
+      id: "cm-entrance",
+      stage: "Entrance",
+      performanceType: "Instrumental",
+      pieces: [
+        "Bridal Chorus — Wagner",
+        "Canon in D — Pachelbel",
+        "Spring (The Four Seasons) — Vivaldi",
+        "Gabriel’s Oboe — Ennio Morricone",
+        "Arrival of the Queen of Sheba — Handel"
+      ]
+    },
+    {
+      id: "cm-lighting-candles",
+      stage: "Lighting of the Candles",
+      performanceType: "Instrumental or Sung",
+      pieces: [
+        "Nella Fantasia",
+        "She Moved Through the Fair (Traditional)",
+        "One Hand, One Heart — West Side Story"
+      ]
+    },
+    {
+      id: "cm-responsorial-psalm",
+      stage: "Responsorial Psalm",
+      pieces: [
+        "On Eagle’s Wings",
+        "Here I Am, Lord",
+        "The Cloud’s Veil",
+        "Hiding Place",
+        "As the Deer",
+        "Amazing Grace"
+      ]
+    },
+    {
+      id: "cm-gospel-acclamation",
+      stage: "Gospel Acclamation",
+      pieces: [
+        "Alleluia"
+      ]
+    },
+    {
+      id: "cm-offertory",
+      stage: "Offertory",
+      pieces: [
+        "Ag Críost an Síol",
+        "How Great Thou Art",
+        "Panis Angelicus",
+        "Pie Jesu",
+        "Wherever You Go (Song of Ruth)",
+        "Ave Maria — Schubert or Gounod"
+      ]
+    },
+    {
+      id: "cm-communion",
+      stage: "Communion",
+      pieces: [
+        "A Mhuire Mháthair",
+        "The Cloud’s Veil",
+        "She Moved Through the Fair",
+        "Panis Angelicus",
+        "Pie Jesu",
+        "O Mio Babbino Caro",
+        "Nella Fantasia"
+      ]
+    },
+    {
+      id: "cm-signing-register",
+      stage: "Signing of the Register",
+      pieces: [
+        "You Raise Me Up",
+        "The Prayer",
+        "Danny Boy",
+        "Over the Rainbow",
+        "One Hand, One Heart — West Side Story",
+        "Ave Maria — Schubert or Gounod",
+        "Nella Fantasia",
+        "A Thousand Years"
+      ]
+    },
+    {
+      id: "cm-recessional",
+      stage: "Recessional / Processional",
+      performanceType: "Instrumental",
+      pieces: [],
+      note: "Selections from the Communion and Signing of the Register sections may also be used here."
+    }
+  ],
+  notesForCouples: [
+    "Bespoke song requests are welcome where possible.",
+    "Music can be performed with organ, piano or strings accompaniment depending on your ceremony requirements.",
+    "Guidance can be provided if you are unsure which pieces work best within your ceremony structure."
+  ]
+};
 
 // Performance Schedule (Upcoming & Recent)
 export const scheduleData: EventItem[] = [
@@ -354,60 +475,25 @@ export const mediaShowcase: MediaItem[] = [
     work: "A Streetcar Named Desire (Blanche DuBois)",
     description: "Sarah Lavery delivers a poignant, emotionally resonant interpretation of Blanche DuBois's aria 'I can smell the sea air' from André Previn's modern operatic triumph.",
     year: "2026"
-  },
-  {
-    id: "med-5",
-    title: "Editorial Window Portrait in Lace Evening Gown",
-    category: "Portrait",
-    type: "image",
-    thumbnailUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=80",
-    description: "Official studio portrait session overlooking the skyline in a navy lace gown and classical drop earrings.",
-    year: "2026"
-  },
-  {
-    id: "med-6",
-    title: "On-Stage Opera Production Performance",
-    category: "Opera",
-    type: "image",
-    thumbnailUrl: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80",
-    description: "Stage performance capturing dramatic storytelling and luminous vocal projection in lyric opera repertoire.",
-    year: "2026"
   }
 ];
 
-// Critical Reviews and Press Praise
+// Critical Reviews and Press Praise (The only press reviews)
 export const criticalReviews: ReviewQuote[] = [
   {
     id: "rev-1",
-    quote: "Sarah Lavery possesses a lyric soprano of exquisite purity and bloom. Her Mimì was deeply moving, shaped with flawless legato and breathtaking emotional honesty.",
-    critic: "Michael Dervan",
-    publication: "The Irish Times",
-    production: "La Bohème, Irish National Opera",
-    year: "2026"
+    quote: "Splendid bel canto (and dolce riso).",
+    publication: "The Irish Times"
   },
   {
     id: "rev-2",
-    quote: "A luminous talent whose vocal warmth fills the hall with effortless resonance. Her performance at Wexford was nothing short of revelatory.",
-    critic: "Hugh Canning",
-    publication: "Opera Magazine",
-    production: "Wexford Festival Opera Debut",
-    year: "2025"
+    quote: "Silvery soprano Sarah Guilmartin.",
+    publication: "The West Australian"
   },
   {
     id: "rev-3",
-    quote: "Her tone has that rare, honeyed quality that caresses the ear, married to a dramatic intuition that holds the audience utterly spellbound.",
-    critic: "Cathy Desmond",
-    publication: "GoldenPlec Classical",
-    production: "National Symphony Orchestra Gala",
-    year: "2025"
-  },
-  {
-    id: "rev-4",
-    quote: "Lavery navigated the delicate ornamentations of Mozart with radiant poise and consummate technical mastery.",
-    critic: "Paul Kilbey",
-    publication: "Bachtrack",
-    production: "Le Nozze di Figaro",
-    year: "2026"
+    quote: "A voice of considerable promise, confidently placed and projected.",
+    publication: "The West Australian"
   }
 ];
 
@@ -439,11 +525,11 @@ export const newsReleasesData: NewsArticle[] = [
   }
 ];
 
-// Specialised Event Offerings: Weddings, Funeral & Memorials, Corporate & Galas
+// Specialised Event Offerings: Weddings, Funerals, Corporate
 export const weddingEventData = {
-  title: "Wedding Music & Ceremony Solos",
+  title: "Weddings",
   subtitle: "Exquisite sacred and classical music creating unforgettable, emotional moments for your special day.",
-  description: "Sarah brings world-class vocal artistry, radiant warmth, and seamless professionalism to your wedding ceremony. Whether you are planning a traditional church celebration, a civil ceremony, or an intimate humanist gathering, Sarah collaborates closely with couples to curate a bespoke musical programme that reflects their unique love story.",
+  description: "With a wealth of professional performance experience, Sarah brings elegance, warmth and a truly memorable musical presence to every wedding ceremony. Her beautiful lyric soprano voice and extensive repertoire, spanning classical, sacred and contemporary music, allow her to create a bespoke musical experience that perfectly complements each couple and their day.",
   ceremonyTypes: [
     {
       type: "Church & Religious Ceremonies",
@@ -483,10 +569,89 @@ export const weddingEventData = {
   accompaniment: ["Church Organ / Classical Keyboard", "Concert Celtic Harp", "Classical String Duo / Quartet", "Classical Guitar & Cello", "Acoustic Grand Piano"]
 };
 
+export const funeralRepertoireSelection = {
+  header: "Funeral Music",
+  subHeader: "REPERTOIRE SELECTION",
+  intro: "Music can bring great comfort and meaning to a funeral service. Sarah offers an extensive selection of sacred, classical, Irish and contemporary repertoire, and can help families choose music that feels personal and appropriate for their loved one.",
+  sections: [
+    {
+      title: "ENTRANCE / OPENING HYMNS",
+      pieces: [
+        "Amazing Grace",
+        "I Watch the Sunrise",
+        "How Great Thou Art",
+        "Hail Queen of Heaven",
+        "Be Not Afraid",
+        "Here I Am, Lord",
+        "Make Me a Channel of Your Peace",
+        "Christ Be Beside Me"
+      ]
+    },
+    {
+      title: "RESPONSORIAL PSALMS & SACRED SONGS",
+      pieces: [
+        "The Lord Is My Shepherd",
+        "The Lord is my Light",
+        "On Eagle’s Wings",
+        "Here I Am, Lord",
+        "Be Not Afraid",
+        "As the Deer"
+      ]
+    },
+    {
+      title: "OFFERTORY",
+      pieces: [
+        "Ave Maria",
+        "Song of Ruth",
+        "As I Kneel Before You",
+        "Ag Críost an Síol"
+      ]
+    },
+    {
+      title: "COMMUNION",
+      pieces: [
+        "Panis Angelicus — César Franck",
+        "You Raise Me Up",
+        "Hiding Place",
+        "The Cloud’s Veil",
+        "Pie Jesu",
+        "How Great Thou Art",
+        "Queen of the May",
+        "You Are Mine",
+        "Ag Críost an Síol",
+        "The Lord Is My Shepherd"
+      ]
+    },
+    {
+      title: "FINAL COMMENDATION / BLESSING OF THE COFFIN",
+      pieces: [
+        "Jesus, Remember Me",
+        "May the road rise to meet you",
+        "In Paradisum — Fauré"
+      ]
+    },
+    {
+      title: "RECESSIONAL",
+      pieces: [
+        "Going Home — Dvořák",
+        "Nearer, My God, to Thee",
+        "Be Not Afraid",
+        "How Great Thou Art",
+        "Amazing Grace",
+        "Ag Críost an Síol",
+        "Hail Queen of Heaven"
+      ]
+    }
+  ],
+  monogram: "S G L",
+  tagline: "SARAH GUILMARTIN LAVERY • FUNERALS • WEDDINGS • CORPORATE",
+  footerNote: "Additional repertoire and special requests are warmly welcomed."
+};
+
 export const funeralEventData = {
-  title: "Funeral & Memorial Service Music",
+  title: "Funerals",
   subtitle: "Compassionate, comforting sacred hymns and classical arias celebrating a cherished life.",
-  description: "During times of grief, music provides solace, dignity, and a profound emotional tribute. Sarah offers a compassionate, supportive service, helping families choose meaningful hymns, classical reflections, and traditional Irish farewells to honour their loved one with deep sensitivity and grace.",
+  description: "Sarah is an experienced funeral soloist, regularly performing at funeral services throughout Dublin. With sensitivity, professionalism and an extensive repertoire of sacred, classical and traditional music, her voice brings beauty and comfort to a service, creating a meaningful and fitting tribute to a loved one.",
   serviceTypes: [
     {
       type: "Requiem Mass & Church Funerals",
@@ -515,13 +680,14 @@ export const funeralEventData = {
       pieces: ["Ag Críost an Síol (Seán Ó Riada)", "The Parting Glass", "Mo Ghille Mear", "Oft in the Stilly Night", "The Isle of Hope, Isle of Tears", "The Salley Gardens"]
     }
   ],
+  repertoireSelection: funeralRepertoireSelection,
   accompaniment: ["Church Organist / Cathedral Organ", "Acoustic Piano", "Celtic Harp", "Solo Cello"]
 };
 
 export const corporateEventData = {
-  title: "Corporate Events, Galas & Private Recitals",
+  title: "Corporate",
   subtitle: "World-class operatic entertainment, VIP recitals, and unforgettable classical showcase performances.",
-  description: "Elevate your corporate banquet, international conference, charity gala, or private soirée with the electrifying presence of a premier Irish lyric soprano. Sarah delivers show-stopping operatic highlights, sophisticated crossover melodies, and customized performances that captivate high-profile audiences and leave a lasting impression.",
+  description: "An accomplished soprano with an international performance career, Sarah brings the polish and presence of a professional classical singer to corporate events and special occasions. From gala dinners and awards ceremonies to national anthems and bespoke performances, her exceptional voice and versatile repertoire can elevate an event and create a lasting impression for guests.",
   eventTypes: [
     {
       type: "Gala Dinners & Award Ceremonies",

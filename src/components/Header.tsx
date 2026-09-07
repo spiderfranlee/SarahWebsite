@@ -1,22 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X, Instagram, Youtube, Mail, Image as ImageIcon, ChevronDown, Calendar, Heart, Feather, Building2 } from "lucide-react";
+import { Menu, X, Facebook, Instagram, Youtube, Mail, ChevronDown, Calendar, Heart, Feather, Building2, Disc, Film } from "lucide-react";
 import { artistData } from "../data";
 import { EventTabType } from "./EventsView";
+import { MediaTabType } from "./MediaView";
 
 interface HeaderProps {
   activeSection: string;
   activeEventTab?: EventTabType;
-  onNavigate: (section: string, eventTab?: EventTabType) => void;
+  activeMediaTab?: MediaTabType;
+  onNavigate: (section: string, eventTab?: EventTabType, mediaTab?: MediaTabType) => void;
 }
 
 export default function Header({
   activeSection,
   activeEventTab = "upcoming",
+  activeMediaTab = "all",
   onNavigate
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMediaDropdownOpen, setIsMediaDropdownOpen] = useState(false);
   const [isEventsDropdownOpen, setIsEventsDropdownOpen] = useState(false);
+  const mediaDropdownRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,18 +38,23 @@ export default function Header({
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsEventsDropdownOpen(false);
       }
+      if (mediaDropdownRef.current && !mediaDropdownRef.current.contains(event.target as Node)) {
+        setIsMediaDropdownOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleNavClick = (sectionId: string, eventTab?: EventTabType) => {
-    onNavigate(sectionId, eventTab);
+  const handleNavClick = (sectionId: string, eventTab?: EventTabType, mediaTab?: MediaTabType) => {
+    onNavigate(sectionId, eventTab, mediaTab);
     setIsMobileMenuOpen(false);
     setIsEventsDropdownOpen(false);
+    setIsMediaDropdownOpen(false);
   };
 
-  const isEventsActive = activeSection === "events" || activeSection === "schedule";
+  const isMediaActive = activeSection === "media";
+  const isEngagementsActive = activeSection === "engagements" || activeSection === "events" || activeSection === "schedule";
 
   return (
     <header
@@ -60,14 +70,24 @@ export default function Header({
         <button
           id="header-brand-logo"
           onClick={() => handleNavClick("home")}
-          className="group text-left focus:outline-none"
+          className="group flex items-center gap-3 sm:gap-3.5 text-left focus:outline-none cursor-pointer"
         >
-          <span className="font-serif text-xl sm:text-2xl tracking-[0.22em] text-stone-900 font-bold block transition-colors group-hover:text-rose-700">
-            {artistData.name}
-          </span>
-          <span className="text-[10px] sm:text-[11px] tracking-[0.35em] text-amber-700 uppercase font-sans font-bold block mt-0.5">
-            {artistData.tagline}
-          </span>
+          {artistData.logo && (
+            <img
+              src={artistData.logo}
+              alt="Sarah Lavery Logo"
+              className="h-10 w-10 sm:h-12 sm:w-12 object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105 shrink-0"
+              referrerPolicy="no-referrer"
+            />
+          )}
+          <div>
+            <span className="font-serif text-xl sm:text-2xl tracking-[0.22em] text-stone-900 font-bold block transition-colors group-hover:text-rose-700">
+              {artistData.name}
+            </span>
+            <span className="text-[10px] sm:text-[11px] tracking-[0.35em] text-amber-700 uppercase font-sans font-bold block mt-0.5">
+              {artistData.tagline}
+            </span>
+          </div>
         </button>
 
         {/* Desktop Navigation Links (Exact requested headings) */}
@@ -104,23 +124,70 @@ export default function Header({
             )}
           </button>
 
-          {/* 3. Media */}
-          <button
-            id="nav-link-media"
-            onClick={() => handleNavClick("media")}
-            className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold ${
-              activeSection === "media"
-                ? "text-rose-700"
-                : "text-stone-700 hover:text-stone-950"
-            }`}
+          {/* 3. Media with Dropdown (Recordings, Gallery) */}
+          <div
+            ref={mediaDropdownRef}
+            className="relative"
+            onMouseEnter={() => setIsMediaDropdownOpen(true)}
+            onMouseLeave={() => setIsMediaDropdownOpen(false)}
           >
-            MEDIA
-            {activeSection === "media" && (
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-rose-600 rounded-full" />
-            )}
-          </button>
+            <button
+              id="nav-link-media"
+              onClick={() => handleNavClick("media")}
+              className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold flex items-center gap-1.5 cursor-pointer ${
+                isMediaActive
+                  ? "text-rose-700"
+                  : "text-stone-700 hover:text-stone-950"
+              }`}
+            >
+              <span>MEDIA</span>
+              <ChevronDown
+                size={12}
+                className={`transition-transform duration-300 ${isMediaDropdownOpen ? "rotate-180 text-rose-700" : "text-stone-500"}`}
+              />
+              {isMediaActive && (
+                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-rose-600 rounded-full" />
+              )}
+            </button>
 
-          {/* 4. Events with Dropdown (Upcoming Performances, Weddings, Funeral, Corporate) */}
+            {/* Media Dropdown Menu */}
+            {isMediaDropdownOpen && (
+              <div
+                id="media-dropdown-menu"
+                className="absolute top-full left-0 w-56 pt-2 animate-fadeIn z-50"
+              >
+                <div className="bg-white/98 backdrop-blur-xl border border-stone-200 rounded-md shadow-xl p-2 space-y-1">
+                  <button
+                    id="dropdown-media-recordings"
+                    onClick={() => handleNavClick("media", undefined, "recordings")}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
+                      isMediaActive && activeMediaTab === "recordings"
+                        ? "bg-rose-50 text-rose-700 font-bold"
+                        : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
+                    }`}
+                  >
+                    <Disc size={13} className="text-rose-600 shrink-0" />
+                    <span>Recordings</span>
+                  </button>
+
+                  <button
+                    id="dropdown-media-gallery"
+                    onClick={() => handleNavClick("media", undefined, "gallery")}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
+                      isMediaActive && activeMediaTab === "gallery"
+                        ? "bg-rose-50 text-rose-700 font-bold"
+                        : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
+                    }`}
+                  >
+                    <Film size={13} className="text-amber-600 shrink-0" />
+                    <span>Gallery</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* 4. Engagements with Dropdown (Upcoming performances, Weddings, Funerals, Corporate) */}
           <div
             ref={dropdownRef}
             className="relative"
@@ -128,20 +195,20 @@ export default function Header({
             onMouseLeave={() => setIsEventsDropdownOpen(false)}
           >
             <button
-              id="nav-link-events"
-              onClick={() => handleNavClick("events", "upcoming")}
-              className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold flex items-center gap-1.5 ${
-                isEventsActive
+              id="nav-link-engagements"
+              onClick={() => handleNavClick("engagements", "upcoming")}
+              className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold flex items-center gap-1.5 cursor-pointer ${
+                isEngagementsActive
                   ? "text-rose-700"
                   : "text-stone-700 hover:text-stone-950"
               }`}
             >
-              <span>EVENTS</span>
+              <span>ENGAGEMENTS</span>
               <ChevronDown
                 size={12}
                 className={`transition-transform duration-300 ${isEventsDropdownOpen ? "rotate-180 text-rose-700" : "text-stone-500"}`}
               />
-              {isEventsActive && (
+              {isEngagementsActive && (
                 <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-rose-600 rounded-full" />
               )}
             </button>
@@ -155,9 +222,9 @@ export default function Header({
                 <div className="bg-white/98 backdrop-blur-xl border border-stone-200 rounded-md shadow-xl p-2 space-y-1">
                   <button
                     id="dropdown-events-upcoming"
-                    onClick={() => handleNavClick("events", "upcoming")}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors ${
-                      isEventsActive && activeEventTab === "upcoming"
+                    onClick={() => handleNavClick("engagements", "upcoming")}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
+                      isEngagementsActive && activeEventTab === "upcoming"
                         ? "bg-rose-50 text-rose-700 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
@@ -168,9 +235,9 @@ export default function Header({
 
                   <button
                     id="dropdown-events-weddings"
-                    onClick={() => handleNavClick("events", "weddings")}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors ${
-                      isEventsActive && activeEventTab === "weddings"
+                    onClick={() => handleNavClick("engagements", "weddings")}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
+                      isEngagementsActive && activeEventTab === "weddings"
                         ? "bg-rose-50 text-rose-700 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
@@ -181,22 +248,22 @@ export default function Header({
 
                   <button
                     id="dropdown-events-funeral"
-                    onClick={() => handleNavClick("events", "funeral")}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors ${
-                      isEventsActive && activeEventTab === "funeral"
+                    onClick={() => handleNavClick("engagements", "funeral")}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
+                      isEngagementsActive && activeEventTab === "funeral"
                         ? "bg-rose-50 text-rose-700 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
                   >
                     <Feather size={13} className="text-amber-600 shrink-0" />
-                    <span>Funeral</span>
+                    <span>Funerals</span>
                   </button>
 
                   <button
                     id="dropdown-events-corporate"
-                    onClick={() => handleNavClick("events", "corporate")}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors ${
-                      isEventsActive && activeEventTab === "corporate"
+                    onClick={() => handleNavClick("engagements", "corporate")}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
+                      isEngagementsActive && activeEventTab === "corporate"
                         ? "bg-rose-50 text-rose-700 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
@@ -213,7 +280,7 @@ export default function Header({
           <button
             id="nav-link-contact"
             onClick={() => handleNavClick("contact")}
-            className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold ${
+            className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold cursor-pointer ${
               activeSection === "contact"
                 ? "text-rose-700"
                 : "text-stone-700 hover:text-stone-950"
@@ -229,6 +296,16 @@ export default function Header({
         {/* Right Action Tools: Social Icons */}
         <div className="hidden md:flex items-center space-x-3">
           <div className="flex items-center space-x-2">
+            <a
+              id="social-facebook"
+              href={artistData.socials.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-600 hover:text-rose-700 transition-colors p-1"
+              aria-label="Facebook"
+            >
+              <Facebook size={16} />
+            </a>
             <a
               id="social-instagram"
               href={artistData.socials.instagram}
@@ -282,8 +359,18 @@ export default function Header({
           id="mobile-menu-drawer"
           className="lg:hidden bg-white/98 backdrop-blur-xl border-b border-stone-200 px-6 py-6 animate-fadeIn max-h-[85vh] overflow-y-auto shadow-xl"
         >
-          <div className="text-xs font-sans tracking-[0.25em] text-rose-700 font-bold uppercase pb-3 border-b border-stone-200 mb-4">
-            Menu
+          <div className="flex items-center gap-3 pb-3 border-b border-stone-200 mb-4">
+            {artistData.logo && (
+              <img
+                src={artistData.logo}
+                alt="Sarah Lavery Logo"
+                className="h-8 w-8 object-contain mix-blend-multiply"
+                referrerPolicy="no-referrer"
+              />
+            )}
+            <div className="text-xs font-sans tracking-[0.25em] text-rose-700 font-bold uppercase">
+              Menu
+            </div>
           </div>
 
           <nav className="flex flex-col space-y-4">
@@ -313,85 +400,116 @@ export default function Header({
               About
             </button>
 
-            {/* 3. Media */}
-            <button
-              id="mobile-nav-media"
-              onClick={() => handleNavClick("media")}
-              className={`text-left font-serif text-lg tracking-widest transition-colors py-1 ${
-                activeSection === "media"
-                  ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
-                  : "text-stone-700 hover:text-stone-900"
-              }`}
-            >
-              Media
-            </button>
-
-            {/* 4. Events & Nested Sub-items */}
+            {/* 3. Media & Nested Sub-items */}
             <div className="space-y-2 pt-1 pb-1">
               <button
-                id="mobile-nav-events"
-                onClick={() => handleNavClick("events", "upcoming")}
-                className={`text-left font-serif text-lg tracking-widest transition-colors py-1 block w-full ${
-                  isEventsActive
+                id="mobile-nav-media"
+                onClick={() => handleNavClick("media")}
+                className={`text-left font-serif text-lg tracking-widest transition-colors py-1 block w-full cursor-pointer ${
+                  isMediaActive
                     ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
                     : "text-stone-800 hover:text-stone-950 font-medium"
                 }`}
               >
-                Events
+                Media
               </button>
 
-              {/* Sub-items list matching prompt indentation */}
+              {/* Sub-items matching prompt: Recordings, Gallery */}
               <div className="pl-5 border-l border-stone-200 ml-2 space-y-2.5 py-1">
                 <button
-                  id="mobile-subnav-upcoming"
-                  onClick={() => handleNavClick("events", "upcoming")}
-                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 ${
-                    isEventsActive && activeEventTab === "upcoming"
-                      ? "text-rose-700 font-bold"
-                      : "text-stone-600 hover:text-stone-900"
-                  }`}
-                >
-                  <span className="text-amber-600">•</span>
-                  <span>upcoming performances</span>
-                </button>
-
-                <button
-                  id="mobile-subnav-weddings"
-                  onClick={() => handleNavClick("events", "weddings")}
-                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 ${
-                    isEventsActive && activeEventTab === "weddings"
+                  id="mobile-subnav-recordings"
+                  onClick={() => handleNavClick("media", undefined, "recordings")}
+                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
+                    isMediaActive && activeMediaTab === "recordings"
                       ? "text-rose-700 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
                   <span className="text-rose-600">•</span>
-                  <span>weddings</span>
+                  <span>Recordings</span>
+                </button>
+
+                <button
+                  id="mobile-subnav-gallery"
+                  onClick={() => handleNavClick("media", undefined, "gallery")}
+                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
+                    isMediaActive && activeMediaTab === "gallery"
+                      ? "text-rose-700 font-bold"
+                      : "text-stone-600 hover:text-stone-900"
+                  }`}
+                >
+                  <span className="text-amber-600">•</span>
+                  <span>Gallery</span>
+                </button>
+              </div>
+            </div>
+
+            {/* 4. Engagements & Nested Sub-items */}
+            <div className="space-y-2 pt-1 pb-1">
+              <button
+                id="mobile-nav-engagements"
+                onClick={() => handleNavClick("engagements", "upcoming")}
+                className={`text-left font-serif text-lg tracking-widest transition-colors py-1 block w-full cursor-pointer ${
+                  isEngagementsActive
+                    ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
+                    : "text-stone-800 hover:text-stone-950 font-medium"
+                }`}
+              >
+                Engagements
+              </button>
+
+              {/* Sub-items list: Upcoming performances, Weddings, Funerals, Corporate */}
+              <div className="pl-5 border-l border-stone-200 ml-2 space-y-2.5 py-1">
+                <button
+                  id="mobile-subnav-upcoming"
+                  onClick={() => handleNavClick("engagements", "upcoming")}
+                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
+                    isEngagementsActive && activeEventTab === "upcoming"
+                      ? "text-rose-700 font-bold"
+                      : "text-stone-600 hover:text-stone-900"
+                  }`}
+                >
+                  <span className="text-amber-600">•</span>
+                  <span>Upcoming performances</span>
+                </button>
+
+                <button
+                  id="mobile-subnav-weddings"
+                  onClick={() => handleNavClick("engagements", "weddings")}
+                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
+                    isEngagementsActive && activeEventTab === "weddings"
+                      ? "text-rose-700 font-bold"
+                      : "text-stone-600 hover:text-stone-900"
+                  }`}
+                >
+                  <span className="text-rose-600">•</span>
+                  <span>Weddings</span>
                 </button>
 
                 <button
                   id="mobile-subnav-funeral"
-                  onClick={() => handleNavClick("events", "funeral")}
-                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 ${
-                    isEventsActive && activeEventTab === "funeral"
+                  onClick={() => handleNavClick("engagements", "funeral")}
+                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
+                    isEngagementsActive && activeEventTab === "funeral"
                       ? "text-rose-700 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
                   <span className="text-amber-600">•</span>
-                  <span>funeral</span>
+                  <span>Funerals</span>
                 </button>
 
                 <button
                   id="mobile-subnav-corporate"
-                  onClick={() => handleNavClick("events", "corporate")}
-                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 ${
-                    isEventsActive && activeEventTab === "corporate"
+                  onClick={() => handleNavClick("engagements", "corporate")}
+                  className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
+                    isEngagementsActive && activeEventTab === "corporate"
                       ? "text-rose-700 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
                   <span className="text-amber-600">•</span>
-                  <span>corporate</span>
+                  <span>Corporate</span>
                 </button>
               </div>
             </div>
@@ -400,7 +518,7 @@ export default function Header({
             <button
               id="mobile-nav-contact"
               onClick={() => handleNavClick("contact")}
-              className={`text-left font-serif text-lg tracking-widest transition-colors py-1 ${
+              className={`text-left font-serif text-lg tracking-widest transition-colors py-1 cursor-pointer ${
                 activeSection === "contact"
                   ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
                   : "text-stone-700 hover:text-stone-900"
@@ -412,7 +530,10 @@ export default function Header({
 
           <div className="mt-8 pt-6 border-t border-stone-200 flex items-center justify-between">
             <div className="flex space-x-4">
-              <a href={artistData.socials.instagram} className="text-stone-600 hover:text-rose-700">
+              <a href={artistData.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-rose-700" aria-label="Facebook">
+                <Facebook size={18} />
+              </a>
+              <a href={artistData.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-rose-700" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
               <a href={artistData.socials.youtube} className="text-stone-600 hover:text-rose-700">

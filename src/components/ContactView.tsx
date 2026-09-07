@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, Globe, Building, AlertCircle, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Globe, Building, AlertCircle, Loader2, Facebook, Instagram, Youtube } from "lucide-react";
 import { artistData } from "../data";
 
 interface ContactViewProps {
@@ -73,9 +73,12 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
             REPRESENTATION & INQUIRIES
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight">
-            Contact & Management
+            Contact
           </h2>
-          <div className="w-16 h-[2px] bg-rose-600 mt-4" />
+          <div className="w-16 h-[2px] bg-rose-600 mt-4 mb-4" />
+          <p className="text-stone-700 font-sans text-base max-w-2xl leading-relaxed">
+            Get in touch with Sarah directly using the form below, and follow her on social media.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -125,6 +128,48 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                   <div>
                     <p className="text-stone-500 font-medium">Response Time:</p>
                     <p className="font-bold text-stone-900">Within 24–48 hours</p>
+                  </div>
+                </div>
+
+                {/* Social Media Links */}
+                <div className="pt-2 border-t border-stone-200">
+                  <p className="text-[11px] font-sans uppercase tracking-wider text-stone-500 font-bold mb-2.5">
+                    Social Media
+                  </p>
+                  <div className="flex items-center gap-2.5">
+                    <a
+                      id="contact-facebook"
+                      href={artistData.socials.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-rose-50 border border-stone-200 hover:border-rose-300 text-stone-700 hover:text-rose-700 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
+                      aria-label="Facebook"
+                    >
+                      <Facebook size={14} className="text-blue-600" />
+                      <span>Facebook</span>
+                    </a>
+                    <a
+                      id="contact-instagram"
+                      href={artistData.socials.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-rose-50 border border-stone-200 hover:border-rose-300 text-stone-700 hover:text-rose-700 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
+                      aria-label="Instagram"
+                    >
+                      <Instagram size={14} className="text-pink-600" />
+                      <span>Instagram</span>
+                    </a>
+                    <a
+                      id="contact-youtube"
+                      href={artistData.socials.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-rose-50 border border-stone-200 hover:border-rose-300 text-stone-700 hover:text-rose-700 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
+                      aria-label="YouTube"
+                    >
+                      <Youtube size={14} className="text-red-600" />
+                      <span>YouTube</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -178,7 +223,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
               Send an Inquiry
             </h3>
             <p className="text-xs font-sans text-stone-600 mb-8">
-              Please include performance dates, event location, proposed repertoire, or booking details.
+              Get in touch with Sarah directly using the form below, and follow her on social media.
             </p>
 
             {isSubmitted ? (

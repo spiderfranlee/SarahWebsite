@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Instagram, Youtube, ArrowUp, Send, Check } from "lucide-react";
+import { Mail, Facebook, Instagram, Youtube, ArrowUp, Send, Check } from "lucide-react";
 import { artistData } from "../data";
 
 interface FooterProps {
@@ -30,18 +30,41 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-stone-200">
           {/* Brand Info */}
           <div className="lg:col-span-6 space-y-4">
-            <span className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight block">
-              {artistData.name}
-            </span>
-            <p className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold">
-              {artistData.tagline} · {artistData.location}
-            </p>
-            <p className="text-xs font-sans text-stone-600 max-w-md leading-relaxed pt-2">
+            <div className="flex items-center gap-4">
+              {artistData.logo && (
+                <img
+                  src={artistData.logo}
+                  alt="Sarah Lavery Logo"
+                  className="h-14 w-14 sm:h-16 sm:w-16 object-contain mix-blend-multiply shrink-0"
+                  referrerPolicy="no-referrer"
+                />
+              )}
+              <div>
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight block">
+                  {artistData.name}
+                </span>
+                <p className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold">
+                  {artistData.tagline} · {artistData.location}
+                </p>
+              </div>
+            </div>
+            <p className="text-xs font-sans text-stone-600 max-w-md leading-relaxed pt-1">
               For worldwide operatic engagements, orchestral gala concerts, bespoke weddings, sacred services, and masterclasses.
             </p>
 
             <div className="flex items-center space-x-3 pt-3">
               <a
+                id="footer-facebook"
+                href={artistData.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-blue-600 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
+                aria-label="Facebook"
+              >
+                <Facebook size={15} />
+              </a>
+              <a
+                id="footer-instagram"
                 href={artistData.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -115,7 +138,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               { id: "home", label: "Home" },
               { id: "about", label: "About" },
               { id: "media", label: "Media" },
-              { id: "events", label: "Events" },
+              { id: "engagements", label: "Engagements" },
               { id: "contact", label: "Contact" }
             ].map((item) => (
               <button
