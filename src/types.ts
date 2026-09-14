@@ -26,6 +26,10 @@ export interface RepertoireRole {
   role: string;
   language: string;
   status: "Performed" | "In Repertoire" | "Covered" | "In Preparation";
+  company?: string;
+  venue?: string;
+  year?: string;
+  conductor?: string;
 }
 
 export interface ConcertWork {

@@ -30,6 +30,7 @@ export default function RepertoireView({ onNavigateToContact }: RepertoireViewPr
   const [activeTab, setActiveTab] = useState<RepertoireTab>("opera");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("all");
+  const [selectedStatus, setSelectedStatus] = useState<string>("all");
 
   // Opera languages for quick filter
   const operaLanguages = useMemo(() => {
@@ -40,7 +41,7 @@ export default function RepertoireView({ onNavigateToContact }: RepertoireViewPr
     return Array.from(langs);
   }, []);
 
-  // Filter operatic roles
+  // Filter operatic roles with language and stage status
   const filteredOpera = useMemo(() => {
     const query = searchQuery.toLowerCase().trim();
     return operaticRepertoire.filter((item) => {
@@ -49,16 +50,25 @@ export default function RepertoireView({ onNavigateToContact }: RepertoireViewPr
         item.language.toLowerCase().includes(selectedLanguage.toLowerCase());
       if (!matchesLanguage) return false;
 
+      const matchesStatus =
+        selectedStatus === "all" ||
+        (selectedStatus === "performed" && item.status === "Performed") ||
+        (selectedStatus === "prepared" && item.status === "In Repertoire") ||
+        (selectedStatus === "covered" && (item.status === "Covered" || item.status === "In Preparation"));
+      if (!matchesStatus) return false;
+
       if (!query) return true;
       return (
         item.composer.toLowerCase().includes(query) ||
         item.work.toLowerCase().includes(query) ||
         item.role.toLowerCase().includes(query) ||
         item.language.toLowerCase().includes(query) ||
-        item.status.toLowerCase().includes(query)
+        item.status.toLowerCase().includes(query) ||
+        (item.company && item.company.toLowerCase().includes(query)) ||
+        (item.venue && item.venue.toLowerCase().includes(query))
       );
     });
-  }, [searchQuery, selectedLanguage]);
+  }, [searchQuery, selectedLanguage, selectedStatus]);
 
   // Filter concert works
   const filteredConcert = useMemo(() => {
@@ -154,6 +164,14 @@ export default function RepertoireView({ onNavigateToContact }: RepertoireViewPr
 
           {/* Download PDF or Direct Inquiry */}
           <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => window.print()}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white hover:bg-stone-100 text-stone-700 text-xs font-sans font-bold tracking-wider uppercase rounded-md border border-stone-300 shadow-2xs transition-colors cursor-pointer"
+              title="Print Repertoire / Save as PDF"
+            >
+              <FileText size={14} className="text-rose-700" />
+              <span>Print Repertoire Sheet</span>
+            </button>
             <button
               onClick={() => handleContactClick("General Operatic / Recital")}
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-rose-700 hover:bg-rose-800 text-white text-xs font-sans font-bold tracking-wider uppercase rounded-md shadow-sm transition-colors cursor-pointer"
@@ -277,12 +295,21 @@ export default function RepertoireView({ onNavigateToContact }: RepertoireViewPr
             )}
           </div>
 
-          {/* Secondary filter for Opera tab: Language */}
+          {/* Secondary filter for Opera tab: Status & Language */}
           {activeTab === "opera" && (
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-sans text-stone-500 uppercase tracking-wider font-semibold whitespace-nowrap">
-                Language:
-              </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <select
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}
+                aria-label="Filter by performance status"
+                className="px-3 py-2.5 bg-white border border-stone-300 rounded-md text-xs font-sans font-semibold text-stone-700 focus:outline-none focus:border-rose-600 shadow-xs cursor-pointer"
+              >
+                <option value="all">All Role Statuses</option>
+                <option value="performed">Performed on Stage</option>
+                <option value="prepared">In Repertoire / Prepared</option>
+                <option value="covered">Under Study / In Prep</option>
+              </select>
+
               <select
                 value={selectedLanguage}
                 onChange={(e) => setSelectedLanguage(e.target.value)}
@@ -512,7 +539,7 @@ export default function RepertoireView({ onNavigateToContact }: RepertoireViewPr
                             <span
                               className={`text-[10px] tracking-wider uppercase font-bold px-2.5 py-0.5 rounded-full shrink-0 border ${
                                 role.status === "Performed"
-                                  ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                                  ? "bg-emerald-50 text-emerald-800 border-emerald-300 font-semibold"
                                   : role.status === "In Repertoire"
                                   ? "bg-rose-50 text-rose-800 border-rose-200"
                                   : role.status === "Covered"
@@ -520,12 +547,20 @@ export default function RepertoireView({ onNavigateToContact }: RepertoireViewPr
                                   : "bg-stone-100 text-stone-700 border-stone-200"
                               }`}
                             >
-                              {role.status}
+                              {role.status === "Performed" ? "Stage Performed" : role.status}
                             </span>
                           </div>
                           <p className="text-sm font-sans italic text-stone-700 font-medium">
                             {role.work}
                           </p>
+
+                          {role.company && (
+                            <div className="mt-2 text-[11px] font-sans text-rose-900 bg-rose-50/80 px-2.5 py-1 rounded border border-rose-100">
+                              <span className="font-semibold">{role.company}</span>
+                              {role.venue && <span className="text-stone-500"> · {role.venue}</span>}
+                              {role.year && <span className="text-stone-400 font-mono"> ({role.year})</span>}
+                            </div>
+                          )}
                         </div>
 
                         <div className="pt-3 border-t border-stone-200/80 flex items-center justify-between text-xs font-sans text-stone-500">

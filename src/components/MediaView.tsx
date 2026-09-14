@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Play, Pause, Film, Image as ImageIcon, Maximize2, Youtube, ExternalLink, Video } from "lucide-react";
 import { audioRecordings, mediaShowcase, artistData } from "../data";
 import { AudioTrack, MediaItem } from "../types";
+import VideoFacade from "./VideoFacade";
 
 export type MediaTabType = "all" | "recordings" | "gallery";
 
@@ -268,68 +269,70 @@ export default function MediaView({
               {filteredMedia.map((item) => (
                 <div
                   key={item.id}
-                  onClick={() => onSelectMedia(item)}
-                  className="group bg-white border border-stone-200 hover:border-rose-300 rounded-md overflow-hidden cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
+                  className="bg-white border border-stone-200 hover:border-rose-300 rounded-lg overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-stone-900">
-                    <img
-                      src={item.thumbnailUrl}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                      referrerPolicy="no-referrer"
+                  {item.type === "video" ? (
+                    <VideoFacade
+                      youtubeId={item.youtubeId}
+                      title={item.title}
+                      subtitle={item.composer ? `${item.composer}${item.work ? ` · ${item.work}` : ""}` : undefined}
+                      thumbnailUrl={item.thumbnailUrl}
+                      onOpenModal={() => onSelectMedia(item)}
                     />
-
-                    {/* Type Badge */}
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-white/90 backdrop-blur-md rounded border border-stone-200 text-[10px] tracking-wider uppercase font-bold text-rose-700 shadow-2xs">
-                      {item.type === "video" ? (
-                        item.youtubeId ? (
-                          <Youtube size={12} className="text-red-600" />
-                        ) : (
-                          <Film size={11} />
-                        )
-                      ) : (
+                  ) : (
+                    <div
+                      onClick={() => onSelectMedia(item)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`View photo: ${item.title}`}
+                      className="group relative aspect-[16/10] overflow-hidden bg-stone-900 cursor-pointer"
+                    >
+                      <img
+                        src={item.thumbnailUrl}
+                        alt={item.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-white/90 backdrop-blur-md rounded border border-stone-200 text-[10px] tracking-wider uppercase font-bold text-rose-700 shadow-2xs">
                         <ImageIcon size={11} />
-                      )}
-                      <span>{item.category}</span>
-                    </div>
-
-                    {/* YouTube Watermark if applicable */}
-                    {item.youtubeId && (
-                      <div className="absolute top-3 right-3 px-2 py-0.5 bg-black/60 backdrop-blur-sm rounded text-[9px] font-sans font-bold text-white uppercase tracking-widest flex items-center gap-1">
-                        <Youtube size={10} className="text-red-500" />
-                        <span>YouTube</span>
+                        <span>{item.category}</span>
                       </div>
-                    )}
-
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-stone-900/30 group-hover:bg-stone-900/20 flex items-center justify-center transition-colors">
-                      {item.type === "video" ? (
-                        <div className="w-12 h-12 rounded-full bg-rose-700 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                          <Play size={18} className="fill-white ml-0.5" />
-                        </div>
-                      ) : (
+                      <div className="absolute inset-0 bg-stone-900/20 group-hover:bg-stone-900/10 flex items-center justify-center transition-colors">
                         <div className="w-10 h-10 rounded-full bg-white/90 text-stone-800 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
                           <Maximize2 size={16} />
                         </div>
-                      )}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className="p-5">
-                    {item.composer && (
-                      <span className="text-[11px] font-sans uppercase tracking-wider text-rose-700 font-bold block mb-1">
-                        {item.composer} {item.work ? `· ${item.work}` : ""}
-                      </span>
-                    )}
-                    <h4 className="font-serif text-base sm:text-lg font-bold text-stone-900 group-hover:text-rose-700 transition-colors line-clamp-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs font-sans text-stone-600 mt-1 line-clamp-2 leading-relaxed">
-                      {item.description}
-                    </p>
-                    <div className="flex items-center justify-between pt-3 mt-3 border-t border-stone-100 text-[10px] font-sans text-stone-400 font-semibold tracking-wider">
-                      <span>{item.type === "video" ? "Watch Video Performance" : "High-Resolution Image"}</span>
-                      {item.year && <span>{item.year}</span>}
+                  <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      {item.composer && (
+                        <span className="text-[11px] font-sans uppercase tracking-wider text-rose-700 font-bold block mb-1">
+                          {item.composer} {item.work ? `· ${item.work}` : ""}
+                        </span>
+                      )}
+                      <h4
+                        onClick={() => onSelectMedia(item)}
+                        className="font-serif text-base sm:text-lg font-bold text-stone-900 hover:text-rose-700 transition-colors cursor-pointer line-clamp-1"
+                      >
+                        {item.title}
+                      </h4>
+                      <p className="text-xs font-sans text-stone-600 mt-1 line-clamp-2 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-3 mt-3 border-t border-stone-100 text-[10px] font-sans text-stone-500 font-semibold tracking-wider">
+                      <button
+                        onClick={() => onSelectMedia(item)}
+                        className="text-rose-700 hover:text-rose-900 font-bold uppercase transition-colors cursor-pointer"
+                      >
+                        {item.type === "video" ? "Watch Video" : "View Photo"}
+                      </button>
+                      {item.year && <span className="font-mono text-stone-400">{item.year}</span>}
                     </div>
                   </div>
                 </div>

@@ -68,24 +68,24 @@ Now based in Dublin, Sarah combines her professional operatic and concert work w
   ]
 };
 
-// Full Operatic Repertoire List
+// Full Operatic Repertoire List with Casting Pedigree
 export const operaticRepertoire: RepertoireRole[] = [
-  { id: "op-1", composer: "Giacomo Puccini", work: "La Bohème", role: "Mimì", language: "Italian", status: "Performed" },
-  { id: "op-2", composer: "Giacomo Puccini", work: "Madama Butterfly", role: "Cio-Cio-San", language: "Italian", status: "In Preparation" },
-  { id: "op-3", composer: "Giacomo Puccini", work: "Gianni Schicchi", role: "Lauretta", language: "Italian", status: "Performed" },
-  { id: "op-20", composer: "Giacomo Puccini", work: "Suor Angelica", role: "Suor Angelica", language: "Italian", status: "Performed" },
+  { id: "op-20", composer: "Giacomo Puccini", work: "Suor Angelica", role: "Suor Angelica", language: "Italian", status: "Performed", company: "Chicago Summer Opera", venue: "Chicago", year: "2019" },
+  { id: "op-1", composer: "Giacomo Puccini", work: "La Bohème", role: "Mimì", language: "Italian", status: "Performed", company: "Irish National Opera / Bord Gáis Energy Theatre", venue: "Dublin", year: "2026" },
+  { id: "op-25", composer: "Franz Lehár", work: "The Merry Widow", role: "Valencienne", language: "English", status: "Performed", company: "R&R Musical Society", venue: "Gaiety Theatre, Dublin", year: "2024" },
+  { id: "op-23", composer: "Gilbert & Sullivan", work: "Iolanthe", role: "Phyllis", language: "English", status: "Performed", company: "R&R Musical Society", venue: "National Concert Hall, Dublin", year: "2023" },
+  { id: "op-24", composer: "Gilbert & Sullivan", work: "The Gondoliers", role: "Casilda", language: "English", status: "Performed", company: "R&R Musical Society", venue: "Gaiety Theatre, Dublin", year: "2022" },
+  { id: "op-3", composer: "Giacomo Puccini", work: "Gianni Schicchi", role: "Lauretta", language: "Italian", status: "Performed", company: "West Australian Opera (Young Artist)", venue: "Perth", year: "2014" },
+  { id: "op-8", composer: "W. A. Mozart", work: "Die Zauberflöte", role: "Pamina", language: "German", status: "Performed", company: "West Australian Opera (Young Artist)", venue: "Perth", year: "2013" },
+  { id: "op-10", composer: "Gaetano Donizetti", work: "L'elisir d'amore", role: "Giannetta", language: "Italian", status: "Performed", company: "West Australian Opera", venue: "His Majesty's Theatre, Perth" },
+  { id: "op-5", composer: "W. A. Mozart", work: "Le Nozze di Figaro", role: "Contessa Almaviva", language: "Italian", status: "In Repertoire" },
+  { id: "op-6", composer: "W. A. Mozart", work: "Le Nozze di Figaro", role: "Susanna", language: "Italian", status: "Performed", company: "RIAM Opera", venue: "Dublin" },
+  { id: "op-7", composer: "W. A. Mozart", work: "Don Giovanni", role: "Donna Elvira", language: "Italian", status: "In Repertoire" },
   { id: "op-4", composer: "Giacomo Puccini", work: "La Rondine", role: "Magda de Civry", language: "Italian", status: "In Repertoire" },
-  { id: "op-8", composer: "W. A. Mozart", work: "Die Zauberflöte", role: "Pamina", language: "German", status: "Performed" },
+  { id: "op-2", composer: "Giacomo Puccini", work: "Madama Butterfly", role: "Cio-Cio-San", language: "Italian", status: "In Preparation" },
   { id: "op-14", composer: "Giuseppe Verdi", work: "La Traviata", role: "Violetta Valéry", language: "Italian", status: "In Repertoire" },
   { id: "op-21", composer: "Giuseppe Verdi", work: "Otello", role: "Desdemona", language: "Italian", status: "In Repertoire" },
   { id: "op-22", composer: "Jacques Offenbach", work: "Les Contes d’Hoffmann", role: "Antonia / Giulietta", language: "French", status: "In Repertoire" },
-  { id: "op-23", composer: "Gilbert & Sullivan", work: "Iolanthe", role: "Phyllis", language: "English", status: "Performed" },
-  { id: "op-24", composer: "Gilbert & Sullivan", work: "The Gondoliers", role: "Casilda", language: "English", status: "Performed" },
-  { id: "op-25", composer: "Franz Lehár", work: "The Merry Widow", role: "Valencienne", language: "English", status: "Performed" },
-  { id: "op-5", composer: "W. A. Mozart", work: "Le Nozze di Figaro", role: "Contessa Almaviva", language: "Italian", status: "Performed" },
-  { id: "op-6", composer: "W. A. Mozart", work: "Le Nozze di Figaro", role: "Susanna", language: "Italian", status: "Performed" },
-  { id: "op-7", composer: "W. A. Mozart", work: "Don Giovanni", role: "Donna Elvira", language: "Italian", status: "In Repertoire" },
-  { id: "op-10", composer: "Gaetano Donizetti", work: "L'elisir d'amore", role: "Giannetta", language: "Italian", status: "Performed" },
   { id: "op-11", composer: "Gaetano Donizetti", work: "L'elisir d'amore", role: "Adina", language: "Italian", status: "In Repertoire" },
   { id: "op-12", composer: "Charles Gounod", work: "Faust", role: "Marguerite", language: "French", status: "Covered" },
   { id: "op-15", composer: "Johann Strauss II", work: "Die Fledermaus", role: "Rosalinde", language: "German / English", status: "Covered" }
