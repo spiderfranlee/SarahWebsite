@@ -25,7 +25,7 @@ export default function Hero({ heroImage, onNavigate, onPlayAria }: HeroProps) {
               target.src = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85";
             }
           }}
-          alt="Sarah Lavery - Irish Lyric Soprano"
+          alt="Sarah Guilmartin Lavery - Irish Lyric Soprano"
           className="w-full h-full object-cover object-[center_top] sm:object-[center_8%] md:object-[right_top] lg:object-[82%_6%] opacity-90 md:opacity-95 scale-100 transition-all duration-700"
           referrerPolicy="no-referrer"
         />
@@ -40,8 +40,8 @@ export default function Hero({ heroImage, onNavigate, onPlayAria }: HeroProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
         <div className="max-w-3xl">
           {/* Artist Large Display Name */}
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-stone-950 leading-[0.98] mb-5">
-            Sarah <br />
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-stone-950 leading-[1.02] mb-5">
+            Sarah Guilmartin <br />
             <span className="italic font-normal text-rose-800">Lavery</span>
           </h1>
 

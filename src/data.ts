@@ -2,7 +2,7 @@ import { EventItem, MediaItem, NewsArticle, RepertoireRole, ConcertWork, SongCyc
 
 // Artist configuration & biographies
 export const artistData = {
-  name: "SARAH LAVERY",
+  name: "SARAH GUILMARTIN LAVERY",
   fullName: "Sarah Guilmartin Lavery",
   voiceType: "Lyric Soprano",
   tagline: "Irish Lyric Soprano",
@@ -426,7 +426,7 @@ export const audioRecordings: AudioTrack[] = [
 export const mediaShowcase: MediaItem[] = [
   {
     id: "med-yt-1",
-    title: "Glück, das mir verblieb | Korngold | Soprano Sarah Lavery",
+    title: "Glück, das mir verblieb | Korngold | Soprano Sarah Guilmartin Lavery",
     category: "Opera",
     type: "video",
     thumbnailUrl: "https://i.ytimg.com/vi/UBx3agwNmB0/hqdefault.jpg",
@@ -434,12 +434,12 @@ export const mediaShowcase: MediaItem[] = [
     youtubeId: "UBx3agwNmB0",
     composer: "Erich Wolfgang Korngold",
     work: "Die tote Stadt (Marietta's Lied)",
-    description: "Soprano Sarah Lavery performs the luminous Marietta's Lied 'Glück, das mir verblieb' from Korngold's Die tote Stadt, showcasing shimmering high notes and velvety lyrical phrasing.",
+    description: "Soprano Sarah Guilmartin Lavery performs the luminous Marietta's Lied 'Glück, das mir verblieb' from Korngold's Die tote Stadt, showcasing shimmering high notes and velvety lyrical phrasing.",
     year: "2026"
   },
   {
     id: "med-yt-2",
-    title: "Ave Maria | Soprano Sarah Lavery",
+    title: "Ave Maria | Soprano Sarah Guilmartin Lavery",
     category: "Sacred",
     type: "video",
     thumbnailUrl: "https://i.ytimg.com/vi/ZbaF-iFgMzw/hqdefault.jpg",
@@ -452,7 +452,7 @@ export const mediaShowcase: MediaItem[] = [
   },
   {
     id: "med-yt-3",
-    title: "I could have danced all night (My Fair Lady) | Soprano Sarah Lavery",
+    title: "I could have danced all night (My Fair Lady) | Soprano Sarah Guilmartin Lavery",
     category: "Recital",
     type: "video",
     thumbnailUrl: "https://i.ytimg.com/vi/zQ1eus1CR-Q/hqdefault.jpg",
@@ -465,7 +465,7 @@ export const mediaShowcase: MediaItem[] = [
   },
   {
     id: "med-yt-4",
-    title: "I can smell the sea air | Andre Previn | Soprano Sarah Lavery",
+    title: "I can smell the sea air | Andre Previn | Soprano Sarah Guilmartin Lavery",
     category: "Opera",
     type: "video",
     thumbnailUrl: "https://i.ytimg.com/vi/xa0fVPR613I/hqdefault.jpg",
@@ -473,7 +473,7 @@ export const mediaShowcase: MediaItem[] = [
     youtubeId: "xa0fVPR613I",
     composer: "André Previn",
     work: "A Streetcar Named Desire (Blanche DuBois)",
-    description: "Sarah Lavery delivers a poignant, emotionally resonant interpretation of Blanche DuBois's aria 'I can smell the sea air' from André Previn's modern operatic triumph.",
+    description: "Sarah Guilmartin Lavery delivers a poignant, emotionally resonant interpretation of Blanche DuBois's aria 'I can smell the sea air' from André Previn's modern operatic triumph.",
     year: "2026"
   }
 ];
@@ -503,7 +503,7 @@ export const newsReleasesData: NewsArticle[] = [
     id: "news-1",
     date: "OCTOBER 2026",
     category: "Announcement",
-    title: "Sarah Lavery Announced as Mimì in Irish National Opera's La Bohème",
+    title: "Sarah Guilmartin Lavery Announced as Mimì in Irish National Opera's La Bohème",
     excerpt: "Sarah will return to the Bord Gáis Energy Theatre this autumn in a landmark production directed by Orpha Phelan and conducted by Fergus Sheil.",
     imageUrl: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80"
   },

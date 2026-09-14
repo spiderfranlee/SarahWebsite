@@ -34,7 +34,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               {artistData.logo && (
                 <img
                   src={artistData.logo}
-                  alt="Sarah Lavery Logo"
+                  alt="Sarah Guilmartin Lavery Logo"
                   className="h-14 w-14 sm:h-16 sm:w-16 object-contain mix-blend-multiply shrink-0"
                   referrerPolicy="no-referrer"
                 />
@@ -107,7 +107,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             {subscribed ? (
               <div className="p-3 bg-rose-50 border border-rose-200 rounded text-xs font-sans text-rose-800 font-bold flex items-center gap-2">
                 <Check size={16} />
-                <span>Thank you for subscribing to Sarah Lavery's diary!</span>
+                <span>Thank you for subscribing to Sarah Guilmartin Lavery's diary!</span>
               </div>
             ) : (
               <form onSubmit={handleNewsletter} className="flex gap-2">

@@ -14,7 +14,7 @@ import { audioRecordings, mediaShowcase } from "./data";
 import { AudioTrack, MediaItem } from "./types";
 import { playAriaAudio, stopAriaAudio } from "./utils/audioSynth";
 
-// Main Sarah Lavery Hero Image
+// Main Sarah Guilmartin Lavery Hero Image
 const HERO_IMAGE = "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/G.jpg";
 
 export default function App() {
@@ -199,7 +199,7 @@ export default function App() {
                 youtubeId: currentTrack.youtubeId,
                 composer: currentTrack.composer,
                 work: currentTrack.work,
-                description: `Live vocal performance of ${currentTrack.title} (${currentTrack.work}) by soprano Sarah Lavery.`
+                description: `Live vocal performance of ${currentTrack.title} (${currentTrack.work}) by soprano Sarah Guilmartin Lavery.`
               });
             }
           }}

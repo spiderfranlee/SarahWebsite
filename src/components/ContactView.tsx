@@ -91,7 +91,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                   Direct Inquiries & Bookings
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-stone-900">
-                  Sarah Lavery
+                  Sarah Guilmartin Lavery
                 </h3>
                 <p className="text-xs font-sans text-stone-500 font-medium mt-1">
                   Irish Lyric Soprano
@@ -263,7 +263,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 <input
                   type="hidden"
                   name="from_name"
-                  value={formData.name || "Sarah Lavery Website Inquiry"}
+                  value={formData.name || "Sarah Guilmartin Lavery Website Inquiry"}
                 />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

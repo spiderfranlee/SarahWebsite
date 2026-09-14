@@ -75,16 +75,16 @@ export default function Header({
           {artistData.logo && (
             <img
               src={artistData.logo}
-              alt="Sarah Lavery Logo"
+              alt="Sarah Guilmartin Lavery Logo"
               className="h-10 w-10 sm:h-12 sm:w-12 object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105 shrink-0"
               referrerPolicy="no-referrer"
             />
           )}
           <div>
-            <span className="font-serif text-xl sm:text-2xl tracking-[0.22em] text-stone-900 font-bold block transition-colors group-hover:text-rose-700">
+            <span className="font-serif text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.14em] sm:tracking-[0.18em] text-stone-900 font-bold block transition-colors group-hover:text-rose-700 whitespace-nowrap">
               {artistData.name}
             </span>
-            <span className="text-[10px] sm:text-[11px] tracking-[0.35em] text-amber-700 uppercase font-sans font-bold block mt-0.5">
+            <span className="text-[9px] sm:text-[10px] tracking-[0.3em] text-amber-700 uppercase font-sans font-bold block mt-0.5">
               {artistData.tagline}
             </span>
           </div>
@@ -363,7 +363,7 @@ export default function Header({
             {artistData.logo && (
               <img
                 src={artistData.logo}
-                alt="Sarah Lavery Logo"
+                alt="Sarah Guilmartin Lavery Logo"
                 className="h-8 w-8 object-contain mix-blend-multiply"
                 referrerPolicy="no-referrer"
               />

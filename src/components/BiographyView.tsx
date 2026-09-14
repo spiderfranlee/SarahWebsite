@@ -23,7 +23,7 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
             ABOUT & BIOGRAPHY
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight">
-            About Sarah Lavery
+            About Sarah Guilmartin Lavery
           </h2>
           <div className="w-16 h-[2px] bg-rose-600 mt-4" />
         </div>
@@ -43,13 +43,13 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
                       target.src = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85";
                     }
                   }}
-                  alt="Sarah Lavery - Irish Lyric Soprano Portrait"
+                  alt="Sarah Guilmartin Lavery - Irish Lyric Soprano Portrait"
                   className="w-full h-full object-cover object-[center_top] sm:object-[center_12%] group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-950/60 to-transparent p-6 text-white">
                   <p className="font-serif text-xl font-bold text-white">
-                    Sarah Lavery
+                    Sarah Guilmartin Lavery
                   </p>
                   <p className="text-xs font-sans tracking-widest text-amber-300 uppercase font-bold">
                     Irish Lyric Soprano

@@ -60,7 +60,7 @@ export default function MediaView({
         youtubeId: track.youtubeId,
         composer: track.composer,
         work: track.work,
-        description: `Live vocal performance of ${track.title} (${track.work}) by soprano Sarah Lavery. Accompaniment: ${track.accompaniment}.`
+        description: `Live vocal performance of ${track.title} (${track.work}) by soprano Sarah Guilmartin Lavery. Accompaniment: ${track.accompaniment}.`
       });
     }
   };
