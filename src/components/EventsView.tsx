@@ -5,7 +5,6 @@ import {
   ExternalLink,
   Clock,
   User,
-  Filter,
   Heart,
   Music2,
   Sparkles,
@@ -31,8 +30,6 @@ export default function EventsView({
   onNavigateToContact
 }: EventsViewProps) {
   const [currentTab, setCurrentTab] = useState<EventTabType>(activeTab);
-  const [selectedPerformanceFilter, setSelectedPerformanceFilter] = useState<string>("all");
-  const [showPastPerformances, setShowPastPerformances] = useState<boolean>(false);
 
   useEffect(() => {
     if (activeTab) {
@@ -46,15 +43,6 @@ export default function EventsView({
       onTabChange(tab);
     }
   };
-
-  // Filter schedule events
-  const filteredEvents = scheduleData.filter((event) => {
-    const isPast = event.status === "Past Performance";
-    if (showPastPerformances ? !isPast : isPast) return false;
-
-    if (selectedPerformanceFilter === "all") return true;
-    return event.category.toLowerCase() === selectedPerformanceFilter.toLowerCase();
-  });
 
   return (
     <section id="engagements" className="py-24 bg-white border-t border-stone-200 relative">
@@ -135,77 +123,24 @@ export default function EventsView({
 
         {/* TAB 1: UPCOMING PERFORMANCES */}
         {currentTab === "upcoming" && (
-          <div id="events-upcoming-content" className="space-y-8 animate-fadeIn">
-            {/* Filters & Season Toggle */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-stone-200">
-              {/* Category Filter Chips */}
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs text-stone-500 font-sans uppercase tracking-widest font-bold flex items-center gap-1.5 mr-2">
-                  <Filter size={13} /> Filter:
-                </span>
-                {[
-                  { id: "all", label: "All Engagements" },
-                  { id: "opera", label: "Opera Productions" },
-                  { id: "concert", label: "Concerts & Galas" },
-                  { id: "recital", label: "Solo Recitals" }
-                ].map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setSelectedPerformanceFilter(tab.id)}
-                    className={`px-3.5 py-1.5 text-xs font-sans tracking-wider rounded transition-all cursor-pointer ${
-                      selectedPerformanceFilter === tab.id
-                        ? "bg-gold-50 text-navy-950 border border-gold-300 font-bold"
-                        : "bg-[#FAF8F5] text-stone-600 hover:text-stone-900 border border-stone-200"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-
-              {/* Upcoming vs Past Toggle */}
-              <div className="flex items-center gap-1 bg-[#FAF8F5] p-1 border border-stone-200 rounded-md">
-                <button
-                  onClick={() => setShowPastPerformances(false)}
-                  className={`px-3 py-1.5 text-xs font-sans tracking-wider uppercase rounded transition-all cursor-pointer ${
-                    !showPastPerformances
-                      ? "bg-white text-navy-950 shadow-2xs font-bold border border-stone-200"
-                      : "text-stone-600 hover:text-stone-900"
-                  }`}
-                >
-                  Upcoming (2026/27)
-                </button>
-                <button
-                  onClick={() => setShowPastPerformances(true)}
-                  className={`px-3 py-1.5 text-xs font-sans tracking-wider uppercase rounded transition-all cursor-pointer ${
-                    showPastPerformances
-                      ? "bg-white text-navy-950 shadow-2xs font-bold border border-stone-200"
-                      : "text-stone-600 hover:text-stone-900"
-                  }`}
-                >
-                  Past Archive
-                </button>
-              </div>
+          <div id="events-upcoming-content" className="space-y-6 animate-fadeIn">
+            {/* Season Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-stone-200">
+              <span className="text-xs font-sans tracking-widest text-gold-800 uppercase font-bold">
+                Upcoming Season Engagements
+              </span>
+              <span className="text-xs font-sans text-stone-500 font-medium">
+                {scheduleData.length} Confirmed Productions
+              </span>
             </div>
 
             {/* Performance Event Cards */}
-            {filteredEvents.length === 0 ? (
-              <div className="py-16 text-center bg-[#FAF8F5] border border-stone-200 rounded-md">
-                <p className="text-stone-600 font-serif text-lg">No performances found matching this selection.</p>
-                <button
-                  onClick={() => { setSelectedPerformanceFilter("all"); setShowPastPerformances(false); }}
-                  className="mt-3 text-xs font-sans tracking-widest text-navy-900 hover:text-gold-700 uppercase font-bold underline cursor-pointer"
+            <div className="space-y-5">
+              {scheduleData.map((evt) => (
+                <div
+                  key={evt.id}
+                  className="group bg-[#FAF8F5] hover:bg-gold-50/30 border border-stone-200 hover:border-gold-300 p-5 sm:p-6 rounded-xl transition-all duration-300 shadow-xs hover:shadow-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6"
                 >
-                  View All Upcoming Season Performances
-                </button>
-              </div>
-            ) : (
-              <div className="space-y-5">
-                {filteredEvents.map((evt) => (
-                  <div
-                    key={evt.id}
-                    className="group bg-[#FAF8F5] hover:bg-gold-50/30 border border-stone-200 hover:border-gold-300 p-5 sm:p-6 rounded-xl transition-all duration-300 shadow-xs hover:shadow-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6"
-                  >
                     {/* Left & Middle: Poster / Date & Production Details */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 flex-1">
                       {/* Event Poster / Official Production Artwork */}
@@ -340,7 +275,6 @@ export default function EventsView({
                   </div>
                 ))}
               </div>
-            )}
           </div>
         )}
 

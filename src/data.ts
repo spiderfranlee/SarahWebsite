@@ -313,32 +313,6 @@ export const scheduleData: EventItem[] = [
     fallbackImageUrl: "https://www.irishnationalopera.ie/content/banners/INO-Onegin_Season-Image.jpg",
     domain: "gaietytheatre.ie",
     originalFilename: "INO-Onegin_Poster-Image-500w-X-700h-px.jpg"
-  },
-  {
-    id: "sch-7",
-    date: "MAY 08, 2026",
-    time: "19:30",
-    title: "Alberto Caruso: Lady Gregory in America",
-    role: "Eileen O'Doherty",
-    company: "Wexford Festival Opera Debut",
-    venue: "Jerome Hynes Theatre",
-    city: "Wexford, Ireland",
-    status: "Past Performance",
-    ticketUrl: "#",
-    category: "Opera"
-  },
-  {
-    id: "sch-8",
-    date: "JUNE 19, 2026",
-    time: "13:10",
-    title: "French Mélodie & Celtic Lieder Recital",
-    role: "Soloist",
-    company: "Hugh Lane Gallery Sundays @ Noon",
-    venue: "Hugh Lane Gallery",
-    city: "Dublin, Ireland",
-    status: "Past Performance",
-    ticketUrl: "#",
-    category: "Recital"
   }
 ];
 

@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Play, Pause, Film, Image as ImageIcon, Maximize2, Youtube, ExternalLink, Video, Columns2, LayoutGrid } from "lucide-react";
-import { audioRecordings, mediaShowcase, artistData } from "../data";
+import { Play, Youtube, ExternalLink, Image as ImageIcon, Maximize2 } from "lucide-react";
+import { mediaShowcase, artistData } from "../data";
 import { AudioTrack, MediaItem } from "../types";
 import VideoFacade from "./VideoFacade";
 
-export type MediaTabType = "all" | "recordings" | "gallery";
+export type MediaTabType = "all" | "recordings" | "gallery" | "opera" | "sacred" | "recital";
 
 interface MediaViewProps {
-  currentTrack: AudioTrack;
-  isPlaying: boolean;
+  currentTrack?: AudioTrack;
+  isPlaying?: boolean;
   activeMediaTab?: MediaTabType;
   onTabChange?: (tab: MediaTabType) => void;
-  onTogglePlay: (track: AudioTrack) => void;
+  onTogglePlay?: (track: AudioTrack) => void;
   onSelectMedia: (item: MediaItem) => void;
 }
 
 export default function MediaView({
-  currentTrack,
-  isPlaying,
   activeMediaTab = "all",
   onTabChange,
-  onTogglePlay,
   onSelectMedia
 }: MediaViewProps) {
   const [currentTab, setCurrentTab] = useState<MediaTabType>(activeMediaTab);
-  const [layoutMode, setLayoutMode] = useState<"grid" | "compact">("grid");
 
   useEffect(() => {
     if (activeMediaTab) {
@@ -40,32 +36,9 @@ export default function MediaView({
   };
 
   const filteredMedia = mediaShowcase.filter((item) => {
-    if (currentTab === "all" || currentTab === "gallery") return true;
-    return false;
+    if (currentTab === "all" || currentTab === "recordings" || currentTab === "gallery") return true;
+    return item.category.toLowerCase() === currentTab.toLowerCase();
   });
-
-  const handleOpenVideoForTrack = (track: AudioTrack, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const matchedMedia = mediaShowcase.find(
-      (m) => (track.youtubeId && m.youtubeId === track.youtubeId) || m.title.toLowerCase().includes(track.title.toLowerCase())
-    );
-    if (matchedMedia) {
-      onSelectMedia(matchedMedia);
-    } else if (track.youtubeId || track.videoUrl) {
-      onSelectMedia({
-        id: `track-${track.id}`,
-        title: track.title,
-        category: (track.category === "Opera Aria" ? "Opera" : "Concert") as any,
-        type: "video",
-        thumbnailUrl: track.youtubeId ? `https://i.ytimg.com/vi/${track.youtubeId}/hqdefault.jpg` : "",
-        videoUrl: track.videoUrl || (track.youtubeId ? `https://www.youtube.com/watch?v=${track.youtubeId}` : ""),
-        youtubeId: track.youtubeId,
-        composer: track.composer,
-        work: track.work,
-        description: `Live vocal performance of ${track.title} (${track.work}) by soprano Sarah Guilmartin Lavery. Accompaniment: ${track.accompaniment}.`
-      });
-    }
-  };
 
   return (
     <section id="media" className="py-24 bg-[#FAF8F5] border-t border-stone-200 relative">
@@ -77,7 +50,7 @@ export default function MediaView({
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className="text-xs font-sans tracking-[0.3em] text-gold-700 uppercase font-bold">
-                RECORDINGS & GALLERY
+                RECORDINGS & PERFORMANCES
               </span>
               <a
                 href={artistData.socials.youtube}
@@ -96,18 +69,19 @@ export default function MediaView({
             <div className="w-16 h-[2px] bg-gold-500 mt-4" />
           </div>
 
-          {/* Media Format Filter */}
+          {/* Genre Category Filter */}
           <div className="flex items-center gap-1 bg-white p-1 border border-stone-200 rounded-md shadow-2xs">
             {[
-              { id: "all", label: "All Media" },
-              { id: "recordings", label: "Recordings" },
-              { id: "gallery", label: "Gallery" }
+              { id: "all", label: "All" },
+              { id: "opera", label: "Opera" },
+              { id: "sacred", label: "Sacred" },
+              { id: "recital", label: "Recital" }
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id as MediaTabType)}
                 className={`px-3.5 py-1.5 text-xs font-sans tracking-wider uppercase font-bold rounded transition-all cursor-pointer ${
-                  currentTab === tab.id
+                  currentTab === tab.id || (tab.id === "all" && (currentTab === "recordings" || currentTab === "gallery"))
                     ? "bg-navy-900 text-white shadow-sm"
                     : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
                 }`}
@@ -118,198 +92,28 @@ export default function MediaView({
           </div>
         </div>
 
-        {/* Section 1: Featured Interactive Audio Jukebox Player (Recordings) */}
-        {(currentTab === "all" || currentTab === "recordings") && (
-          <div className="mb-16 bg-white border border-stone-200 p-6 md:p-10 rounded-lg shadow-sm">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-8 border-b border-stone-200">
-              {/* Active Playing Track Info */}
-              <div className="flex items-center gap-5">
-                <button
-                  onClick={() => onTogglePlay(currentTrack)}
-                  className="w-16 h-16 rounded-full bg-navy-900 hover:bg-navy-850 text-gold-300 flex items-center justify-center shrink-0 shadow-md transition-transform active:scale-95 cursor-pointer"
-                  aria-label={isPlaying ? "Pause Aria" : "Play Aria"}
-                >
-                  {isPlaying ? (
-                    <Pause size={24} className="fill-gold-300" />
-                  ) : (
-                    <Play size={24} className="fill-gold-300 ml-1" />
-                  )}
-                </button>
-
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] tracking-widest uppercase px-2 py-0.5 bg-gold-50 text-navy-950 border border-gold-200 font-bold rounded">
-                      {isPlaying ? "Now Playing" : "Selected Aria"}
-                    </span>
-                    <span className="text-xs font-sans text-stone-500 font-medium">{currentTrack.category}</span>
-                    {currentTrack.youtubeId && (
-                      <span className="text-[10px] font-sans px-2 py-0.5 bg-red-50 text-red-700 border border-red-200 rounded font-bold flex items-center gap-1">
-                        <Youtube size={11} />
-                        <span>Video Available</span>
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 mt-1">
-                    {currentTrack.title}
-                  </h3>
-                  <p className="text-xs font-sans text-stone-600">
-                    {currentTrack.work} · <span className="text-gold-700 font-bold">{currentTrack.composer}</span>
-                  </p>
-                </div>
-              </div>
-
-              {/* Controls and Audio Waveform Visualizer */}
-              <div className="flex items-center gap-3">
-                {currentTrack.youtubeId && (
-                  <button
-                    onClick={(e) => handleOpenVideoForTrack(currentTrack, e)}
-                    className="flex items-center gap-1.5 px-3.5 py-2 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-md text-xs font-sans font-bold transition-colors cursor-pointer"
-                  >
-                    <Video size={14} />
-                    <span>Watch Video</span>
-                  </button>
-                )}
-
-                <div className="flex items-center gap-1.5 h-10 px-4 bg-stone-50 border border-stone-200 rounded-md">
-                  {[12, 28, 16, 32, 22, 38, 18, 30, 24, 14, 34, 20, 26, 12, 30, 18].map((h, i) => (
-                    <span
-                      key={i}
-                      style={{
-                        height: isPlaying ? `${Math.max(6, (h * (0.6 + 0.4 * Math.sin(i + Date.now() / 200))))}px` : "6px"
-                      }}
-                      className={`w-1 rounded-full transition-all duration-200 ${
-                        isPlaying ? "bg-gold-500" : "bg-stone-300"
-                      }`}
-                    />
-                  ))}
-                  <span className="ml-3 text-[11px] font-sans text-stone-500 font-medium">{currentTrack.duration}</span>
-                </div>
-              </div>
+        {/* Performance Gallery & Video Recordings */}
+        <div>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+            <div>
+              <span className="text-[11px] font-sans font-bold uppercase tracking-[0.25em] text-gold-700 block mb-1">
+                VOCAL HIGHLIGHTS
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+                Gallery & Video Performances
+              </h3>
             </div>
 
-            {/* Audio Track List */}
-            <div className="mt-6">
-              <p className="text-xs font-sans tracking-widest uppercase text-stone-600 font-bold mb-4">
-                Select from Studio, Concert & YouTube Recordings:
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {audioRecordings.map((track) => {
-                  const isCurrent = currentTrack.id === track.id;
-                  const isCurrentPlaying = isCurrent && isPlaying;
-                  return (
-                    <div
-                      key={track.id}
-                      onClick={() => onTogglePlay(track)}
-                      className={`w-full p-3.5 text-left rounded-md border transition-all flex items-center justify-between gap-4 cursor-pointer ${
-                        isCurrent
-                          ? "bg-gold-50/80 border-gold-300 shadow-sm text-stone-900"
-                          : "bg-white hover:bg-stone-50 border-stone-200 hover:border-stone-300 text-stone-700"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3 overflow-hidden">
-                        <div
-                          className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
-                            isCurrent
-                              ? "bg-navy-900 text-gold-300"
-                              : "bg-stone-100 text-stone-600"
-                          }`}
-                        >
-                          {isCurrentPlaying ? (
-                            <Pause size={12} className="fill-current" />
-                          ) : (
-                            <Play size={12} className="fill-current ml-0.5" />
-                          )}
-                        </div>
-
-                        <div className="truncate">
-                          <p className="font-serif text-sm font-bold text-stone-900 truncate">
-                            {track.title}
-                          </p>
-                          <p className="text-[11px] font-sans text-stone-500 truncate">
-                            {track.composer} · {track.work}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2 shrink-0">
-                        {track.youtubeId && (
-                          <button
-                            onClick={(e) => handleOpenVideoForTrack(track, e)}
-                            title="Watch live YouTube performance"
-                            className="p-1 text-red-600 hover:text-red-800 hover:bg-red-50 rounded transition-colors cursor-pointer"
-                          >
-                            <Youtube size={16} />
-                          </button>
-                        )}
-                        <span className="text-xs font-sans text-stone-400 font-medium">
-                          {track.duration}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Section 2: Performance Gallery */}
-        {(currentTab === "all" || currentTab === "gallery") && (
-          <div>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-              <div>
-                <span className="text-[11px] font-sans font-bold uppercase tracking-[0.25em] text-gold-700 block mb-1">
-                  VOCAL HIGHLIGHTS
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
-                  Gallery & Video Performances
-                </h3>
-              </div>
-
-              {/* View Layout Controls & Video Count */}
+              {/* Video Count */}
               <div className="flex items-center gap-3">
                 <span className="text-xs font-sans text-stone-500 font-medium">
                   {filteredMedia.length} Performances
                 </span>
-
-                <div className="hidden sm:flex items-center p-1 bg-white border border-stone-200 rounded-lg shadow-2xs">
-                  <button
-                    onClick={() => setLayoutMode("grid")}
-                    title="2×2 Balanced Grid View"
-                    aria-label="2x2 Balanced Grid View"
-                    className={`p-1.5 rounded transition-all cursor-pointer ${
-                      layoutMode === "grid"
-                        ? "bg-navy-900 text-gold-300 shadow-xs"
-                        : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
-                    }`}
-                  >
-                    <Columns2 size={16} />
-                  </button>
-                  <button
-                    onClick={() => setLayoutMode("compact")}
-                    title="4-Column Compact View"
-                    aria-label="4-Column Compact View"
-                    className={`p-1.5 rounded transition-all cursor-pointer ${
-                      layoutMode === "compact"
-                        ? "bg-navy-900 text-gold-300 shadow-xs"
-                        : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
-                    }`}
-                  >
-                    <LayoutGrid size={16} />
-                  </button>
-                </div>
               </div>
             </div>
 
-            {/* Video Cards Grid - Balanced 2x2 or Compact 4-Column */}
-            <div
-              className={
-                layoutMode === "grid"
-                  ? "grid grid-cols-1 md:grid-cols-2 gap-8"
-                  : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-              }
-            >
+            {/* Video Cards Grid - 4-Column Layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {filteredMedia.map((item) => (
                 <div
                   key={item.id}
@@ -427,7 +231,6 @@ export default function MediaView({
               ))}
             </div>
           </div>
-        )}
       </div>
     </section>
   );
