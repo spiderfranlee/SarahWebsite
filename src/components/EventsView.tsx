@@ -9,7 +9,6 @@ import {
   Music2,
   Sparkles,
   Building2,
-  CheckCircle2,
   ChevronRight,
   Disc,
   Feather
@@ -483,84 +482,18 @@ export default function EventsView({
               {corporateEventData.eventTypes.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-lg hover:border-gold-300 transition duration-300 space-y-3 shadow-2xs"
+                  className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-lg hover:border-gold-300 transition duration-300 space-y-3 shadow-2xs flex flex-col justify-start"
                 >
                   <div className="w-10 h-10 rounded-full bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-800">
                     <Sparkles size={18} />
                   </div>
-                  <h4 className="font-serif text-lg font-bold text-stone-900">
+                  <h4 className="font-serif text-lg font-bold text-stone-900 leading-snug">
                     {item.type}
                   </h4>
-                  <p className="text-stone-600 font-sans text-xs leading-relaxed">
-                    {item.details}
-                  </p>
                 </div>
               ))}
             </div>
 
-            {/* Corporate Repertoire Categories */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg space-y-6 shadow-sm">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200 pb-4">
-                <div>
-                  <h4 className="font-serif text-2xl font-bold text-stone-900">
-                    Signature Showpieces & High-Impact Arias
-                  </h4>
-                  <p className="text-stone-600 text-xs font-sans mt-1">
-                    Custom tailored to your event timeline, whether as an opening fanfare, awards accompaniment, or grand finale.
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {corporateEventData.repertoireCategories.map((cat, idx) => (
-                  <div key={idx} className="space-y-3 bg-white p-5 border border-stone-200 rounded-md shadow-2xs">
-                    <h5 className="text-xs font-sans uppercase tracking-widest text-gold-800 font-bold pb-2 border-b border-stone-200">
-                      {cat.category}
-                    </h5>
-                    <ul className="space-y-2 text-xs font-sans text-stone-700">
-                      {cat.pieces.map((piece, pIdx) => (
-                        <li key={pIdx} className="flex items-start gap-2">
-                          <span className="text-gold-600 text-sm leading-none">•</span>
-                          <span>{piece}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Corporate Specifications & Inquiries */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-sm">
-              <div className="lg:col-span-8 space-y-4">
-                <h4 className="font-serif text-2xl font-bold text-stone-900">
-                  Technical & Event Production Specifications
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {corporateEventData.features.map((feat, fIdx) => (
-                    <div key={fIdx} className="flex items-start gap-2 text-xs font-sans text-stone-800 font-medium">
-                      <CheckCircle2 size={15} className="text-gold-700 shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="lg:col-span-4 bg-white p-6 border border-gold-200 rounded-lg text-center space-y-4 shadow-2xs">
-                <h5 className="font-serif text-lg font-bold text-stone-900">
-                  Request a Formal Quote
-                </h5>
-                <p className="text-xs text-stone-600 font-sans">
-                  Direct management contact for enterprise booking, technical riders, and date availability.
-                </p>
-                <button
-                  onClick={() => onNavigateToContact && onNavigateToContact("Corporate Gala / Event Inquiry")}
-                  className="w-full py-2.5 bg-navy-900 text-gold-300 text-xs font-sans font-bold uppercase tracking-widest rounded hover:bg-navy-850 transition shadow cursor-pointer"
-                >
-                  Send an Inquiry
-                </button>
-              </div>
-            </div>
           </div>
         )}
       </div>
