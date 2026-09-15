@@ -1,4 +1,4 @@
-import { EventItem, MediaItem, NewsArticle, RepertoireRole, ConcertWork, SongCycle, AudioTrack, ReviewQuote, CeremonyMusicGuideData } from "./types";
+import { EventItem, MediaItem, GalleryPhoto, NewsArticle, RepertoireRole, ConcertWork, SongCycle, AudioTrack, ReviewQuote, CeremonyMusicGuideData } from "./types";
 
 // Artist configuration & biographies
 export const artistData = {
@@ -418,6 +418,31 @@ export const mediaShowcase: MediaItem[] = [
     description: "Sarah Guilmartin Lavery delivers a poignant, emotionally resonant interpretation of Blanche DuBois's aria 'I Can Smell the Sea Air' from André Previn's modern operatic triumph.",
     year: "2026"
   }
+];
+
+// Production & Performance Photography Gallery
+export const galleryPhotos: GalleryPhoto[] = [
+  { id: "photo-0430", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0430.JPG", title: "Stage Performance", category: "Performance" },
+  { id: "photo-0431", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0431.JPG", title: "Operatic Production", category: "Opera" },
+  { id: "photo-0432", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0432.JPG", title: "Artistic Portrait", category: "Portrait" },
+  { id: "photo-0433", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0433.JPG", title: "Vocal Recital", category: "Recital" },
+  { id: "photo-0434", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0434.JPG", title: "Operatic Characterization", category: "Opera" },
+  { id: "photo-0435", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0435.JPG", title: "Stage Production & Costuming", category: "Opera" },
+  { id: "photo-0436", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0436.JPG", title: "Concert Soloist", category: "Concert" },
+  { id: "photo-0437", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0437.JPG", title: "Lyrical Performance", category: "Performance" },
+  { id: "photo-0438", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0438.JPG", title: "Operatic Role", category: "Opera" },
+  { id: "photo-0439", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0439.JPG", title: "Sacred & Gala Performance", category: "Recital" },
+  { id: "photo-0440", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0440.JPG", title: "Portrait & Production", category: "Portrait" },
+  { id: "photo-0441", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0441.JPG", title: "Stage Performance", category: "Performance" },
+  { id: "photo-0442", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0442.JPG", title: "Operatic Aria", category: "Opera" },
+  { id: "photo-0444", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0444.JPG", title: "Concert Gala Presentation", category: "Concert" },
+  { id: "photo-0445", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0445.JPG", title: "Classical Recital", category: "Recital" },
+  { id: "photo-0446", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0446.JPG", title: "Dramatic Role Staging", category: "Opera" },
+  { id: "photo-0447", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0447.JPG", title: "Artistic Portrait Study", category: "Portrait" },
+  { id: "photo-0448", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0448.JPG", title: "Stage Expression", category: "Performance" },
+  { id: "photo-0454", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0454.JPG", title: "Performance Profile", category: "Performance" },
+  { id: "photo-0557", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0557.JPG", title: "Artistic Headshot", category: "Portrait" },
+  { id: "photo-0575", url: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/IMG_0575.JPG", title: "Stage & Concert Appearance", category: "Opera" }
 ];
 
 // Critical Reviews and Press Praise (The only press reviews)

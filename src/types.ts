@@ -89,6 +89,13 @@ export interface MediaItem {
   work?: string;
 }
 
+export interface GalleryPhoto {
+  id: string;
+  url: string;
+  title: string;
+  category: string;
+}
+
 export interface ReviewQuote {
   id: string;
   quote: string;

@@ -49,7 +49,8 @@ export default function App() {
       return;
     }
 
-    const element = document.getElementById(targetId);
+    const scrollTargetId = mediaTab === "gallery" ? "gallery" : targetId;
+    const element = document.getElementById(scrollTargetId) || document.getElementById(targetId);
     if (element) {
       const yOffset = -75; // Header offset
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
