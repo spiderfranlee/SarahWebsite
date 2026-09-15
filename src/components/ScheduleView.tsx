@@ -101,6 +101,26 @@ export default function ScheduleView() {
               >
                 {/* Left: Date badge & Production info */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+                  {/* Production Poster (if available) */}
+                  {evt.imageUrl && (
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded overflow-hidden shrink-0 border border-stone-800 bg-stone-950">
+                      <img
+                        src={evt.imageUrl}
+                        alt={evt.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          target.onerror = null;
+                          if (evt.fallbackImageUrl && target.src !== evt.fallbackImageUrl) {
+                            target.src = evt.fallbackImageUrl;
+                          }
+                        }}
+                      />
+                    </div>
+                  )}
+
                   {/* Date Column */}
                   <div className="w-36 shrink-0 border-l-2 border-gold-accent pl-3 sm:border-l-0 sm:pl-0 sm:text-center sm:bg-stone-950 sm:p-3 sm:border sm:border-stone-800 sm:rounded-sm">
                     <span className="text-xs font-sans font-bold tracking-widest text-gold-accent uppercase block">

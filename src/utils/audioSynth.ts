@@ -65,8 +65,8 @@ export function playAriaAudio(trackName: string) {
 
     playChord();
     intervalId = window.setInterval(playChord, 2600);
-  } catch (err) {
-    console.warn("Audio synthesis not available in this browser context:", err);
+  } catch {
+    // Audio synthesis not available or blocked in this browser context
   }
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Play, Pause, Film, Image as ImageIcon, Maximize2, Youtube, ExternalLink, Video } from "lucide-react";
+import { Play, Pause, Film, Image as ImageIcon, Maximize2, Youtube, ExternalLink, Video, Columns2, LayoutGrid } from "lucide-react";
 import { audioRecordings, mediaShowcase, artistData } from "../data";
 import { AudioTrack, MediaItem } from "../types";
 import VideoFacade from "./VideoFacade";
@@ -24,6 +24,7 @@ export default function MediaView({
   onSelectMedia
 }: MediaViewProps) {
   const [currentTab, setCurrentTab] = useState<MediaTabType>(activeMediaTab);
+  const [layoutMode, setLayoutMode] = useState<"grid" | "compact">("grid");
 
   useEffect(() => {
     if (activeMediaTab) {
@@ -256,27 +257,72 @@ export default function MediaView({
         {/* Section 2: Performance Gallery */}
         {(currentTab === "all" || currentTab === "gallery") && (
           <div>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="font-serif text-2xl font-bold text-stone-900">
-                Gallery & Video Performances
-              </h3>
-              <span className="text-xs font-sans text-stone-500 tracking-wider font-semibold">
-                {filteredMedia.length} Videos
-              </span>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+              <div>
+                <span className="text-[11px] font-sans font-bold uppercase tracking-[0.25em] text-gold-700 block mb-1">
+                  VOCAL HIGHLIGHTS
+                </span>
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+                  Gallery & Video Performances
+                </h3>
+              </div>
+
+              {/* View Layout Controls & Video Count */}
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-sans text-stone-500 font-medium">
+                  {filteredMedia.length} Performances
+                </span>
+
+                <div className="hidden sm:flex items-center p-1 bg-white border border-stone-200 rounded-lg shadow-2xs">
+                  <button
+                    onClick={() => setLayoutMode("grid")}
+                    title="2×2 Balanced Grid View"
+                    aria-label="2x2 Balanced Grid View"
+                    className={`p-1.5 rounded transition-all cursor-pointer ${
+                      layoutMode === "grid"
+                        ? "bg-navy-900 text-gold-300 shadow-xs"
+                        : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
+                    }`}
+                  >
+                    <Columns2 size={16} />
+                  </button>
+                  <button
+                    onClick={() => setLayoutMode("compact")}
+                    title="4-Column Compact View"
+                    aria-label="4-Column Compact View"
+                    className={`p-1.5 rounded transition-all cursor-pointer ${
+                      layoutMode === "compact"
+                        ? "bg-navy-900 text-gold-300 shadow-xs"
+                        : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
+                    }`}
+                  >
+                    <LayoutGrid size={16} />
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Video Cards Grid - Balanced 2x2 or Compact 4-Column */}
+            <div
+              className={
+                layoutMode === "grid"
+                  ? "grid grid-cols-1 md:grid-cols-2 gap-8"
+                  : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+              }
+            >
               {filteredMedia.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white border border-stone-200 hover:border-gold-300 rounded-lg overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+                  className="group bg-white border border-stone-200 hover:border-gold-400/80 rounded-xl overflow-hidden transition-all duration-300 shadow-xs hover:shadow-lg flex flex-col justify-between"
                 >
+                  {/* Video Thumbnail with Clean Framing (No duplicate text overlays) */}
                   {item.type === "video" ? (
                     <VideoFacade
                       youtubeId={item.youtubeId}
                       title={item.title}
-                      subtitle={item.composer ? `${item.composer}${item.work ? ` · ${item.work}` : ""}` : undefined}
                       thumbnailUrl={item.thumbnailUrl}
+                      aspectRatio="wide"
+                      showBottomBanner={false}
                       onOpenModal={() => onSelectMedia(item)}
                     />
                   ) : (
@@ -285,7 +331,7 @@ export default function MediaView({
                       role="button"
                       tabIndex={0}
                       aria-label={`View photo: ${item.title}`}
-                      className="group relative aspect-[16/10] overflow-hidden bg-stone-900 cursor-pointer"
+                      className="group relative aspect-[16/9] overflow-hidden bg-stone-900 cursor-pointer"
                     >
                       <img
                         src={item.thumbnailUrl}
@@ -307,32 +353,74 @@ export default function MediaView({
                     </div>
                   )}
 
-                  <div className="p-5 flex-1 flex flex-col justify-between">
+                  {/* Card Information Body */}
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div>
-                      {item.composer && (
-                        <span className="text-[11px] font-sans uppercase tracking-wider text-gold-700 font-bold block mb-1">
-                          {item.composer} {item.work ? `· ${item.work}` : ""}
+                      {/* Composer & Category Pill */}
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        {item.composer ? (
+                          <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-gold-700 font-bold block truncate">
+                            {item.composer}
+                          </span>
+                        ) : (
+                          <span />
+                        )}
+                        <span className="shrink-0 text-[10px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 bg-stone-100 text-stone-600 rounded">
+                          {item.category}
                         </span>
-                      )}
+                      </div>
+
+                      {/* Main Title */}
                       <h4
                         onClick={() => onSelectMedia(item)}
-                        className="font-serif text-base sm:text-lg font-bold text-stone-900 hover:text-navy-900 transition-colors cursor-pointer line-clamp-1"
+                        className="font-serif text-xl sm:text-2xl font-bold text-stone-900 group-hover:text-navy-950 transition-colors cursor-pointer leading-snug line-clamp-2"
                       >
                         {item.title}
                       </h4>
-                      <p className="text-xs font-sans text-stone-600 mt-1 line-clamp-2 leading-relaxed">
+
+                      {/* Work/Role */}
+                      {item.work && (
+                        <p className="text-xs font-sans text-stone-500 font-medium italic mt-1 line-clamp-1">
+                          {item.work}
+                        </p>
+                      )}
+
+                      {/* Musical Synopsis */}
+                      <p className="text-xs sm:text-sm font-sans text-stone-600 mt-2.5 leading-relaxed line-clamp-3">
                         {item.description}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-3 mt-3 border-t border-stone-100 text-[10px] font-sans text-stone-500 font-semibold tracking-wider">
+                    {/* Card Footer Actions */}
+                    <div className="flex items-center justify-between pt-4 border-t border-stone-100 text-xs font-sans">
                       <button
                         onClick={() => onSelectMedia(item)}
-                        className="text-navy-900 hover:text-gold-700 font-bold uppercase transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-navy-900 hover:bg-navy-850 text-gold-300 hover:text-white rounded-md font-bold tracking-wider uppercase transition-all duration-200 shadow-xs cursor-pointer group-hover:bg-gold-600 group-hover:text-white"
                       >
-                        {item.type === "video" ? "Watch Video" : "View Photo"}
+                        <Play size={12} className="fill-current" />
+                        <span>Watch Video</span>
                       </button>
-                      {item.year && <span className="font-mono text-stone-400">{item.year}</span>}
+
+                      <div className="flex items-center gap-3">
+                        {item.youtubeId && (
+                          <a
+                            href={`https://www.youtube.com/watch?v=${item.youtubeId}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="text-stone-400 hover:text-red-600 transition-colors p-1 rounded hover:bg-stone-50"
+                            title="Open directly on YouTube"
+                            aria-label="Open on YouTube"
+                          >
+                            <Youtube size={17} />
+                          </a>
+                        )}
+                        {item.year && (
+                          <span className="font-mono text-xs text-stone-400 font-medium">
+                            {item.year}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

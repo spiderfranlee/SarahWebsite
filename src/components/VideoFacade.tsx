@@ -9,6 +9,7 @@ interface VideoFacadeProps {
   thumbnailUrl: string;
   duration?: string;
   aspectRatio?: "video" | "wide";
+  showBottomBanner?: boolean;
   onOpenModal?: () => void;
   inlinePlay?: boolean;
 }
@@ -19,7 +20,8 @@ export default function VideoFacade({
   subtitle,
   thumbnailUrl,
   duration,
-  aspectRatio = "video",
+  aspectRatio = "wide",
+  showBottomBanner = false,
   onOpenModal,
   inlinePlay = false,
 }: VideoFacadeProps) {
@@ -103,8 +105,8 @@ export default function VideoFacade({
         </div>
       </div>
 
-      {/* Bottom Info Banner */}
-      {(title || subtitle) && (
+      {/* Bottom Info Banner (optional, hidden in cards to prevent duplicate text) */}
+      {showBottomBanner && (title || subtitle) && (
         <div className="absolute bottom-0 left-0 right-0 p-4 text-left pointer-events-none">
           {subtitle && (
             <p className="text-[11px] font-sans font-semibold tracking-wider uppercase text-gold-300 drop-shadow-xs line-clamp-1">

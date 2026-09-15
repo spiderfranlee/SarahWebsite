@@ -208,21 +208,35 @@ export default function EventsView({
                   >
                     {/* Left & Middle: Poster / Date & Production Details */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 flex-1">
-                      {/* Event Poster / Stage Visual */}
+                      {/* Event Poster / Official Production Artwork */}
                       {evt.imageUrl && (
-                        <div className="relative w-full sm:w-32 h-36 sm:h-28 rounded-lg overflow-hidden shrink-0 border border-stone-300/80 shadow-2xs bg-stone-900">
+                        <a
+                          href={evt.ticketUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={`View official production for ${evt.title}`}
+                          className="relative w-full sm:w-36 md:w-44 h-48 sm:h-32 md:h-36 rounded-lg overflow-hidden shrink-0 border border-stone-200/90 shadow-2xs bg-navy-950 block group/poster"
+                        >
                           <img
                             src={evt.imageUrl}
-                            alt={evt.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            alt={`${evt.title} official production artwork`}
+                            className="w-full h-full object-cover group-hover/poster:scale-105 transition-transform duration-500"
                             loading="lazy"
+                            referrerPolicy="no-referrer"
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              target.onerror = null;
+                              if (evt.fallbackImageUrl && target.src !== evt.fallbackImageUrl) {
+                                target.src = evt.fallbackImageUrl;
+                              }
+                            }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-2">
-                            <span className="text-[10px] font-sans font-bold text-white tracking-wider uppercase truncate">
+                          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-transparent to-transparent flex items-end p-2.5">
+                            <span className="text-[10px] font-sans font-bold text-gold-300 tracking-wider uppercase truncate">
                               {evt.domain || evt.company}
                             </span>
                           </div>
-                        </div>
+                        </a>
                       )}
 
                       {/* Date Badge */}

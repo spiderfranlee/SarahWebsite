@@ -15,6 +15,7 @@ export interface EventItem {
   category: "Opera" | "Concert" | "Recital" | "Masterclass";
   notes?: string; // e.g. "Sarah will perform as soprano chorus in these productions."
   imageUrl?: string;
+  fallbackImageUrl?: string;
   domain?: string; // e.g. "bordgaisenergytheatre.ie"
   originalFilename?: string;
 }

@@ -19,7 +19,7 @@ export const artistData = {
     territory: "Worldwide Representation"
   },
   socials: {
-    facebook: "https://www.facebook.com/share/1CCHTwkVZ8/?mibextid=wwXIfr",
+    facebook: "https://www.facebook.com/profile.php?id=61551493116970",
     instagram: "https://instagram.com",
     youtube: "https://www.youtube.com/@SarahGuilmartinLavery-soprano",
     linkedin: "https://linkedin.com",
@@ -248,10 +248,11 @@ export const scheduleData: EventItem[] = [
     conductor: "Paul Curran (Dir.) / INO Orchestra",
     director: "Paul Curran",
     status: "Get Tickets",
-    ticketUrl: "https://www.bordgaisenergytheatre.ie",
+    ticketUrl: "https://www.bordgaisenergytheatre.ie/show/carmen-with-irish-national-opera/",
     category: "Opera",
     notes: "Sarah will perform as soprano chorus in these productions.",
-    imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://www.bordgaisenergytheatre.ie/wp-content/uploads/2026/03/Carmen-2026_HERO_2880px-w-x-1800px-h.jpg",
+    fallbackImageUrl: "https://www.irishnationalopera.ie/content/banners/Carmen-2026-Production-Image.jpg",
     domain: "bordgaisenergytheatre.ie",
     originalFilename: "Carmen-2026_HERO_2880px-w-x-1800px-h.jpg"
   },
@@ -266,10 +267,10 @@ export const scheduleData: EventItem[] = [
     venue: "National Concert Hall (NCH)",
     city: "Dublin, Ireland",
     status: "Get Tickets",
-    ticketUrl: "https://www.nch.ie",
+    ticketUrl: "https://www.nch.ie/all-events-listing/magic-of-the-musicals/",
     category: "Concert",
     notes: "Sarah will perform as soprano soloist for these concerts.",
-    imageUrl: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://tickets.nch.ie/content/Images/NCH-2018/EVENT%20IMAGES/November-2026/26_11_20-Magic-of-the-Musicals.jpg",
     domain: "nch.ie",
     originalFilename: "26_11_20-Magic-of-the-Musicals.jpg"
   },
@@ -286,10 +287,11 @@ export const scheduleData: EventItem[] = [
     conductor: "Valerio Galli",
     director: "David McVicar",
     status: "Get Tickets",
-    ticketUrl: "https://www.bordgaisenergytheatre.ie",
+    ticketUrl: "https://www.bordgaisenergytheatre.ie/show/turandot/",
     category: "Opera",
     notes: "Sarah will perform as soprano chorus in these productions.",
-    imageUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://www.bordgaisenergytheatre.ie/wp-content/uploads/2026/04/INO-Turnadot_Hero_2880px-w-x-1800px-h.jpg",
+    fallbackImageUrl: "https://www.irishnationalopera.ie/content/banners/INO-Turandot_Season-Image.jpg",
     domain: "bordgaisenergytheatre.ie",
     originalFilename: "INO-Turnadot_Hero_2880px-w-x-1800px-h.jpg"
   },
@@ -304,12 +306,13 @@ export const scheduleData: EventItem[] = [
     venue: "Gaiety Theatre",
     city: "Dublin, Ireland",
     status: "Get Tickets",
-    ticketUrl: "https://www.gaietytheatre.ie",
+    ticketUrl: "https://www.gaietytheatre.ie/events/eugene-onegin/",
     category: "Opera",
     notes: "Sarah will perform as soprano chorus in these productions.",
-    imageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://www.gaietytheatre.ie/wp-content/uploads/2026/04/INO-Onegin_Poster-Image-500w-X-700h-px.jpg",
+    fallbackImageUrl: "https://www.irishnationalopera.ie/content/banners/INO-Onegin_Season-Image.jpg",
     domain: "gaietytheatre.ie",
-    originalFilename: "cropped-Favicon-Gaiety-180x180.png"
+    originalFilename: "INO-Onegin_Poster-Image-500w-X-700h-px.jpg"
   },
   {
     id: "sch-7",
@@ -391,7 +394,7 @@ export const audioRecordings: AudioTrack[] = [
 export const mediaShowcase: MediaItem[] = [
   {
     id: "med-yt-1",
-    title: "Glück, das mir verblieb | Korngold | Soprano Sarah Guilmartin Lavery",
+    title: "Glück, das mir verblieb",
     category: "Opera",
     type: "video",
     thumbnailUrl: "https://i.ytimg.com/vi/UBx3agwNmB0/hqdefault.jpg",
@@ -404,7 +407,7 @@ export const mediaShowcase: MediaItem[] = [
   },
   {
     id: "med-yt-2",
-    title: "Ave Maria | Soprano Sarah Guilmartin Lavery",
+    title: "Ave Maria",
     category: "Sacred",
     type: "video",
     thumbnailUrl: "https://i.ytimg.com/vi/ZbaF-iFgMzw/hqdefault.jpg",
@@ -417,7 +420,7 @@ export const mediaShowcase: MediaItem[] = [
   },
   {
     id: "med-yt-3",
-    title: "I could have danced all night (My Fair Lady) | Soprano Sarah Guilmartin Lavery",
+    title: "I Could Have Danced All Night",
     category: "Recital",
     type: "video",
     thumbnailUrl: "https://i.ytimg.com/vi/zQ1eus1CR-Q/hqdefault.jpg",
@@ -430,7 +433,7 @@ export const mediaShowcase: MediaItem[] = [
   },
   {
     id: "med-yt-4",
-    title: "I can smell the sea air | Andre Previn | Soprano Sarah Guilmartin Lavery",
+    title: "I Can Smell the Sea Air",
     category: "Opera",
     type: "video",
     thumbnailUrl: "https://i.ytimg.com/vi/xa0fVPR613I/hqdefault.jpg",
@@ -438,7 +441,7 @@ export const mediaShowcase: MediaItem[] = [
     youtubeId: "xa0fVPR613I",
     composer: "André Previn",
     work: "A Streetcar Named Desire (Blanche DuBois)",
-    description: "Sarah Guilmartin Lavery delivers a poignant, emotionally resonant interpretation of Blanche DuBois's aria 'I can smell the sea air' from André Previn's modern operatic triumph.",
+    description: "Sarah Guilmartin Lavery delivers a poignant, emotionally resonant interpretation of Blanche DuBois's aria 'I Can Smell the Sea Air' from André Previn's modern operatic triumph.",
     year: "2026"
   }
 ];
