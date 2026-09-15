@@ -40,9 +40,9 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
         <div className="max-w-3xl">
           {/* Artist Large Display Name */}
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-stone-950 leading-[1.02] mb-5">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl italic font-normal tracking-tight text-navy-800 leading-[1.02] mb-5">
             Sarah Guilmartin <br />
-            <span className="italic font-normal text-navy-800">Lavery</span>
+            Lavery
           </h1>
 
           {/* Subtitle / Critical Quote */}
