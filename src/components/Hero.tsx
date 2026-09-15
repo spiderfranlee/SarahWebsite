@@ -1,14 +1,14 @@
 import React from "react";
-import { Calendar, Play, ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { Calendar, ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import { artistData } from "../data";
 
 interface HeroProps {
   heroImage: string;
   onNavigate: (section: string) => void;
-  onPlayAria: () => void;
+  onPlayAria?: () => void;
 }
 
-export default function Hero({ heroImage, onNavigate, onPlayAria }: HeroProps) {
+export default function Hero({ heroImage, onNavigate }: HeroProps) {
   return (
     <section
       id="hero-section"
@@ -70,18 +70,9 @@ export default function Hero({ heroImage, onNavigate, onPlayAria }: HeroProps) {
             </button>
 
             <button
-              id="hero-play-aria-btn"
-              onClick={onPlayAria}
-              className="px-6 py-3.5 bg-white hover:bg-gold-50 text-stone-900 text-xs font-sans tracking-[0.2em] font-bold uppercase transition-all duration-300 border border-stone-300 hover:border-gold-300 rounded shadow-sm flex items-center gap-2 cursor-pointer"
-            >
-              <Play size={14} className="text-gold-600 fill-gold-600" />
-              <span>Listen to Arias</span>
-            </button>
-
-            <button
               id="hero-bio-btn"
               onClick={() => onNavigate("about")}
-              className="px-5 py-3.5 text-stone-700 hover:text-navy-800 text-xs font-sans tracking-[0.2em] font-bold uppercase transition-colors cursor-pointer"
+              className="px-6 py-3.5 bg-white hover:bg-stone-50 text-stone-900 hover:text-navy-950 text-xs font-sans tracking-[0.2em] font-bold uppercase transition-all duration-300 border border-stone-300 hover:border-gold-300 rounded shadow-xs cursor-pointer"
             >
               Read Biography
             </button>

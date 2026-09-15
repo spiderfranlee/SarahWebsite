@@ -125,7 +125,6 @@ export default function App() {
         <Hero
           heroImage={HERO_IMAGE}
           onNavigate={handleNavigate}
-          onPlayAria={() => handleTogglePlayTrack(audioRecordings[0])}
         />
 
         {/* 2. About - Artistic Profile, Education & Press Kit */}
