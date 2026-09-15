@@ -285,7 +285,7 @@ export default function EventsView({
             <div className="bg-gradient-to-br from-gold-50 via-white to-stone-50 border border-gold-200 p-8 sm:p-10 rounded-lg shadow-sm relative overflow-hidden">
               <div className="max-w-3xl relative z-10 space-y-4">
                 <span className="text-xs font-sans tracking-[0.25em] text-navy-950 uppercase font-bold flex items-center gap-2">
-                  <Heart size={14} className="fill-gold-600 text-gold-600" /> Wedding Ceremony & Drinks Reception Vocalist
+                  <Heart size={14} className="fill-gold-600 text-gold-600" /> Wedding Ceremony Vocalist
                 </span>
                 <h3 className="font-serif text-2xl sm:text-4xl font-bold text-stone-900">
                   {weddingEventData.title}
@@ -298,7 +298,7 @@ export default function EventsView({
                     onClick={() => onNavigateToContact && onNavigateToContact("Wedding Ceremony Booking Inquiry")}
                     className="px-6 py-3 bg-navy-900 text-gold-300 text-xs font-sans tracking-widest uppercase font-bold rounded hover:bg-navy-850 transition shadow-sm flex items-center gap-2 cursor-pointer"
                   >
-                    <span>Check Wedding Date & Inquire</span>
+                    <span>Send an Inquiry</span>
                     <ChevronRight size={14} />
                   </button>
                 </div>
@@ -306,7 +306,7 @@ export default function EventsView({
             </div>
 
             {/* Ceremony Formats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {weddingEventData.ceremonyTypes.map((item, idx) => (
                 <div
                   key={idx}
@@ -323,83 +323,6 @@ export default function EventsView({
                   </p>
                 </div>
               ))}
-            </div>
-
-            {/* Wedding Repertoire Showcase */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg space-y-6 shadow-sm">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200 pb-4">
-                <div>
-                  <h4 className="font-serif text-2xl font-bold text-stone-900">
-                    Popular Wedding Ceremony Repertoire
-                  </h4>
-                  <p className="text-stone-600 text-xs font-sans mt-1">
-                    Couples are welcome to request special songs or personal arrangements.
-                  </p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <a
-                    href="#repertoire"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-gold-50 hover:bg-gold-100 text-navy-950 text-xs font-sans font-bold uppercase tracking-wider rounded border border-gold-200 transition-colors cursor-pointer"
-                  >
-                    <span>Full Ceremony Music Guide</span>
-                    <ChevronRight size={13} />
-                  </a>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {weddingEventData.repertoireCategories.map((cat, idx) => (
-                  <div key={idx} className="space-y-3 bg-white p-5 border border-stone-200 rounded-md shadow-2xs">
-                    <h5 className="text-xs font-sans uppercase tracking-widest text-gold-800 font-bold pb-2 border-b border-stone-200">
-                      {cat.category}
-                    </h5>
-                    <ul className="space-y-2 text-xs font-sans text-stone-700">
-                      {cat.pieces.map((piece, pIdx) => (
-                        <li key={pIdx} className="flex items-start gap-2">
-                          <span className="text-gold-600 text-sm leading-none">•</span>
-                          <span>{piece}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Accompaniment Options & Consultation */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg shadow-sm">
-              <div className="space-y-4">
-                <h4 className="font-serif text-2xl font-bold text-stone-900">
-                  Accompaniment & Ensemble Options
-                </h4>
-                <p className="text-stone-600 text-sm font-sans leading-relaxed">
-                  Sarah works closely with Ireland's finest professional church organists, concert harpists, string players, and pianists to deliver a polished, cohesive musical experience.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                  {weddingEventData.accompaniment.map((opt, oIdx) => (
-                    <div key={oIdx} className="flex items-center gap-2 text-xs font-sans text-stone-800 bg-white p-2.5 rounded border border-stone-200 shadow-2xs">
-                      <CheckCircle2 size={14} className="text-gold-700 shrink-0" />
-                      <span className="font-medium">{opt}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-white p-6 border border-gold-200 rounded-lg space-y-4 text-center shadow-xs">
-                <Sparkles className="mx-auto text-gold-700" size={28} />
-                <h5 className="font-serif text-xl font-bold text-stone-900">
-                  Personal Musical Consultation
-                </h5>
-                <p className="text-stone-600 text-xs font-sans leading-relaxed">
-                  Includes personalized telephone / video consultation to guide you through music placement, liturgical permissions, and accompanist coordination.
-                </p>
-                <button
-                  onClick={() => onNavigateToContact && onNavigateToContact("Wedding Ceremony Booking Inquiry")}
-                  className="w-full py-2.5 bg-navy-900 text-gold-300 text-xs font-sans font-bold uppercase tracking-widest rounded hover:bg-navy-850 transition cursor-pointer"
-                >
-                  Inquire for Your Wedding
-                </button>
-              </div>
             </div>
           </div>
         )}
@@ -424,7 +347,7 @@ export default function EventsView({
                     onClick={() => onNavigateToContact && onNavigateToContact("Funeral & Memorial Service Inquiry")}
                     className="px-6 py-3 bg-navy-900 text-gold-300 text-xs font-sans tracking-widest uppercase font-bold rounded hover:bg-navy-850 transition shadow-sm flex items-center gap-2 cursor-pointer"
                   >
-                    <span>Request Funeral Music Support</span>
+                    <span>Send an Inquiry</span>
                     <ChevronRight size={14} />
                   </button>
                 </div>
@@ -522,7 +445,7 @@ export default function EventsView({
                 onClick={() => onNavigateToContact && onNavigateToContact("Funeral & Memorial Service Inquiry")}
                 className="shrink-0 px-6 py-2.5 bg-white hover:bg-navy-900 hover:text-gold-300 text-stone-800 text-xs font-sans uppercase tracking-wider font-bold rounded border border-stone-300 transition cursor-pointer shadow-2xs"
               >
-                Direct Inquiry
+                Send an Inquiry
               </button>
             </div>
           </div>
@@ -548,7 +471,7 @@ export default function EventsView({
                     onClick={() => onNavigateToContact && onNavigateToContact("Corporate Gala / Event Inquiry")}
                     className="px-6 py-3 bg-navy-900 text-gold-300 text-xs font-sans tracking-widest uppercase font-bold rounded hover:bg-navy-850 transition shadow-sm flex items-center gap-2 cursor-pointer"
                   >
-                    <span>Request Corporate Performance Proposal</span>
+                    <span>Send an Inquiry</span>
                     <ChevronRight size={14} />
                   </button>
                 </div>
@@ -634,7 +557,7 @@ export default function EventsView({
                   onClick={() => onNavigateToContact && onNavigateToContact("Corporate Gala / Event Inquiry")}
                   className="w-full py-2.5 bg-navy-900 text-gold-300 text-xs font-sans font-bold uppercase tracking-widest rounded hover:bg-navy-850 transition shadow cursor-pointer"
                 >
-                  Contact Management
+                  Send an Inquiry
                 </button>
               </div>
             </div>

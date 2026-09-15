@@ -480,10 +480,6 @@ export const weddingEventData = {
     {
       type: "Civil & Humanist Ceremonies",
       details: "Romantic classical arias, modern love ballads, acoustic crossovers, and timeless Irish melodies tailored to non-religious or spiritualist wedding settings."
-    },
-    {
-      type: "Drinks Reception & Canapés",
-      details: "Elegant background vocal serenades, jazz standards, bel canto favourites, and light classical pieces as your guests arrive and celebrate."
     }
   ],
   repertoireCategories: [

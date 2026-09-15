@@ -352,7 +352,7 @@ export default function RepertoireView({ onNavigateToContact }: RepertoireViewPr
                     onClick={() => handleContactClick("Wedding Ceremony")}
                     className="px-5 py-2.5 bg-navy-900 hover:bg-navy-850 text-gold-300 text-xs font-sans font-bold tracking-wider uppercase rounded-md shadow-sm transition-colors cursor-pointer text-center"
                   >
-                    Inquire About Ceremony Music
+                    Send an Inquiry
                   </button>
                 </div>
               </div>
