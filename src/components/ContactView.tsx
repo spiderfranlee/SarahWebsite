@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, Globe, Building, AlertCircle, Loader2, Facebook, Instagram, Youtube } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { artistData } from "../data";
 
 interface ContactViewProps {
@@ -66,165 +66,29 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
 
   return (
     <section id="contact" className="py-24 bg-white border-t border-stone-200 relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-4xl mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="mb-12 text-center">
           <span className="text-xs font-sans tracking-[0.3em] text-gold-700 uppercase font-bold block mb-2">
-            REPRESENTATION & INQUIRIES
+            INQUIRIES
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight">
             Contact
           </h2>
-          <div className="w-16 h-[2px] bg-gold-500 mt-4 mb-4" />
-          <p className="text-stone-700 font-sans text-base max-w-2xl leading-relaxed">
-            Get in touch with Sarah directly using the form below, and follow her on social media.
+          <div className="w-16 h-[2px] bg-gold-500 mt-4 mb-4 mx-auto" />
+          <p className="text-stone-700 font-sans text-base max-w-xl mx-auto leading-relaxed">
+            Get in touch with Sarah directly using the form below.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Direct Contact & Booking Information */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Direct Inquiries Primary Box */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg shadow-sm space-y-6">
-              <div>
-                <span className="text-[10px] font-sans tracking-widest uppercase text-gold-700 font-bold block mb-1">
-                  Direct Inquiries & Bookings
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-stone-900">
-                  Sarah Guilmartin Lavery
-                </h3>
-                <p className="text-xs font-sans text-stone-500 font-medium mt-1">
-                  Irish Lyric Soprano
-                </p>
-              </div>
-
-              <div className="space-y-4 text-xs font-sans text-stone-700">
-                <div className="flex items-start gap-3 p-3.5 bg-white border border-stone-200 rounded-md">
-                  <Mail size={18} className="text-gold-700 shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-[10px] uppercase font-sans tracking-wider text-stone-500 font-bold mb-0.5">
-                      Direct Email Contact
-                    </p>
-                    <a
-                      href={`mailto:${artistData.email}`}
-                      className="text-stone-900 hover:text-gold-700 font-bold text-sm underline transition-colors break-all"
-                    >
-                      {artistData.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <MapPin size={16} className="text-gold-700 shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-stone-500 font-medium">Base Locations:</p>
-                    <p className="font-bold text-stone-900">{artistData.location}</p>
-                    <p className="text-[11px] text-stone-500">Available for worldwide engagements & travel</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Globe size={16} className="text-gold-700 shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-stone-500 font-medium">Response Time:</p>
-                    <p className="font-bold text-stone-900">Within 24–48 hours</p>
-                  </div>
-                </div>
-
-                {/* Social Media Links */}
-                <div className="pt-2 border-t border-stone-200">
-                  <p className="text-[11px] font-sans uppercase tracking-wider text-stone-500 font-bold mb-2.5">
-                    Social Media
-                  </p>
-                  <div className="flex items-center gap-2.5">
-                    <a
-                      id="contact-facebook"
-                      href={artistData.socials.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-gold-50 border border-stone-200 hover:border-gold-300 text-stone-700 hover:text-navy-950 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
-                      aria-label="Facebook"
-                    >
-                      <Facebook size={14} className="text-blue-600" />
-                      <span>Facebook</span>
-                    </a>
-                    <a
-                      id="contact-instagram"
-                      href={artistData.socials.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-gold-50 border border-stone-200 hover:border-gold-300 text-stone-700 hover:text-navy-950 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
-                      aria-label="Instagram"
-                    >
-                      <Instagram size={14} className="text-pink-600" />
-                      <span>Instagram</span>
-                    </a>
-                    <a
-                      id="contact-youtube"
-                      href={artistData.socials.youtube}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-gold-50 border border-stone-200 hover:border-gold-300 text-stone-700 hover:text-navy-950 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
-                      aria-label="YouTube"
-                    >
-                      <Youtube size={14} className="text-red-600" />
-                      <span>YouTube</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-stone-200">
-                <p className="text-[11px] font-sans uppercase tracking-wider text-stone-500 font-bold mb-2">
-                  Engagement Categories
-                </p>
-                <ul className="grid grid-cols-1 gap-1.5 text-xs text-stone-600 font-sans">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
-                    <span>Wedding Ceremonies & Private Receptions</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
-                    <span>Operatic Engagements & Guest Roles</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
-                    <span>Orchestral Galas & Oratorio Solos</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
-                    <span>Private Vocal Coaching & Masterclasses</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Management Box (if configured) */}
-            {artistData.management.agency && (
-              <div className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-lg shadow-sm space-y-4">
-                <span className="text-[10px] font-sans tracking-widest uppercase text-stone-500 font-bold block">
-                  Representation
-                </span>
-                <h4 className="font-serif text-lg font-bold text-stone-900">
-                  {artistData.management.agency}
-                </h4>
-                {artistData.management.email && (
-                  <p className="text-xs text-stone-600">
-                    Email: <a href={`mailto:${artistData.management.email}`} className="font-bold text-stone-900 underline">{artistData.management.email}</a>
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* Right Column: Direct Message Form */}
-          <div className="lg:col-span-7 bg-[#FAF8F5] border border-stone-200 p-8 md:p-10 rounded-lg shadow-sm">
-            <h3 className="font-serif text-2xl font-bold text-stone-900 mb-2">
-              Send an Inquiry
-            </h3>
-            <p className="text-xs font-sans text-stone-600 mb-8">
-              Get in touch with Sarah directly using the form below, and follow her on social media.
-            </p>
+        {/* Direct Message Form */}
+        <div className="bg-[#FAF8F5] border border-stone-200 p-8 md:p-12 rounded-xl shadow-sm">
+          <h3 className="font-serif text-2xl font-bold text-stone-900 mb-2">
+            Send an Inquiry
+          </h3>
+          <p className="text-xs font-sans text-stone-600 mb-8">
+            Please fill out your event details, timeline, or engagement questions.
+          </p>
 
             {isSubmitted ? (
               <div className="p-8 bg-white border border-gold-200 rounded-lg text-center space-y-4 shadow-sm animate-fadeIn">
@@ -382,7 +246,6 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
             )}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 }

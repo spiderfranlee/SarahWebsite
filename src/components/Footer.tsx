@@ -36,9 +36,6 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </p>
               </div>
             </div>
-            <p className="text-xs font-sans text-stone-600 max-w-lg leading-relaxed">
-              Available for opera engagements, orchestral concerts, sacred ceremonies, and masterclasses worldwide.
-            </p>
           </div>
 
           {/* Social & Contact Actions */}

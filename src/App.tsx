@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import BiographyView from "./components/BiographyView";
 import EventsView, { EventTabType } from "./components/EventsView";
-import RepertoireView from "./components/RepertoireView";
 import MediaView, { MediaTabType } from "./components/MediaView";
 import ReviewsView from "./components/ReviewsView";
 import ContactView from "./components/ContactView";
@@ -68,7 +67,7 @@ export default function App() {
   // Track active section during scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "media", "engagements", "repertoire", "reviews", "contact"];
+      const sections = ["home", "about", "media", "engagements", "reviews", "contact"];
       const scrollPosition = window.scrollY + 140;
 
       for (const sectionId of sections) {
@@ -146,9 +145,6 @@ export default function App() {
           onTabChange={(tab) => setActiveEventTab(tab)}
           onNavigateToContact={handleNavigateToContactWithInquiry}
         />
-
-        {/* Complete Operatic & Concert Repertoire Index */}
-        <RepertoireView onNavigateToContact={handleNavigateToContactWithInquiry} />
 
         {/* Critical Reviews & Press Acclaim */}
         <ReviewsView />
