@@ -1,5 +1,5 @@
 import React from "react";
-import { Download, Award, FileText, CheckCircle2 } from "lucide-react";
+import { Award, CheckCircle2 } from "lucide-react";
 import { artistData } from "../data";
 
 interface BiographyViewProps {
@@ -58,64 +58,6 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
               </div>
             </div>
 
-            {/* Press Kit & Downloads Widget */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-md shadow-sm">
-              <h3 className="font-serif text-lg font-bold text-stone-900 mb-2 flex items-center gap-2">
-                <FileText size={18} className="text-navy-800" />
-                <span>Press Kit & Downloads</span>
-              </h3>
-              <p className="text-xs text-stone-600 font-sans leading-relaxed mb-5">
-                Download official high-resolution headshots, promoter biography, and complete repertoire list.
-              </p>
-
-              <div className="space-y-2.5">
-                <a
-                  href="#download-bio-pdf"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-gold-50 border border-stone-300 hover:border-gold-300 text-stone-800 hover:text-navy-950 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
-                >
-                  <span className="flex items-center gap-2">
-                    <Download size={14} className="text-gold-600 group-hover:translate-y-0.5 transition-transform" />
-                    <span>Download Full Biography (PDF)</span>
-                  </span>
-                  <span className="text-[10px] text-stone-400 font-bold">PDF</span>
-                </a>
-
-                <a
-                  href="#download-repertoire"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-gold-50 border border-stone-300 hover:border-gold-300 text-stone-800 hover:text-navy-950 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
-                >
-                  <span className="flex items-center gap-2">
-                    <Download size={14} className="text-gold-600 group-hover:translate-y-0.5 transition-transform" />
-                    <span>Complete Repertoire & CV</span>
-                  </span>
-                  <span className="text-[10px] text-stone-400 font-bold">PDF</span>
-                </a>
-
-                <a
-                  href="#download-headshots"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.open(portraitImage, "_blank");
-                  }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-gold-50 border border-stone-300 hover:border-gold-300 text-stone-800 hover:text-navy-950 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
-                >
-                  <span className="flex items-center gap-2">
-                    <Download size={14} className="text-gold-600 group-hover:translate-y-0.5 transition-transform" />
-                    <span>High-Res Promoter Headshots</span>
-                  </span>
-                  <span className="text-[10px] text-stone-400 font-bold">JPG</span>
-                </a>
-              </div>
-            </div>
-
             {/* Awards & Bursaries */}
             <div className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-md shadow-sm">
               <h3 className="font-serif text-lg font-bold text-stone-900 mb-4 flex items-center gap-2">
@@ -147,12 +89,9 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
 
             {/* Narrative Sections */}
             {artistData.bioSections.map((section, idx) => (
-              <div key={idx} className="space-y-4">
-                <h3 className="font-serif text-2xl font-bold text-stone-900 tracking-wide flex items-center gap-3">
-                  <span className="text-xs font-sans tracking-widest text-gold-700 font-bold">
-                    0{idx + 1}
-                  </span>
-                  <span>{section.title}</span>
+              <div key={idx} className="space-y-3">
+                <h3 className="font-serif text-2xl font-bold text-stone-900 tracking-tight">
+                  {section.title}
                 </h3>
                 <div className="space-y-4 text-stone-700 font-sans text-sm sm:text-base leading-relaxed">
                   {section.paragraphs.map((p, pIdx) => (
@@ -161,36 +100,6 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
                 </div>
               </div>
             ))}
-
-            {/* Quick Experience Pills */}
-            <div className="pt-6 border-t border-stone-200">
-              <h4 className="text-xs font-sans tracking-widest text-gold-800 uppercase font-bold mb-4">
-                Featured Companies & Venues
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Irish National Opera",
-                  "West Australian Opera",
-                  "Opera Ireland",
-                  "Lyric Opera Ireland",
-                  "Chicago Summer Opera",
-                  "R&R Musical Society",
-                  "National Concert Hall Dublin",
-                  "Gaiety Theatre Dublin",
-                  "Croke Park (All-Ireland Final)",
-                  "Royal Irish Academy of Music",
-                  "WAAPA (Australia)",
-                  "Mannes School of Music (NY)"
-                ].map((venue, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1.5 bg-white text-stone-800 border border-stone-200 text-xs font-sans font-medium rounded hover:border-gold-400 hover:text-navy-950 transition-colors shadow-2xs"
-                  >
-                    {venue}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>

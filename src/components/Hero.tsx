@@ -38,9 +38,9 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
 
       {/* Hero Content Overlay */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           {/* Artist Large Display Name */}
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl italic font-normal tracking-tight text-navy-800 leading-[1.02] mb-5">
+          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl italic font-normal tracking-tight text-navy-800 leading-[1.0] mb-6">
             Sarah Guilmartin <br />
             Lavery
           </h1>
