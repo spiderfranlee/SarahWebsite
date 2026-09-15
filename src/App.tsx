@@ -110,7 +110,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#FAF8F5] text-stone-900 min-h-screen font-sans selection:bg-rose-100 selection:text-rose-900 overflow-x-hidden antialiased">
+    <div className="bg-[#FAF8F5] text-stone-900 min-h-screen font-sans selection:bg-gold-200 selection:text-navy-950 overflow-x-hidden antialiased">
       {/* Top Header Navigation matching requested headings */}
       <Header
         activeSection={activeSection}

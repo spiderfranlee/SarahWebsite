@@ -19,13 +19,13 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-16">
-          <span className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold block mb-2">
+          <span className="text-xs font-sans tracking-[0.3em] text-gold-700 uppercase font-bold block mb-2">
             ABOUT & BIOGRAPHY
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight">
             About Sarah Guilmartin Lavery
           </h2>
-          <div className="w-16 h-[2px] bg-rose-600 mt-4" />
+          <div className="w-16 h-[2px] bg-gold-500 mt-4" />
         </div>
 
         {/* Editorial Split Layout */}
@@ -33,7 +33,7 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
           {/* Left Column: Portrait & Press Kit Widget */}
           <div className="lg:col-span-5 space-y-8">
             <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-tr from-rose-100 to-amber-100 rounded-lg blur-md opacity-60 group-hover:opacity-100 transition duration-500" />
+              <div className="absolute -inset-2 bg-gradient-to-tr from-gold-100 to-navy-100 rounded-lg blur-md opacity-60 group-hover:opacity-100 transition duration-500" />
               <div className="relative overflow-hidden rounded-md border border-stone-200 shadow-xl bg-white aspect-[4/5]">
                 <img
                   src={portraitImage}
@@ -51,7 +51,7 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
                   <p className="font-serif text-xl font-bold text-white">
                     Sarah Guilmartin Lavery
                   </p>
-                  <p className="text-xs font-sans tracking-widest text-amber-300 uppercase font-bold">
+                  <p className="text-xs font-sans tracking-widest text-gold-300 uppercase font-bold">
                     Irish Lyric Soprano
                   </p>
                 </div>
@@ -61,7 +61,7 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
             {/* Press Kit & Downloads Widget */}
             <div className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-md shadow-sm">
               <h3 className="font-serif text-lg font-bold text-stone-900 mb-2 flex items-center gap-2">
-                <FileText size={18} className="text-rose-700" />
+                <FileText size={18} className="text-navy-800" />
                 <span>Press Kit & Downloads</span>
               </h3>
               <p className="text-xs text-stone-600 font-sans leading-relaxed mb-5">
@@ -75,10 +75,10 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
                     e.preventDefault();
                     window.print();
                   }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-rose-50 border border-stone-300 hover:border-rose-300 text-stone-800 hover:text-rose-900 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
+                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-gold-50 border border-stone-300 hover:border-gold-300 text-stone-800 hover:text-navy-950 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
                 >
                   <span className="flex items-center gap-2">
-                    <Download size={14} className="text-rose-700 group-hover:translate-y-0.5 transition-transform" />
+                    <Download size={14} className="text-gold-600 group-hover:translate-y-0.5 transition-transform" />
                     <span>Download Full Biography (PDF)</span>
                   </span>
                   <span className="text-[10px] text-stone-400 font-bold">PDF</span>
@@ -90,10 +90,10 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
                     e.preventDefault();
                     window.print();
                   }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-rose-50 border border-stone-300 hover:border-rose-300 text-stone-800 hover:text-rose-900 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
+                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-gold-50 border border-stone-300 hover:border-gold-300 text-stone-800 hover:text-navy-950 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
                 >
                   <span className="flex items-center gap-2">
-                    <Download size={14} className="text-rose-700 group-hover:translate-y-0.5 transition-transform" />
+                    <Download size={14} className="text-gold-600 group-hover:translate-y-0.5 transition-transform" />
                     <span>Complete Repertoire & CV</span>
                   </span>
                   <span className="text-[10px] text-stone-400 font-bold">PDF</span>
@@ -105,10 +105,10 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
                     e.preventDefault();
                     window.open(portraitImage, "_blank");
                   }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-rose-50 border border-stone-300 hover:border-rose-300 text-stone-800 hover:text-rose-900 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
+                  className="w-full flex items-center justify-between px-4 py-2.5 bg-white hover:bg-gold-50 border border-stone-300 hover:border-gold-300 text-stone-800 hover:text-navy-950 text-xs font-sans font-semibold tracking-wider rounded transition-all group shadow-xs cursor-pointer"
                 >
                   <span className="flex items-center gap-2">
-                    <Download size={14} className="text-rose-700 group-hover:translate-y-0.5 transition-transform" />
+                    <Download size={14} className="text-gold-600 group-hover:translate-y-0.5 transition-transform" />
                     <span>High-Res Promoter Headshots</span>
                   </span>
                   <span className="text-[10px] text-stone-400 font-bold">JPG</span>
@@ -119,16 +119,16 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
             {/* Awards & Bursaries */}
             <div className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-md shadow-sm">
               <h3 className="font-serif text-lg font-bold text-stone-900 mb-4 flex items-center gap-2">
-                <Award size={18} className="text-amber-700" />
+                <Award size={18} className="text-gold-700" />
                 <span>Awards & Distinctions</span>
               </h3>
               <div className="space-y-3">
                 {awardsList.map((award, index) => (
                   <div key={index} className="flex items-start gap-3 text-xs border-b border-stone-200 pb-3 last:border-0 last:pb-0">
-                    <CheckCircle2 size={14} className="text-rose-600 mt-0.5 shrink-0" />
+                    <CheckCircle2 size={14} className="text-gold-600 mt-0.5 shrink-0" />
                     <div>
                       <p className="font-bold text-stone-900">{award.name}</p>
-                      <p className="text-stone-600 text-[11px]">{award.org} · <span className="text-rose-700 font-semibold">{award.year}</span></p>
+                      <p className="text-stone-600 text-[11px]">{award.org} · <span className="text-navy-900 font-semibold">{award.year}</span></p>
                     </div>
                   </div>
                 ))}
@@ -139,7 +139,7 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
           {/* Right Column: Multi-Section Narrative */}
           <div className="lg:col-span-7 space-y-8">
             {/* Opening Intro Callout */}
-            <div className="p-6 bg-rose-50/70 border-l-4 border-rose-600 rounded-r-md border border-rose-100/80 shadow-xs">
+            <div className="p-6 bg-gold-50/70 border-l-4 border-gold-500 rounded-r-md border border-gold-100/80 shadow-xs">
               <p className="font-serif italic text-lg sm:text-xl text-stone-900 leading-relaxed">
                 "{artistData.shortBio}"
               </p>
@@ -149,7 +149,7 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
             {artistData.bioSections.map((section, idx) => (
               <div key={idx} className="space-y-4">
                 <h3 className="font-serif text-2xl font-bold text-stone-900 tracking-wide flex items-center gap-3">
-                  <span className="text-xs font-sans tracking-widest text-rose-700 font-bold">
+                  <span className="text-xs font-sans tracking-widest text-gold-700 font-bold">
                     0{idx + 1}
                   </span>
                   <span>{section.title}</span>
@@ -164,7 +164,7 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
 
             {/* Quick Experience Pills */}
             <div className="pt-6 border-t border-stone-200">
-              <h4 className="text-xs font-sans tracking-widest text-amber-800 uppercase font-bold mb-4">
+              <h4 className="text-xs font-sans tracking-widest text-gold-800 uppercase font-bold mb-4">
                 Featured Companies & Venues
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -184,7 +184,7 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
                 ].map((venue, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1.5 bg-white text-stone-800 border border-stone-200 text-xs font-sans font-medium rounded hover:border-rose-400 hover:text-rose-700 transition-colors shadow-2xs"
+                    className="px-3 py-1.5 bg-white text-stone-800 border border-stone-200 text-xs font-sans font-medium rounded hover:border-gold-400 hover:text-navy-950 transition-colors shadow-2xs"
                   >
                     {venue}
                   </span>

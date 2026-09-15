@@ -64,12 +64,12 @@ export default function MediaModal({ isOpen, item, onClose }: MediaModalProps) {
         {/* Header */}
         <div className="flex justify-between items-center px-6 py-4 border-b border-stone-200 bg-[#FAF8F5]">
           <div className="flex items-center gap-2.5">
-            <span className="px-2.5 py-0.5 bg-rose-50 border border-rose-200 rounded text-[10px] font-sans tracking-widest text-rose-700 uppercase font-bold flex items-center gap-1.5">
+            <span className="px-2.5 py-0.5 bg-gold-50 border border-gold-200 rounded text-[10px] font-sans tracking-widest text-navy-900 uppercase font-bold flex items-center gap-1.5">
               {isVideo ? <Film size={12} /> : <ImageIcon size={12} />}
               <span>{item.category}</span>
             </span>
             {item.composer && (
-              <span className="text-rose-800 text-xs font-sans font-bold">
+              <span className="text-gold-700 text-xs font-sans font-bold">
                 · {item.composer}
               </span>
             )}

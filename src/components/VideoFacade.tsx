@@ -98,8 +98,8 @@ export default function VideoFacade({
 
       {/* Center Action Button */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-14 h-14 rounded-full bg-rose-700 hover:bg-rose-800 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
-          <Play size={22} className="fill-white ml-0.5" />
+        <div className="w-14 h-14 rounded-full bg-navy-900 hover:bg-navy-850 text-gold-300 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
+          <Play size={22} className="fill-gold-300 ml-0.5" />
         </div>
       </div>
 
@@ -107,7 +107,7 @@ export default function VideoFacade({
       {(title || subtitle) && (
         <div className="absolute bottom-0 left-0 right-0 p-4 text-left pointer-events-none">
           {subtitle && (
-            <p className="text-[11px] font-sans font-semibold tracking-wider uppercase text-rose-300 drop-shadow-xs line-clamp-1">
+            <p className="text-[11px] font-sans font-semibold tracking-wider uppercase text-gold-300 drop-shadow-xs line-clamp-1">
               {subtitle}
             </p>
           )}

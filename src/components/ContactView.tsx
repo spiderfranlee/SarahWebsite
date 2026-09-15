@@ -69,13 +69,13 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-16">
-          <span className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold block mb-2">
+          <span className="text-xs font-sans tracking-[0.3em] text-gold-700 uppercase font-bold block mb-2">
             REPRESENTATION & INQUIRIES
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight">
             Contact
           </h2>
-          <div className="w-16 h-[2px] bg-rose-600 mt-4 mb-4" />
+          <div className="w-16 h-[2px] bg-gold-500 mt-4 mb-4" />
           <p className="text-stone-700 font-sans text-base max-w-2xl leading-relaxed">
             Get in touch with Sarah directly using the form below, and follow her on social media.
           </p>
@@ -87,7 +87,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
             {/* Direct Inquiries Primary Box */}
             <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg shadow-sm space-y-6">
               <div>
-                <span className="text-[10px] font-sans tracking-widest uppercase text-rose-700 font-bold block mb-1">
+                <span className="text-[10px] font-sans tracking-widest uppercase text-gold-700 font-bold block mb-1">
                   Direct Inquiries & Bookings
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-stone-900">
@@ -100,14 +100,14 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
 
               <div className="space-y-4 text-xs font-sans text-stone-700">
                 <div className="flex items-start gap-3 p-3.5 bg-white border border-stone-200 rounded-md">
-                  <Mail size={18} className="text-rose-700 shrink-0 mt-0.5" />
+                  <Mail size={18} className="text-gold-700 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-[10px] uppercase font-sans tracking-wider text-stone-500 font-bold mb-0.5">
                       Direct Email Contact
                     </p>
                     <a
                       href={`mailto:${artistData.email}`}
-                      className="text-stone-900 hover:text-rose-700 font-bold text-sm underline transition-colors break-all"
+                      className="text-stone-900 hover:text-gold-700 font-bold text-sm underline transition-colors break-all"
                     >
                       {artistData.email}
                     </a>
@@ -115,7 +115,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin size={16} className="text-rose-700 shrink-0 mt-0.5" />
+                  <MapPin size={16} className="text-gold-700 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-stone-500 font-medium">Base Locations:</p>
                     <p className="font-bold text-stone-900">{artistData.location}</p>
@@ -124,7 +124,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Globe size={16} className="text-rose-700 shrink-0 mt-0.5" />
+                  <Globe size={16} className="text-gold-700 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-stone-500 font-medium">Response Time:</p>
                     <p className="font-bold text-stone-900">Within 24–48 hours</p>
@@ -142,7 +142,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                       href={artistData.socials.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-rose-50 border border-stone-200 hover:border-rose-300 text-stone-700 hover:text-rose-700 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-gold-50 border border-stone-200 hover:border-gold-300 text-stone-700 hover:text-navy-950 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
                       aria-label="Facebook"
                     >
                       <Facebook size={14} className="text-blue-600" />
@@ -153,7 +153,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                       href={artistData.socials.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-rose-50 border border-stone-200 hover:border-rose-300 text-stone-700 hover:text-rose-700 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-gold-50 border border-stone-200 hover:border-gold-300 text-stone-700 hover:text-navy-950 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
                       aria-label="Instagram"
                     >
                       <Instagram size={14} className="text-pink-600" />
@@ -164,7 +164,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                       href={artistData.socials.youtube}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-rose-50 border border-stone-200 hover:border-rose-300 text-stone-700 hover:text-rose-700 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-50 hover:bg-gold-50 border border-stone-200 hover:border-gold-300 text-stone-700 hover:text-navy-950 rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-2xs"
                       aria-label="YouTube"
                     >
                       <Youtube size={14} className="text-red-600" />
@@ -180,19 +180,19 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 </p>
                 <ul className="grid grid-cols-1 gap-1.5 text-xs text-stone-600 font-sans">
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
                     <span>Wedding Ceremonies & Private Receptions</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
                     <span>Operatic Engagements & Guest Roles</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
                     <span>Orchestral Galas & Oratorio Solos</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
                     <span>Private Vocal Coaching & Masterclasses</span>
                   </li>
                 </ul>
@@ -227,8 +227,8 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
             </p>
 
             {isSubmitted ? (
-              <div className="p-8 bg-white border border-rose-200 rounded-lg text-center space-y-4 shadow-sm animate-fadeIn">
-                <CheckCircle size={40} className="text-rose-700 mx-auto" />
+              <div className="p-8 bg-white border border-gold-200 rounded-lg text-center space-y-4 shadow-sm animate-fadeIn">
+                <CheckCircle size={40} className="text-gold-700 mx-auto" />
                 <h4 className="font-serif text-xl font-bold text-stone-900">
                   Thank You for Your Inquiry
                 </h4>
@@ -237,7 +237,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="mt-4 px-6 py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-800 text-xs font-sans tracking-widest uppercase font-bold border border-rose-200 rounded transition cursor-pointer"
+                  className="mt-4 px-6 py-2.5 bg-gold-50 hover:bg-gold-100 text-navy-950 text-xs font-sans tracking-widest uppercase font-bold border border-gold-200 rounded transition cursor-pointer"
                 >
                   Send Another Message
                 </button>
@@ -278,7 +278,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Eleanor Rigby"
-                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-rose-600 focus:ring-1 focus:ring-rose-500 transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors shadow-2xs"
                     />
                   </div>
 
@@ -293,7 +293,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. promoter@opera.org"
-                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-rose-600 focus:ring-1 focus:ring-rose-500 transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors shadow-2xs"
                     />
                   </div>
                 </div>
@@ -309,7 +309,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                       value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                       placeholder="e.g. Festival Opera / Symphony"
-                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-rose-600 focus:ring-1 focus:ring-rose-500 transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors shadow-2xs"
                     />
                   </div>
 
@@ -321,7 +321,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                       name="inquiry_type"
                       value={formData.inquiryType}
                       onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 font-medium focus:outline-none focus:border-rose-600 focus:ring-1 focus:ring-rose-500 transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 font-medium focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors shadow-2xs"
                     >
                       <option>Wedding Ceremony & Reception</option>
                       <option>Funeral & Memorial Service</option>
@@ -347,13 +347,13 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Provide performance dates, proposed venue, repertoire, or details..."
-                    className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-rose-600 focus:ring-1 focus:ring-rose-500 transition-colors resize-y shadow-2xs"
+                    className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors resize-y shadow-2xs"
                   />
                 </div>
 
                 {errorMessage && (
-                  <div className="p-3.5 bg-rose-50 border border-rose-200 rounded text-rose-800 text-xs font-sans flex items-start gap-2.5">
-                    <AlertCircle size={16} className="shrink-0 mt-0.5 text-rose-600" />
+                  <div className="p-3.5 bg-red-50 border border-red-200 rounded text-red-800 text-xs font-sans flex items-start gap-2.5">
+                    <AlertCircle size={16} className="shrink-0 mt-0.5 text-red-600" />
                     <div>
                       <p className="font-semibold mb-0.5">Submission issue</p>
                       <p>{errorMessage}</p>
@@ -364,7 +364,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 bg-rose-700 hover:bg-rose-800 disabled:bg-stone-400 text-white text-xs font-sans tracking-[0.25em] font-bold uppercase transition-all duration-300 rounded shadow-md flex items-center justify-center gap-2 group cursor-pointer disabled:cursor-not-allowed"
+                  className="w-full py-3.5 bg-navy-900 hover:bg-navy-850 disabled:bg-stone-400 text-gold-300 text-xs font-sans tracking-[0.25em] font-bold uppercase transition-all duration-300 rounded shadow-md flex items-center justify-center gap-2 group cursor-pointer disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

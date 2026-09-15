@@ -75,7 +75,7 @@ export default function MediaView({
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <span className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold">
+              <span className="text-xs font-sans tracking-[0.3em] text-gold-700 uppercase font-bold">
                 RECORDINGS & GALLERY
               </span>
               <a
@@ -92,7 +92,7 @@ export default function MediaView({
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight">
               Media
             </h2>
-            <div className="w-16 h-[2px] bg-rose-600 mt-4" />
+            <div className="w-16 h-[2px] bg-gold-500 mt-4" />
           </div>
 
           {/* Media Format Filter */}
@@ -107,7 +107,7 @@ export default function MediaView({
                 onClick={() => handleTabChange(tab.id as MediaTabType)}
                 className={`px-3.5 py-1.5 text-xs font-sans tracking-wider uppercase font-bold rounded transition-all cursor-pointer ${
                   currentTab === tab.id
-                    ? "bg-rose-700 text-white shadow-sm"
+                    ? "bg-navy-900 text-white shadow-sm"
                     : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
                 }`}
               >
@@ -125,19 +125,19 @@ export default function MediaView({
               <div className="flex items-center gap-5">
                 <button
                   onClick={() => onTogglePlay(currentTrack)}
-                  className="w-16 h-16 rounded-full bg-rose-700 hover:bg-rose-800 text-white flex items-center justify-center shrink-0 shadow-md transition-transform active:scale-95 cursor-pointer"
+                  className="w-16 h-16 rounded-full bg-navy-900 hover:bg-navy-850 text-gold-300 flex items-center justify-center shrink-0 shadow-md transition-transform active:scale-95 cursor-pointer"
                   aria-label={isPlaying ? "Pause Aria" : "Play Aria"}
                 >
                   {isPlaying ? (
-                    <Pause size={24} className="fill-white" />
+                    <Pause size={24} className="fill-gold-300" />
                   ) : (
-                    <Play size={24} className="fill-white ml-1" />
+                    <Play size={24} className="fill-gold-300 ml-1" />
                   )}
                 </button>
 
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] tracking-widest uppercase px-2 py-0.5 bg-rose-50 text-rose-700 border border-rose-200 font-bold rounded">
+                    <span className="text-[10px] tracking-widest uppercase px-2 py-0.5 bg-gold-50 text-navy-950 border border-gold-200 font-bold rounded">
                       {isPlaying ? "Now Playing" : "Selected Aria"}
                     </span>
                     <span className="text-xs font-sans text-stone-500 font-medium">{currentTrack.category}</span>
@@ -152,7 +152,7 @@ export default function MediaView({
                     {currentTrack.title}
                   </h3>
                   <p className="text-xs font-sans text-stone-600">
-                    {currentTrack.work} · <span className="text-rose-700 font-bold">{currentTrack.composer}</span>
+                    {currentTrack.work} · <span className="text-gold-700 font-bold">{currentTrack.composer}</span>
                   </p>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function MediaView({
                         height: isPlaying ? `${Math.max(6, (h * (0.6 + 0.4 * Math.sin(i + Date.now() / 200))))}px` : "6px"
                       }}
                       className={`w-1 rounded-full transition-all duration-200 ${
-                        isPlaying ? "bg-rose-600" : "bg-stone-300"
+                        isPlaying ? "bg-gold-500" : "bg-stone-300"
                       }`}
                     />
                   ))}
@@ -202,7 +202,7 @@ export default function MediaView({
                       onClick={() => onTogglePlay(track)}
                       className={`w-full p-3.5 text-left rounded-md border transition-all flex items-center justify-between gap-4 cursor-pointer ${
                         isCurrent
-                          ? "bg-rose-50 border-rose-300 shadow-sm text-stone-900"
+                          ? "bg-gold-50/80 border-gold-300 shadow-sm text-stone-900"
                           : "bg-white hover:bg-stone-50 border-stone-200 hover:border-stone-300 text-stone-700"
                       }`}
                     >
@@ -210,7 +210,7 @@ export default function MediaView({
                         <div
                           className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
                             isCurrent
-                              ? "bg-rose-700 text-white"
+                              ? "bg-navy-900 text-gold-300"
                               : "bg-stone-100 text-stone-600"
                           }`}
                         >
@@ -269,7 +269,7 @@ export default function MediaView({
               {filteredMedia.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white border border-stone-200 hover:border-rose-300 rounded-lg overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+                  className="bg-white border border-stone-200 hover:border-gold-300 rounded-lg overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
                 >
                   {item.type === "video" ? (
                     <VideoFacade
@@ -295,7 +295,7 @@ export default function MediaView({
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-white/90 backdrop-blur-md rounded border border-stone-200 text-[10px] tracking-wider uppercase font-bold text-rose-700 shadow-2xs">
+                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-white/90 backdrop-blur-md rounded border border-stone-200 text-[10px] tracking-wider uppercase font-bold text-navy-900 shadow-2xs">
                         <ImageIcon size={11} />
                         <span>{item.category}</span>
                       </div>
@@ -310,13 +310,13 @@ export default function MediaView({
                   <div className="p-5 flex-1 flex flex-col justify-between">
                     <div>
                       {item.composer && (
-                        <span className="text-[11px] font-sans uppercase tracking-wider text-rose-700 font-bold block mb-1">
+                        <span className="text-[11px] font-sans uppercase tracking-wider text-gold-700 font-bold block mb-1">
                           {item.composer} {item.work ? `· ${item.work}` : ""}
                         </span>
                       )}
                       <h4
                         onClick={() => onSelectMedia(item)}
-                        className="font-serif text-base sm:text-lg font-bold text-stone-900 hover:text-rose-700 transition-colors cursor-pointer line-clamp-1"
+                        className="font-serif text-base sm:text-lg font-bold text-stone-900 hover:text-navy-900 transition-colors cursor-pointer line-clamp-1"
                       >
                         {item.title}
                       </h4>
@@ -328,7 +328,7 @@ export default function MediaView({
                     <div className="flex items-center justify-between pt-3 mt-3 border-t border-stone-100 text-[10px] font-sans text-stone-500 font-semibold tracking-wider">
                       <button
                         onClick={() => onSelectMedia(item)}
-                        className="text-rose-700 hover:text-rose-900 font-bold uppercase transition-colors cursor-pointer"
+                        className="text-navy-900 hover:text-gold-700 font-bold uppercase transition-colors cursor-pointer"
                       >
                         {item.type === "video" ? "Watch Video" : "View Photo"}
                       </button>

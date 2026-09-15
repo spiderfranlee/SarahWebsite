@@ -6,7 +6,8 @@ export const artistData = {
   fullName: "Sarah Guilmartin Lavery",
   voiceType: "Lyric Soprano",
   tagline: "Irish Lyric Soprano",
-  headlineQuote: "A voice of luminous warmth, dramatic veracity, and effortless lyrical beauty.",
+  headlineQuote: "Splendid bel canto (and dolce riso).",
+  headlineQuoteSource: "The Irish Times",
   location: "Dublin, Ireland",
   email: "sarahlavery16@gmail.com",
   logo: "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/Sarah%20logo%20jpg.jpg",
@@ -383,42 +384,6 @@ export const audioRecordings: AudioTrack[] = [
     category: "Musical Theatre",
     youtubeId: "zQ1eus1CR-Q",
     videoUrl: "https://www.youtube.com/watch?v=zQ1eus1CR-Q"
-  },
-  {
-    id: "aud-1",
-    title: "Porgi, amor, qualche ristoro",
-    work: "Le nozze di Figaro, K. 492",
-    composer: "Wolfgang Amadeus Mozart",
-    accompaniment: "National Symphony Orchestra",
-    duration: "3:42",
-    category: "Opera Aria"
-  },
-  {
-    id: "aud-2",
-    title: "O mio babbino caro",
-    work: "Gianni Schicchi",
-    composer: "Giacomo Puccini",
-    accompaniment: "RTÉ Concert Orchestra",
-    duration: "2:35",
-    category: "Opera Aria"
-  },
-  {
-    id: "aud-3",
-    title: "Chi il bel sogno di Doretta",
-    work: "La rondine",
-    composer: "Giacomo Puccini",
-    accompaniment: "Piano & Chamber Ensemble",
-    duration: "3:18",
-    category: "Opera Aria"
-  },
-  {
-    id: "aud-4",
-    title: "She Moved Through the Fair",
-    work: "Irish Art Song Collection",
-    composer: "Traditional / Arr. Herbert Hughes",
-    accompaniment: "Cello & Piano",
-    duration: "4:05",
-    category: "Art Song"
   }
 ];
 

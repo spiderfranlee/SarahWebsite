@@ -42,50 +42,57 @@ export default function Hero({ heroImage, onNavigate, onPlayAria }: HeroProps) {
           {/* Artist Large Display Name */}
           <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-stone-950 leading-[1.02] mb-5">
             Sarah Guilmartin <br />
-            <span className="italic font-normal text-rose-800">Lavery</span>
+            <span className="italic font-normal text-navy-800">Lavery</span>
           </h1>
 
           {/* Subtitle / Critical Quote */}
-          <p className="font-sans text-stone-800 text-base sm:text-lg md:text-xl font-normal tracking-wide max-w-2xl leading-relaxed mb-8 border-l-3 border-rose-600 pl-4 py-1 bg-white/40 backdrop-blur-xs rounded-r">
-            "{artistData.headlineQuote}"
-          </p>
+          <div className="mb-8 border-l-3 border-gold-500 pl-4 py-1.5 bg-white/60 backdrop-blur-xs rounded-r max-w-2xl shadow-2xs">
+            <p className="font-serif italic text-stone-900 text-lg sm:text-xl md:text-2xl font-normal tracking-wide leading-relaxed">
+              “{artistData.headlineQuote}”
+            </p>
+            {artistData.headlineQuoteSource && (
+              <span className="block font-sans text-xs sm:text-sm tracking-wider uppercase text-gold-700 font-bold mt-1">
+                — {artistData.headlineQuoteSource}
+              </span>
+            )}
+          </div>
 
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               id="hero-schedule-btn"
               onClick={() => onNavigate("events")}
-              className="px-6 py-3.5 bg-rose-700 hover:bg-rose-800 text-white text-xs font-sans tracking-[0.2em] font-bold uppercase transition-all duration-300 rounded shadow-md shadow-rose-900/20 flex items-center gap-2 group cursor-pointer"
+              className="px-6 py-3.5 bg-navy-800 hover:bg-navy-900 text-white text-xs font-sans tracking-[0.2em] font-bold uppercase transition-all duration-300 rounded shadow-md shadow-navy-950/20 border border-navy-700/50 flex items-center gap-2 group cursor-pointer"
             >
-              <Calendar size={15} />
+              <Calendar size={15} className="text-gold-300" />
               <span>Upcoming Engagements</span>
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform text-gold-300" />
             </button>
 
             <button
               id="hero-play-aria-btn"
               onClick={onPlayAria}
-              className="px-6 py-3.5 bg-white hover:bg-stone-50 text-stone-900 text-xs font-sans tracking-[0.2em] font-bold uppercase transition-all duration-300 border border-stone-300 rounded shadow-sm flex items-center gap-2 cursor-pointer"
+              className="px-6 py-3.5 bg-white hover:bg-gold-50 text-stone-900 text-xs font-sans tracking-[0.2em] font-bold uppercase transition-all duration-300 border border-stone-300 hover:border-gold-300 rounded shadow-sm flex items-center gap-2 cursor-pointer"
             >
-              <Play size={14} className="text-rose-600 fill-rose-600" />
+              <Play size={14} className="text-gold-600 fill-gold-600" />
               <span>Listen to Arias</span>
             </button>
 
             <button
               id="hero-bio-btn"
               onClick={() => onNavigate("about")}
-              className="px-5 py-3.5 text-stone-700 hover:text-rose-700 text-xs font-sans tracking-[0.2em] font-bold uppercase transition-colors cursor-pointer"
+              className="px-5 py-3.5 text-stone-700 hover:text-navy-800 text-xs font-sans tracking-[0.2em] font-bold uppercase transition-colors cursor-pointer"
             >
               Read Biography
             </button>
           </div>
 
           {/* Next Performance Notice Badge */}
-          <div className="mt-10 pt-6 border-t border-stone-300/80 flex flex-wrap items-center gap-3 text-xs text-stone-700 bg-white/60 backdrop-blur-sm p-3.5 rounded-md border border-stone-200/80 shadow-xs">
-            <span className="inline-flex items-center gap-1.5 text-rose-700 font-bold tracking-wider uppercase text-[10px]">
-              <Sparkles size={13} /> Upcoming Engagements:
+          <div className="mt-10 pt-6 border-t border-stone-300/80 flex flex-wrap items-center gap-3 text-xs text-stone-700 bg-white/70 backdrop-blur-sm p-3.5 rounded-md border border-stone-200/80 shadow-xs">
+            <span className="inline-flex items-center gap-1.5 text-gold-700 font-bold tracking-wider uppercase text-[10px]">
+              <Sparkles size={13} className="text-gold-600" /> Upcoming Engagements:
             </span>
-            <span className="text-stone-900 font-semibold">
+            <span className="text-navy-950 font-semibold">
               <em>Carmen</em> · Irish National Opera
             </span>
             <span className="hidden sm:inline text-stone-400">•</span>
@@ -97,11 +104,11 @@ export default function Hero({ heroImage, onNavigate, onPlayAria }: HeroProps) {
       {/* Down Scroll Indicator */}
       <button
         onClick={() => onNavigate("about")}
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 text-stone-500 hover:text-rose-700 transition-colors flex flex-col items-center gap-1 text-[10px] tracking-widest uppercase z-10 font-bold cursor-pointer"
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 text-stone-500 hover:text-navy-800 transition-colors flex flex-col items-center gap-1 text-[10px] tracking-widest uppercase z-10 font-bold cursor-pointer"
         aria-label="Scroll down to Biography"
       >
         <span className="opacity-80">Explore</span>
-        <ChevronDown size={16} className="animate-bounce text-rose-600" />
+        <ChevronDown size={16} className="animate-bounce text-gold-600" />
       </button>
     </section>
   );

@@ -31,7 +31,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <span className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight block">
                   {artistData.name}
                 </span>
-                <p className="text-xs font-sans tracking-[0.3em] text-rose-700 uppercase font-bold">
+                <p className="text-xs font-sans tracking-[0.3em] text-gold-700 uppercase font-bold">
                   {artistData.tagline} · {artistData.location}
                 </p>
               </div>
@@ -49,7 +49,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 href={artistData.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-blue-600 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
+                className="w-10 h-10 rounded-full bg-white border border-stone-200 hover:border-gold-400 hover:text-navy-900 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
                 aria-label="Facebook"
               >
                 <Facebook size={16} />
@@ -59,7 +59,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 href={artistData.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-rose-700 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
+                className="w-10 h-10 rounded-full bg-white border border-stone-200 hover:border-gold-400 hover:text-navy-900 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
                 aria-label="Instagram"
               >
                 <Instagram size={16} />
@@ -68,14 +68,14 @@ export default function Footer({ onNavigate }: FooterProps) {
                 href={artistData.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-rose-700 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
+                className="w-10 h-10 rounded-full bg-white border border-stone-200 hover:border-gold-400 hover:text-navy-900 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
                 aria-label="YouTube"
               >
                 <Youtube size={16} />
               </a>
               <button
                 onClick={() => onNavigate("contact")}
-                className="w-10 h-10 rounded-full bg-white border border-stone-200 hover:border-rose-300 hover:text-rose-700 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
+                className="w-10 h-10 rounded-full bg-white border border-stone-200 hover:border-gold-400 hover:text-navy-900 flex items-center justify-center text-stone-600 transition-colors shadow-2xs cursor-pointer"
                 aria-label="Email Contact"
               >
                 <Mail size={16} />
@@ -84,7 +84,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
             <button
               onClick={() => onNavigate("contact")}
-              className="px-5 py-2.5 bg-rose-700 hover:bg-rose-800 text-white text-xs font-sans tracking-wider uppercase font-bold rounded-md transition-colors shadow-xs cursor-pointer"
+              className="px-5 py-2.5 bg-navy-900 hover:bg-navy-850 text-gold-300 text-xs font-sans tracking-wider uppercase font-bold rounded-md transition-colors shadow-xs cursor-pointer"
             >
               Get in Touch
             </button>
@@ -104,7 +104,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className="hover:text-rose-700 uppercase tracking-widest text-[11px] font-bold transition-colors cursor-pointer"
+                className="hover:text-gold-700 uppercase tracking-widest text-[11px] font-bold transition-colors cursor-pointer"
               >
                 {item.label}
               </button>
@@ -117,7 +117,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             </p>
             <button
               onClick={scrollToTop}
-              className="p-2 bg-white hover:bg-rose-50 text-stone-600 hover:text-rose-700 rounded border border-stone-200 transition-colors shadow-2xs cursor-pointer"
+              className="p-2 bg-white hover:bg-gold-50 text-stone-600 hover:text-gold-700 rounded border border-stone-200 transition-colors shadow-2xs cursor-pointer"
               aria-label="Back to top"
             >
               <ArrowUp size={14} />

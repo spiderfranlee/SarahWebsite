@@ -22,7 +22,7 @@ export default function FloatingAudioPlayer({
       {/* Vinyl / Disc icon with spinning animation */}
       <div className="relative shrink-0">
         <div
-          className={`w-10 h-10 rounded-full bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-700 ${
+          className={`w-10 h-10 rounded-full bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-700 ${
             isPlaying ? "animate-spin" : ""
           }`}
           style={{ animationDuration: "6s" }}
@@ -34,8 +34,8 @@ export default function FloatingAudioPlayer({
       {/* Track Info */}
       <div className="overflow-hidden flex-1">
         <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-rose-600 animate-pulse" />
-          <span className="text-[9px] font-sans tracking-widest text-rose-700 uppercase font-bold">
+          <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse" />
+          <span className="text-[9px] font-sans tracking-widest text-gold-700 uppercase font-bold">
             {isPlaying ? "Playing Aria" : "Aria Paused"}
           </span>
         </div>
@@ -61,13 +61,13 @@ export default function FloatingAudioPlayer({
 
         <button
           onClick={onTogglePlay}
-          className="w-8 h-8 rounded-full bg-rose-700 hover:bg-rose-800 text-white flex items-center justify-center transition-transform active:scale-95 shadow-sm cursor-pointer"
+          className="w-8 h-8 rounded-full bg-navy-900 hover:bg-navy-850 text-gold-300 flex items-center justify-center transition-transform active:scale-95 shadow-sm cursor-pointer"
           aria-label={isPlaying ? "Pause" : "Play"}
         >
           {isPlaying ? (
-            <Pause size={13} className="fill-white" />
+            <Pause size={13} className="fill-gold-300" />
           ) : (
-            <Play size={13} className="fill-white ml-0.5" />
+            <Play size={13} className="fill-gold-300 ml-0.5" />
           )}
         </button>
 

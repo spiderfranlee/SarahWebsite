@@ -81,10 +81,10 @@ export default function Header({
             />
           )}
           <div>
-            <span className="font-serif text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.14em] sm:tracking-[0.18em] text-stone-900 font-bold block transition-colors group-hover:text-rose-700 whitespace-nowrap">
+            <span className="font-serif text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.14em] sm:tracking-[0.18em] text-stone-900 font-bold block transition-colors group-hover:text-navy-800 whitespace-nowrap">
               {artistData.name}
             </span>
-            <span className="text-[9px] sm:text-[10px] tracking-[0.3em] text-amber-700 uppercase font-sans font-bold block mt-0.5">
+            <span className="text-[9px] sm:text-[10px] tracking-[0.3em] text-gold-700 uppercase font-sans font-bold block mt-0.5">
               {artistData.tagline}
             </span>
           </div>
@@ -98,13 +98,13 @@ export default function Header({
             onClick={() => handleNavClick("home")}
             className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold ${
               activeSection === "home"
-                ? "text-rose-700"
+                ? "text-navy-900"
                 : "text-stone-700 hover:text-stone-950"
             }`}
           >
             HOME
             {activeSection === "home" && (
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-rose-600 rounded-full" />
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gold-500 rounded-full" />
             )}
           </button>
 
@@ -114,13 +114,13 @@ export default function Header({
             onClick={() => handleNavClick("about")}
             className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold ${
               activeSection === "about" || activeSection === "biography"
-                ? "text-rose-700"
+                ? "text-navy-900"
                 : "text-stone-700 hover:text-stone-950"
             }`}
           >
             ABOUT
             {(activeSection === "about" || activeSection === "biography") && (
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-rose-600 rounded-full" />
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gold-500 rounded-full" />
             )}
           </button>
 
@@ -136,17 +136,17 @@ export default function Header({
               onClick={() => handleNavClick("media")}
               className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold flex items-center gap-1.5 cursor-pointer ${
                 isMediaActive
-                  ? "text-rose-700"
+                  ? "text-navy-900"
                   : "text-stone-700 hover:text-stone-950"
               }`}
             >
               <span>MEDIA</span>
               <ChevronDown
                 size={12}
-                className={`transition-transform duration-300 ${isMediaDropdownOpen ? "rotate-180 text-rose-700" : "text-stone-500"}`}
+                className={`transition-transform duration-300 ${isMediaDropdownOpen ? "rotate-180 text-gold-600" : "text-stone-500"}`}
               />
               {isMediaActive && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-rose-600 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gold-500 rounded-full" />
               )}
             </button>
 
@@ -162,11 +162,11 @@ export default function Header({
                     onClick={() => handleNavClick("media", undefined, "recordings")}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
                       isMediaActive && activeMediaTab === "recordings"
-                        ? "bg-rose-50 text-rose-700 font-bold"
+                        ? "bg-gold-50 text-navy-900 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
                   >
-                    <Disc size={13} className="text-rose-600 shrink-0" />
+                    <Disc size={13} className="text-gold-600 shrink-0" />
                     <span>Recordings</span>
                   </button>
 
@@ -175,11 +175,11 @@ export default function Header({
                     onClick={() => handleNavClick("media", undefined, "gallery")}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
                       isMediaActive && activeMediaTab === "gallery"
-                        ? "bg-rose-50 text-rose-700 font-bold"
+                        ? "bg-gold-50 text-navy-900 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
                   >
-                    <Film size={13} className="text-amber-600 shrink-0" />
+                    <Film size={13} className="text-gold-600 shrink-0" />
                     <span>Gallery</span>
                   </button>
                 </div>
@@ -199,17 +199,17 @@ export default function Header({
               onClick={() => handleNavClick("engagements", "upcoming")}
               className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold flex items-center gap-1.5 cursor-pointer ${
                 isEngagementsActive
-                  ? "text-rose-700"
+                  ? "text-navy-900"
                   : "text-stone-700 hover:text-stone-950"
               }`}
             >
               <span>ENGAGEMENTS</span>
               <ChevronDown
                 size={12}
-                className={`transition-transform duration-300 ${isEventsDropdownOpen ? "rotate-180 text-rose-700" : "text-stone-500"}`}
+                className={`transition-transform duration-300 ${isEventsDropdownOpen ? "rotate-180 text-gold-600" : "text-stone-500"}`}
               />
               {isEngagementsActive && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-rose-600 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gold-500 rounded-full" />
               )}
             </button>
 
@@ -225,11 +225,11 @@ export default function Header({
                     onClick={() => handleNavClick("engagements", "upcoming")}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
                       isEngagementsActive && activeEventTab === "upcoming"
-                        ? "bg-rose-50 text-rose-700 font-bold"
+                        ? "bg-gold-50 text-navy-900 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
                   >
-                    <Calendar size={13} className="text-amber-600 shrink-0" />
+                    <Calendar size={13} className="text-gold-600 shrink-0" />
                     <span>Upcoming performances</span>
                   </button>
 
@@ -238,11 +238,11 @@ export default function Header({
                     onClick={() => handleNavClick("engagements", "weddings")}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
                       isEngagementsActive && activeEventTab === "weddings"
-                        ? "bg-rose-50 text-rose-700 font-bold"
+                        ? "bg-gold-50 text-navy-900 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
                   >
-                    <Heart size={13} className="text-rose-600 shrink-0" />
+                    <Heart size={13} className="text-gold-600 shrink-0" />
                     <span>Weddings</span>
                   </button>
 
@@ -251,11 +251,11 @@ export default function Header({
                     onClick={() => handleNavClick("engagements", "funeral")}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
                       isEngagementsActive && activeEventTab === "funeral"
-                        ? "bg-rose-50 text-rose-700 font-bold"
+                        ? "bg-gold-50 text-navy-900 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
                   >
-                    <Feather size={13} className="text-amber-600 shrink-0" />
+                    <Feather size={13} className="text-gold-600 shrink-0" />
                     <span>Funerals</span>
                   </button>
 
@@ -264,11 +264,11 @@ export default function Header({
                     onClick={() => handleNavClick("engagements", "corporate")}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs font-sans tracking-wider rounded transition-colors cursor-pointer ${
                       isEngagementsActive && activeEventTab === "corporate"
-                        ? "bg-rose-50 text-rose-700 font-bold"
+                        ? "bg-gold-50 text-navy-900 font-bold"
                         : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
                     }`}
                   >
-                    <Building2 size={13} className="text-amber-600 shrink-0" />
+                    <Building2 size={13} className="text-gold-600 shrink-0" />
                     <span>Corporate</span>
                   </button>
                 </div>
@@ -282,13 +282,13 @@ export default function Header({
             onClick={() => handleNavClick("contact")}
             className={`relative font-sans text-[11px] tracking-[0.25em] transition-all py-1 font-bold cursor-pointer ${
               activeSection === "contact"
-                ? "text-rose-700"
+                ? "text-navy-900"
                 : "text-stone-700 hover:text-stone-950"
             }`}
           >
             CONTACT
             {activeSection === "contact" && (
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-rose-600 rounded-full" />
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gold-500 rounded-full" />
             )}
           </button>
         </nav>
@@ -301,7 +301,7 @@ export default function Header({
               href={artistData.socials.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-600 hover:text-rose-700 transition-colors p-1"
+              className="text-stone-600 hover:text-navy-800 transition-colors p-1"
               aria-label="Facebook"
             >
               <Facebook size={16} />
@@ -311,7 +311,7 @@ export default function Header({
               href={artistData.socials.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-600 hover:text-rose-700 transition-colors p-1"
+              className="text-stone-600 hover:text-navy-800 transition-colors p-1"
               aria-label="Instagram"
             >
               <Instagram size={16} />
@@ -321,7 +321,7 @@ export default function Header({
               href={artistData.socials.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-600 hover:text-rose-700 transition-colors p-1"
+              className="text-stone-600 hover:text-navy-800 transition-colors p-1"
               aria-label="YouTube"
             >
               <Youtube size={16} />
@@ -329,7 +329,7 @@ export default function Header({
             <button
               id="social-email-nav"
               onClick={() => handleNavClick("contact")}
-              className="text-stone-600 hover:text-rose-700 transition-colors p-1"
+              className="text-stone-600 hover:text-navy-800 transition-colors p-1"
               aria-label="Email Contact"
             >
               <Mail size={16} />
@@ -342,7 +342,7 @@ export default function Header({
           <button
             id="mobile-menu-toggle-btn"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-stone-800 hover:text-rose-700 transition-colors flex items-center gap-1.5"
+            className="p-2 text-stone-800 hover:text-navy-800 transition-colors flex items-center gap-1.5"
             aria-label="Toggle navigation menu"
           >
             <span className="text-xs font-sans tracking-widest uppercase font-bold text-stone-700">
@@ -368,7 +368,7 @@ export default function Header({
                 referrerPolicy="no-referrer"
               />
             )}
-            <div className="text-xs font-sans tracking-[0.25em] text-rose-700 font-bold uppercase">
+            <div className="text-xs font-sans tracking-[0.25em] text-gold-700 font-bold uppercase">
               Menu
             </div>
           </div>
@@ -380,7 +380,7 @@ export default function Header({
               onClick={() => handleNavClick("home")}
               className={`text-left font-serif text-lg tracking-widest transition-colors py-1 ${
                 activeSection === "home"
-                  ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
+                  ? "text-navy-950 font-bold pl-2 border-l-2 border-gold-500"
                   : "text-stone-700 hover:text-stone-900"
               }`}
             >
@@ -393,7 +393,7 @@ export default function Header({
               onClick={() => handleNavClick("about")}
               className={`text-left font-serif text-lg tracking-widest transition-colors py-1 ${
                 activeSection === "about" || activeSection === "biography"
-                  ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
+                  ? "text-navy-950 font-bold pl-2 border-l-2 border-gold-500"
                   : "text-stone-700 hover:text-stone-900"
               }`}
             >
@@ -407,7 +407,7 @@ export default function Header({
                 onClick={() => handleNavClick("media")}
                 className={`text-left font-serif text-lg tracking-widest transition-colors py-1 block w-full cursor-pointer ${
                   isMediaActive
-                    ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
+                    ? "text-navy-950 font-bold pl-2 border-l-2 border-gold-500"
                     : "text-stone-800 hover:text-stone-950 font-medium"
                 }`}
               >
@@ -421,11 +421,11 @@ export default function Header({
                   onClick={() => handleNavClick("media", undefined, "recordings")}
                   className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
                     isMediaActive && activeMediaTab === "recordings"
-                      ? "text-rose-700 font-bold"
+                      ? "text-navy-900 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
-                  <span className="text-rose-600">•</span>
+                  <span className="text-gold-600">•</span>
                   <span>Recordings</span>
                 </button>
 
@@ -434,11 +434,11 @@ export default function Header({
                   onClick={() => handleNavClick("media", undefined, "gallery")}
                   className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
                     isMediaActive && activeMediaTab === "gallery"
-                      ? "text-rose-700 font-bold"
+                      ? "text-navy-900 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
-                  <span className="text-amber-600">•</span>
+                  <span className="text-gold-600">•</span>
                   <span>Gallery</span>
                 </button>
               </div>
@@ -451,7 +451,7 @@ export default function Header({
                 onClick={() => handleNavClick("engagements", "upcoming")}
                 className={`text-left font-serif text-lg tracking-widest transition-colors py-1 block w-full cursor-pointer ${
                   isEngagementsActive
-                    ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
+                    ? "text-navy-950 font-bold pl-2 border-l-2 border-gold-500"
                     : "text-stone-800 hover:text-stone-950 font-medium"
                 }`}
               >
@@ -465,11 +465,11 @@ export default function Header({
                   onClick={() => handleNavClick("engagements", "upcoming")}
                   className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
                     isEngagementsActive && activeEventTab === "upcoming"
-                      ? "text-rose-700 font-bold"
+                      ? "text-navy-900 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
-                  <span className="text-amber-600">•</span>
+                  <span className="text-gold-600">•</span>
                   <span>Upcoming performances</span>
                 </button>
 
@@ -478,11 +478,11 @@ export default function Header({
                   onClick={() => handleNavClick("engagements", "weddings")}
                   className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
                     isEngagementsActive && activeEventTab === "weddings"
-                      ? "text-rose-700 font-bold"
+                      ? "text-navy-900 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
-                  <span className="text-rose-600">•</span>
+                  <span className="text-gold-600">•</span>
                   <span>Weddings</span>
                 </button>
 
@@ -491,11 +491,11 @@ export default function Header({
                   onClick={() => handleNavClick("engagements", "funeral")}
                   className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
                     isEngagementsActive && activeEventTab === "funeral"
-                      ? "text-rose-700 font-bold"
+                      ? "text-navy-900 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
-                  <span className="text-amber-600">•</span>
+                  <span className="text-gold-600">•</span>
                   <span>Funerals</span>
                 </button>
 
@@ -504,11 +504,11 @@ export default function Header({
                   onClick={() => handleNavClick("engagements", "corporate")}
                   className={`text-left text-sm font-sans tracking-wider block w-full transition-colors flex items-center gap-2 cursor-pointer ${
                     isEngagementsActive && activeEventTab === "corporate"
-                      ? "text-rose-700 font-bold"
+                      ? "text-navy-900 font-bold"
                       : "text-stone-600 hover:text-stone-900"
                   }`}
                 >
-                  <span className="text-amber-600">•</span>
+                  <span className="text-gold-600">•</span>
                   <span>Corporate</span>
                 </button>
               </div>
@@ -520,7 +520,7 @@ export default function Header({
               onClick={() => handleNavClick("contact")}
               className={`text-left font-serif text-lg tracking-widest transition-colors py-1 cursor-pointer ${
                 activeSection === "contact"
-                  ? "text-rose-700 font-bold pl-2 border-l-2 border-rose-600"
+                  ? "text-navy-950 font-bold pl-2 border-l-2 border-gold-500"
                   : "text-stone-700 hover:text-stone-900"
               }`}
             >
@@ -530,13 +530,13 @@ export default function Header({
 
           <div className="mt-8 pt-6 border-t border-stone-200 flex items-center justify-between">
             <div className="flex space-x-4">
-              <a href={artistData.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-rose-700" aria-label="Facebook">
+              <a href={artistData.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-navy-800" aria-label="Facebook">
                 <Facebook size={18} />
               </a>
-              <a href={artistData.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-rose-700" aria-label="Instagram">
+              <a href={artistData.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-navy-800" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href={artistData.socials.youtube} className="text-stone-600 hover:text-rose-700">
+              <a href={artistData.socials.youtube} className="text-stone-600 hover:text-navy-800">
                 <Youtube size={18} />
               </a>
             </div>
@@ -545,7 +545,7 @@ export default function Header({
                 setIsMobileMenuOpen(false);
                 handleNavClick("contact");
               }}
-              className="text-xs font-sans tracking-widest text-rose-700 uppercase font-bold"
+              className="text-xs font-sans tracking-widest text-navy-900 hover:text-gold-700 uppercase font-bold"
             >
               Contact
             </button>

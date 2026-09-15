@@ -3,10 +3,44 @@
 @theme {
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --color-gold-accent: #B38E44;
-  --color-gold-light: #C5A059;
-  --color-rose-accent: #BE123C;
-  --color-rose-light: #E11D48;
+  
+  /* Monogram Palette: Antique Gold (The 'S' and 'L') */
+  --color-gold-50: #FAF6ED;
+  --color-gold-100: #F4EBD7;
+  --color-gold-200: #E7D5B0;
+  --color-gold-300: #D8BD83;
+  --color-gold-400: #C9A45B;
+  --color-gold-500: #B98E3D;
+  --color-gold-600: #A2772E;
+  --color-gold-700: #845D25;
+  --color-gold-800: #6B4B22;
+  --color-gold-900: #573E1E;
+
+  /* Monogram Palette: Prussian Slate Navy (The 'G') */
+  --color-navy-50: #F2F5F8;
+  --color-navy-100: #E3E9F0;
+  --color-navy-200: #C7D4E1;
+  --color-navy-300: #9EAFC3;
+  --color-navy-400: #6E86A2;
+  --color-navy-500: #4B6785;
+  --color-navy-600: #38516C;
+  --color-navy-700: #2C4056;
+  --color-navy-800: #263649;
+  --color-navy-900: #222E3E;
+  --color-navy-950: #141B26;
+
+  /* Remap rose tokens to Slate Navy & Antique Gold */
+  --color-rose-50: #FAF6ED;
+  --color-rose-100: #F4EBD7;
+  --color-rose-200: #E7D5B0;
+  --color-rose-300: #D8BD83;
+  --color-rose-400: #C9A45B;
+  --color-rose-500: #B98E3D;
+  --color-rose-600: #38516C;
+  --color-rose-700: #263649;
+  --color-rose-800: #1F2D3A;
+  --color-rose-900: #141B26;
+  --color-rose-950: #0C121A;
 }
 
 @utility animate-subtle-zoom {
