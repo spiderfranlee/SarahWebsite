@@ -1,5 +1,4 @@
 import React from "react";
-import { Award, CheckCircle2 } from "lucide-react";
 import { artistData } from "../data";
 
 interface BiographyViewProps {
@@ -7,12 +6,6 @@ interface BiographyViewProps {
 }
 
 export default function BiographyView({ portraitImage }: BiographyViewProps) {
-  const awardsList = [
-    { name: "Joan Sutherland Award", org: "Two-Time Recipient · Australia", year: "Distinction" },
-    { name: "Young Artist Programme", org: "West Australian Opera", year: "2012–2014" },
-    { name: "Mannes School of Music Scholarship", org: "Mannes School of Music, New York", year: "Scholarship" },
-    { name: "Irish National Opera Engagement", org: "Irish National Opera Company", year: "2026/27 Season" }
-  ];
 
   return (
     <section id="about" className="py-24 bg-white border-t border-stone-200 relative">
@@ -58,24 +51,6 @@ export default function BiographyView({ portraitImage }: BiographyViewProps) {
               </div>
             </div>
 
-            {/* Awards & Bursaries */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-md shadow-sm">
-              <h3 className="font-serif text-lg font-bold text-stone-900 mb-4 flex items-center gap-2">
-                <Award size={18} className="text-gold-700" />
-                <span>Awards & Distinctions</span>
-              </h3>
-              <div className="space-y-3">
-                {awardsList.map((award, index) => (
-                  <div key={index} className="flex items-start gap-3 text-xs border-b border-stone-200 pb-3 last:border-0 last:pb-0">
-                    <CheckCircle2 size={14} className="text-gold-600 mt-0.5 shrink-0" />
-                    <div>
-                      <p className="font-bold text-stone-900">{award.name}</p>
-                      <p className="text-stone-600 text-[11px]">{award.org} · <span className="text-navy-900 font-semibold">{award.year}</span></p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Right Column: Multi-Section Narrative */}

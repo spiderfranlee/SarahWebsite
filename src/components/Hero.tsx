@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { Calendar, ArrowRight, ChevronDown } from "lucide-react";
 import { artistData } from "../data";
 
 interface HeroProps {
@@ -76,18 +76,6 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
             >
               Read Biography
             </button>
-          </div>
-
-          {/* Next Performance Notice Badge */}
-          <div className="mt-10 pt-6 border-t border-stone-300/80 flex flex-wrap items-center gap-3 text-xs text-stone-700 bg-white/70 backdrop-blur-sm p-3.5 rounded-md border border-stone-200/80 shadow-xs">
-            <span className="inline-flex items-center gap-1.5 text-gold-700 font-bold tracking-wider uppercase text-[10px]">
-              <Sparkles size={13} className="text-gold-600" /> Upcoming Engagements:
-            </span>
-            <span className="text-navy-950 font-semibold">
-              <em>Carmen</em> · Irish National Opera
-            </span>
-            <span className="hidden sm:inline text-stone-400">•</span>
-            <span className="text-stone-600">Bord Gáis Energy Theatre (2, 4, 6, 7 Nov)</span>
           </div>
         </div>
       </div>

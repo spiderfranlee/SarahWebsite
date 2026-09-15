@@ -10,7 +10,6 @@ import {
   Sparkles,
   Building2,
   ChevronRight,
-  Disc,
   Feather
 } from "lucide-react";
 import { scheduleData, weddingEventData, funeralEventData, corporateEventData, funeralRepertoireSelection } from "../data";
@@ -353,26 +352,6 @@ export default function EventsView({
               </div>
             </div>
 
-            {/* Service Formats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {funeralEventData.serviceTypes.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#FAF8F5] border border-stone-200 p-6 rounded-lg hover:border-gold-300 transition duration-300 space-y-3 shadow-2xs"
-                >
-                  <div className="w-10 h-10 rounded-full bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-700">
-                    <Disc size={18} />
-                  </div>
-                  <h4 className="font-serif text-xl font-bold text-stone-900">
-                    {item.type}
-                  </h4>
-                  <p className="text-stone-600 font-sans text-xs sm:text-sm leading-relaxed">
-                    {item.details}
-                  </p>
-                </div>
-              ))}
-            </div>
-
             {/* Funeral Music - Repertoire Selection */}
             <div id="funeral-music-repertoire" className="bg-[#FAF8F5] border border-stone-200 p-8 sm:p-10 rounded-lg space-y-8 shadow-sm">
               <div className="border-b border-stone-200 pb-6 text-center max-w-3xl mx-auto space-y-2">
@@ -430,23 +409,6 @@ export default function EventsView({
               </div>
             </div>
 
-            {/* Funeral Accompaniment & Sensitive Support */}
-            <div className="bg-[#FAF8F5] border border-stone-200 p-8 rounded-lg flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-              <div className="space-y-2">
-                <h4 className="font-serif text-xl font-bold text-stone-900">
-                  Compassionate Direct Booking & Organist Coordination
-                </h4>
-                <p className="text-stone-600 text-xs sm:text-sm font-sans max-w-2xl leading-relaxed">
-                  Sarah handles all liaison with church organists, funeral directors, and parish priests on your behalf to ensure seamless, stress-free delivery.
-                </p>
-              </div>
-              <button
-                onClick={() => onNavigateToContact && onNavigateToContact("Funeral & Memorial Service Inquiry")}
-                className="shrink-0 px-6 py-2.5 bg-white hover:bg-navy-900 hover:text-gold-300 text-stone-800 text-xs font-sans uppercase tracking-wider font-bold rounded border border-stone-300 transition cursor-pointer shadow-2xs"
-              >
-                Send an Inquiry
-              </button>
-            </div>
           </div>
         )}
 
