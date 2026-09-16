@@ -14,7 +14,10 @@ import { AudioTrack, MediaItem } from "./types";
 import { playAriaAudio, stopAriaAudio } from "./utils/audioSynth";
 
 // Main Sarah Guilmartin Lavery Hero Image
-const HERO_IMAGE = "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/G.jpg";
+const HERO_IMAGE = "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/Sarah%20Lavery_CHD_9049%20export.jpg";
+
+// About Sarah Section Portrait Image
+const ABOUT_PORTRAIT_IMAGE = "https://pub-84dd5a431965456da7d85a0e76ea51a7.r2.dev/Sarah%20Lavery_CHD_8868%20export.jpg";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>("home");
@@ -128,7 +131,7 @@ export default function App() {
         />
 
         {/* 2. About - Artistic Profile, Education & Press Kit */}
-        <BiographyView portraitImage={HERO_IMAGE} />
+        <BiographyView portraitImage={ABOUT_PORTRAIT_IMAGE} />
 
         {/* 3. Media - Audio Jukebox Player, Videos & Gallery */}
         <MediaView

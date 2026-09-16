@@ -26,7 +26,7 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
             }
           }}
           alt="Sarah Guilmartin Lavery - Irish Lyric Soprano"
-          className="w-full h-full object-cover object-[center_top] sm:object-[center_8%] md:object-[right_top] lg:object-[82%_6%] opacity-90 md:opacity-95 scale-100 transition-all duration-700"
+          className="w-full h-full object-cover object-[center_top] sm:object-[center_8%] md:object-[right_top] lg:object-[82%_6%] opacity-90 md:opacity-95 scale-100 translate-x-[3%] sm:translate-x-[4%] md:translate-x-[5%] lg:translate-x-[6%] transition-all duration-700"
           referrerPolicy="no-referrer"
         />
 

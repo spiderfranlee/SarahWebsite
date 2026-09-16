@@ -130,13 +130,6 @@ export default function MediaView({
                 Gallery & Video Performances
               </h3>
             </div>
-
-            {/* Video Count */}
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-sans text-stone-500 font-medium">
-                {filteredMedia.length} Featured Performances
-              </span>
-            </div>
           </div>
 
           {/* Video Cards Grid - 4-Column Layout */}

@@ -10,19 +10,13 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     organization: "",
-    inquiryType: initialInquiryType || "Wedding Ceremony & Reception",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  React.useEffect(() => {
-    if (initialInquiryType) {
-      setFormData(prev => ({ ...prev, inquiryType: initialInquiryType }));
-    }
-  }, [initialInquiryType]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,8 +44,8 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
         setFormData({
           name: "",
           email: "",
+          phone: "",
           organization: "",
-          inquiryType: initialInquiryType || "Wedding Ceremony & Reception",
           message: ""
         });
       } else {
@@ -122,7 +116,7 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 <input
                   type="hidden"
                   name="subject"
-                  value={`Website Inquiry: ${formData.inquiryType} - ${formData.name || "Visitor"}`}
+                  value={`Website Inquiry: ${formData.organization ? `${formData.organization} - ` : ""}${formData.name || "Visitor"}`}
                 />
                 <input
                   type="hidden"
@@ -165,38 +159,30 @@ export default function ContactView({ initialInquiryType }: ContactViewProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[11px] font-sans tracking-wider uppercase text-stone-700 font-bold mb-2">
-                      Company / Organization
+                      Company / Organization <span className="text-stone-400 font-normal lowercase">(optional)</span>
                     </label>
                     <input
                       type="text"
                       name="organization"
                       value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                      placeholder="e.g. Festival Opera / Symphony"
+                      placeholder="e.g. Festival Opera / Private Event"
                       className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors shadow-2xs"
                     />
                   </div>
 
                   <div>
                     <label className="block text-[11px] font-sans tracking-wider uppercase text-stone-700 font-bold mb-2">
-                      Inquiry Nature
+                      Phone Number <span className="text-stone-400 font-normal lowercase">(optional)</span>
                     </label>
-                    <select
-                      name="inquiry_type"
-                      value={formData.inquiryType}
-                      onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 font-medium focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors shadow-2xs"
-                    >
-                      <option>Wedding Ceremony & Reception</option>
-                      <option>Funeral & Memorial Service</option>
-                      <option>Corporate Gala & Private Recital</option>
-                      <option>Operatic Role Booking</option>
-                      <option>Concert / Oratorio Soloist</option>
-                      <option>Solo Recital / Festival</option>
-                      <option>Masterclass / Vocal Workshop</option>
-                      <option>Media & Press Interview</option>
-                      <option>General Inquiry</option>
-                    </select>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="e.g. +353 87 123 4567"
+                      className="w-full px-4 py-3 bg-white border border-stone-300 rounded text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors shadow-2xs"
+                    />
                   </div>
                 </div>
 

@@ -123,12 +123,9 @@ export default function EventsView({
         {currentTab === "upcoming" && (
           <div id="events-upcoming-content" className="space-y-6 animate-fadeIn">
             {/* Season Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-stone-200">
+            <div className="pb-3 border-b border-stone-200">
               <span className="text-xs font-sans tracking-widest text-gold-800 uppercase font-bold">
                 Upcoming Season Engagements
-              </span>
-              <span className="text-xs font-sans text-stone-500 font-medium">
-                {scheduleData.length} Confirmed Productions
               </span>
             </div>
 
