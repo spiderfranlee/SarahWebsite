@@ -14,33 +14,44 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
       id="hero-section"
       className="relative min-h-[92vh] md:min-h-screen flex items-end pb-16 md:pb-24 pt-32 overflow-hidden bg-[#FAF8F5]"
     >
-      {/* Background Image Container with Luminous High-Key Gradient */}
+      {/* Background Image Container - Positioned to the right to preserve 1:1 crisp sharpness without enlargement blur */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img
-          id="main-hero-portrait"
-          src={heroImage}
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (target.src !== "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85") {
-              target.src = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85";
-            }
-          }}
-          alt="Sarah Guilmartin Lavery - Irish Lyric Soprano"
-          className="w-full h-full object-cover object-[center_top] sm:object-[center_8%] md:object-[right_top] lg:object-[82%_6%] opacity-90 md:opacity-95 scale-100 translate-x-[3%] sm:translate-x-[4%] md:translate-x-[5%] lg:translate-x-[6%] transition-all duration-700"
-          referrerPolicy="no-referrer"
-        />
+        {/* Right-aligned photo frame */}
+        <div className="absolute right-0 top-0 bottom-0 w-full md:w-[62%] lg:w-[54%] xl:w-[48%] h-full overflow-hidden">
+          <img
+            id="main-hero-portrait"
+            src={heroImage}
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src !== "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85") {
+                target.src = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1920&q=85";
+              }
+            }}
+            alt="Sarah Guilmartin Lavery - Irish Lyric Soprano"
+            className="w-full h-full object-cover object-[72%_top] sm:object-[70%_top] md:object-[center_top] opacity-100"
+            style={{ imageRendering: "auto" }}
+            referrerPolicy="no-referrer"
+          />
 
-        {/* Luminous Light Vignette Gradients for Crisp High-Contrast Editorial Typography */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/85 to-transparent md:w-3/5" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-transparent via-[#FAF8F5]/20 to-[#FAF8F5]/70" />
+          {/* Desktop Left Edge Feathering into Parchment Canvas */}
+          <div className="hidden md:block absolute inset-y-0 left-0 w-40 lg:w-56 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent pointer-events-none" />
+        </div>
+
+        {/* Mobile View Gradient: Protects Bottom Text while leaving Sarah's Face and Upper Portrait Crystal Clear and Unblurred */}
+        <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/90 via-55% to-transparent pointer-events-none" />
+
+        {/* Desktop Left-Side Solid & Gradient Typography Backdrop */}
+        <div className="hidden md:block absolute inset-y-0 left-0 w-[45%] lg:w-[50%] bg-[#FAF8F5] pointer-events-none" />
+
+        {/* Bottom Page Transition */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#FAF8F5] to-transparent pointer-events-none" />
       </div>
 
       {/* Hero Content Overlay */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
         <div className="max-w-4xl">
           {/* Artist Large Display Name */}
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl italic font-normal tracking-tight text-navy-800 leading-[1.0] mb-6">
+          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl italic font-normal tracking-tight text-navy-950 leading-[0.98] mb-6">
             Sarah Guilmartin <br />
             Lavery
           </h1>
