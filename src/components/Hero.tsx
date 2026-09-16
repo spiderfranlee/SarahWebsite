@@ -14,9 +14,9 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
       id="hero-section"
       className="relative min-h-[92vh] md:min-h-screen flex items-end pb-16 md:pb-24 pt-32 overflow-hidden bg-[#FAF8F5]"
     >
-      {/* Background Image Container - Positioned to the right to preserve 1:1 crisp sharpness without enlargement blur */}
+      {/* Background Image Container - Sarah placed to the right of the headline on mobile, and right half on desktop */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Right-aligned photo frame with independent mobile shift */}
+        {/* Photo frame */}
         <div className="absolute right-0 top-0 bottom-0 w-full md:w-[62%] lg:w-[54%] xl:w-[48%] h-full overflow-hidden">
           <img
             id="main-hero-portrait"
@@ -28,32 +28,32 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
               }
             }}
             alt="Sarah Guilmartin Lavery - Irish Lyric Soprano"
-            className="w-full h-full object-cover object-[center_top] sm:object-[center_top] md:object-[center_top] translate-x-[24%] sm:translate-x-[14%] md:translate-x-0 opacity-100 transition-transform duration-300"
-            style={{ imageRendering: "auto" }}
+            className="w-full h-full object-cover object-[0%_top] sm:object-[10%_top] md:object-[center_top] translate-x-8 sm:translate-x-9 md:translate-x-0 opacity-100 contrast-[1.06] brightness-[1.01] saturate-[1.03]"
+            style={{ imageRendering: "-webkit-optimize-contrast" }}
             referrerPolicy="no-referrer"
           />
 
-          {/* Desktop Left Edge Feathering into Parchment Canvas */}
+          {/* Desktop Left Edge Feathering */}
           <div className="hidden md:block absolute inset-y-0 left-0 w-40 lg:w-56 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent pointer-events-none" />
         </div>
 
-        {/* Mobile View Gradients: Protects Left-Hand & Bottom Typography while keeping Sarah's portrait on the right unobstructed */}
-        <div className="md:hidden absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 via-45% to-transparent pointer-events-none" />
-        <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/85 via-50% to-transparent pointer-events-none" />
+        {/* Mobile Left-Hand Text Ground: Cushions the headline text while leaving Sarah completely unobstructed */}
+        <div className="md:hidden absolute inset-y-0 left-0 w-[50%] bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/90 via-75% to-transparent pointer-events-none" />
 
-        {/* Desktop Left-Side Solid & Gradient Typography Backdrop */}
+        {/* Desktop Left-Side Typography Backdrop */}
         <div className="hidden md:block absolute inset-y-0 left-0 w-[45%] lg:w-[50%] bg-[#FAF8F5] pointer-events-none" />
 
-        {/* Bottom Page Transition */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#FAF8F5] to-transparent pointer-events-none" />
+        {/* Soft Bottom Transition */}
+        <div className="absolute bottom-0 inset-x-0 h-24 sm:h-32 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent pointer-events-none" />
       </div>
 
       {/* Hero Content Overlay */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
-        <div className="max-w-4xl">
-          {/* Artist Large Display Name */}
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl italic font-normal tracking-tight text-navy-950 leading-[0.98] mb-6">
-            Sarah Guilmartin <br />
+        <div className="max-w-xl md:max-w-4xl">
+          {/* Artist Large Display Name - Crisp Navy on parchment, strictly to the left of Sarah on mobile */}
+          <h1 className="font-serif text-3xl xs:text-4xl sm:text-5xl md:text-8xl lg:text-9xl italic font-medium tracking-tight text-navy-950 leading-[1.05] mb-5 max-w-[200px] xs:max-w-[230px] sm:max-w-none">
+            Sarah <br />
+            Guilmartin <br />
             Lavery
           </h1>
 
