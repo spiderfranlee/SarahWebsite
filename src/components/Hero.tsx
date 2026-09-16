@@ -16,7 +16,7 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
     >
       {/* Background Image Container - Positioned to the right to preserve 1:1 crisp sharpness without enlargement blur */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Right-aligned photo frame */}
+        {/* Right-aligned photo frame with independent mobile shift */}
         <div className="absolute right-0 top-0 bottom-0 w-full md:w-[62%] lg:w-[54%] xl:w-[48%] h-full overflow-hidden">
           <img
             id="main-hero-portrait"
@@ -28,7 +28,7 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
               }
             }}
             alt="Sarah Guilmartin Lavery - Irish Lyric Soprano"
-            className="w-full h-full object-cover object-[72%_top] sm:object-[70%_top] md:object-[center_top] opacity-100"
+            className="w-full h-full object-cover object-[center_top] sm:object-[center_top] md:object-[center_top] translate-x-[24%] sm:translate-x-[14%] md:translate-x-0 opacity-100 transition-transform duration-300"
             style={{ imageRendering: "auto" }}
             referrerPolicy="no-referrer"
           />
@@ -37,8 +37,9 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
           <div className="hidden md:block absolute inset-y-0 left-0 w-40 lg:w-56 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent pointer-events-none" />
         </div>
 
-        {/* Mobile View Gradient: Protects Bottom Text while leaving Sarah's Face and Upper Portrait Crystal Clear and Unblurred */}
-        <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/90 via-55% to-transparent pointer-events-none" />
+        {/* Mobile View Gradients: Protects Left-Hand & Bottom Typography while keeping Sarah's portrait on the right unobstructed */}
+        <div className="md:hidden absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 via-45% to-transparent pointer-events-none" />
+        <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/85 via-50% to-transparent pointer-events-none" />
 
         {/* Desktop Left-Side Solid & Gradient Typography Backdrop */}
         <div className="hidden md:block absolute inset-y-0 left-0 w-[45%] lg:w-[50%] bg-[#FAF8F5] pointer-events-none" />
