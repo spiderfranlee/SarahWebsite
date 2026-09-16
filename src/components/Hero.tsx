@@ -16,8 +16,8 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
     >
       {/* Background Image Container - Sarah placed to the right of the headline on mobile, and right half on desktop */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Photo frame */}
-        <div className="absolute right-0 top-0 bottom-0 w-full md:w-[62%] lg:w-[54%] xl:w-[48%] h-full overflow-hidden">
+        {/* Photo frame - cleanly positioned to the right on mobile (giving clearance for text) without any blur-inducing GPU layer transforms */}
+        <div className="absolute right-[-2rem] sm:right-[-2.25rem] md:right-0 top-0 bottom-0 w-full md:w-[62%] lg:w-[54%] xl:w-[48%] h-full overflow-hidden">
           <img
             id="main-hero-portrait"
             src={heroImage}
@@ -28,8 +28,7 @@ export default function Hero({ heroImage, onNavigate }: HeroProps) {
               }
             }}
             alt="Sarah Guilmartin Lavery - Irish Lyric Soprano"
-            className="w-full h-full object-cover object-[0%_top] sm:object-[10%_top] md:object-[center_top] translate-x-8 sm:translate-x-9 md:translate-x-0 opacity-100 contrast-[1.06] brightness-[1.01] saturate-[1.03]"
-            style={{ imageRendering: "-webkit-optimize-contrast" }}
+            className="w-full h-full object-cover object-[0%_top] sm:object-[10%_top] md:object-[center_top] opacity-100"
             referrerPolicy="no-referrer"
           />
 
