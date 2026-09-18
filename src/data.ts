@@ -20,12 +20,12 @@ export const artistData = {
   },
   socials: {
     facebook: "https://www.facebook.com/profile.php?id=61551493116970",
-    instagram: "https://instagram.com",
+    instagram: "https://www.instagram.com/sarah_lavery26?stkn=ejRtd3RxbjdxdW5p",
     youtube: "https://www.youtube.com/@SarahGuilmartinLavery-soprano",
     linkedin: "https://linkedin.com",
   },
-  shortBio: "Sarah Guilmartin Lavery is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.",
-  fullBio: `Sarah Guilmartin Lavery is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.
+  shortBio: "Sarah is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.",
+  fullBio: `Sarah is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.
 
 A graduate of the Royal Irish Academy of Music, Sarah continued her postgraduate training at the Western Australian Academy of Performing Arts before undertaking further professional studies at the Mannes School of Music in New York, where she was awarded a scholarship.
 
@@ -42,7 +42,7 @@ Now based in Dublin, Sarah combines her professional operatic and concert work w
     {
       title: "International Conservatoire Training",
       paragraphs: [
-        "Sarah Guilmartin Lavery is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.",
+        "Sarah is an Irish lyric soprano with an international performance career spanning Ireland, Australia and the United States.",
         "A graduate of the Royal Irish Academy of Music, Sarah continued her postgraduate training at the Western Australian Academy of Performing Arts before undertaking further professional studies at the Mannes School of Music in New York, where she was awarded a scholarship."
       ]
     },
