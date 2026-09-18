@@ -121,6 +121,21 @@ export default function Footer({ onNavigate }: FooterProps) {
             </button>
           </div>
         </div>
+
+        {/* Website Creator Credit */}
+        <div className="mt-8 pt-4 border-t border-stone-200/70">
+          <p style={{ fontSize: "12px", opacity: 0.7, textAlign: "center" }} className="text-stone-600">
+            Website by Fran Lee ·{" "}
+            <a
+              href="https://spiderfranlee.github.io/FranLeePortfolio/?utm_source=friendsite&utm_medium=footer&utm_campaign=credit"
+              target="_blank"
+              rel="noopener"
+              className="underline hover:text-navy-900 transition-colors"
+            >
+              Get in Touch
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
